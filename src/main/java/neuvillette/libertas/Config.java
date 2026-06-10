@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package neuvillette.libertas;
 
 import java.io.File;
 

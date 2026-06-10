@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package neuvillette.libertas;
 
 public class ClientProxy extends CommonProxy {
 
