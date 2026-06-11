@@ -44,6 +44,7 @@ dependencies {
         exclude group: "com.github.GTNewHorizons", module: "AE2FluidCraft-Rework"
     }
     implementation('com.github.GTNewHorizons:NotEnoughItems:2.8.44-GTNH:dev')
+    compileOnlyApi("com.github.GTNewHorizons:NewHorizonsCoreMod:2.8.279:dev")
 }
 
 configurations.configureEach {

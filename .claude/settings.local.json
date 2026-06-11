@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(unzip -l \"E:/code/libertas/build/rfg/mcp_patched_minecraft-sources.jar\")",
+      "Bash(jar tf *)",
+      "Bash(cd /tmp)",
+      "Bash(jar xf *)",
+      "Bash(javap -p -c \"META-INF/versions/17/gregtech/api/enums/Materials.class\")",
+      "Bash(grep -i \"RecipeMap\\\\|RecipeBuilder\\\\|GT_RecipeBuilder\\\\|Values\\\\$\\\\|\\\\.RA\\\\$\")",
+      "Bash(javap -p META-INF/versions/17/gregtech/api/recipe/RecipeMaps.class)",
+      "Bash(javap -p META-INF/versions/17/gregtech/api/util/GTRecipeBuilder.class)",
+      "Bash(javap -p \"META-INF/versions/17/gregtech/api/util/GTRecipeBuilder.class\")",
+      "Bash(javap -p META-INF/versions/17/gregtech/api/recipe/RecipeMap.class)",
+      "Bash(javap -p gregtech/api/recipe/RecipeMap.class)",
+      "Bash(javap -p gregtech/api/recipe/RecipeMaps.class)",
+      "Bash(javap -p gregtech/api/util/GT_Utility.class)",
+      "Bash(javap -p gregtech/api/enums/Materials.class)",
+      "Bash(javap -p gregtech/api/enums/OrePrefixes.class)",
+      "Bash(javap -p gregtech/api/util/GT_OreDictUnificator.class)",
+      "Bash(javap -p META-INF/versions/17/gregtech/api/enums/Materials.class)",
+      "Bash(javap -c -p gregtech/api/enums/Materials.class)",
+      "Bash(python3 -c \"import json; data=json.load\\(open\\('assets/gregtech/misc/materials/bec-materials.json'\\)\\); print\\([m['name'] for m in data if any\\(x in m.get\\('name',''\\).lower\\(\\) for x in ['lithium','mangan','ferber','huebner','tungsten','triox','wolfram']\\)]\\)\")",
+      "Bash(python -c \"import json; data=json.load\\(open\\('assets/gregtech/misc/materials/bec-materials.json'\\)\\); print\\([m['name'] for m in data if any\\(x in m.get\\('name',''\\).lower\\(\\) for x in ['lithium','mangan','ferber','huebner','tungsten','triox','wolfram']\\)]\\)\")",
+      "Bash(grep -i \"lithiumtungstate\\\\|manganesetungstate\\\\|ferberite\\\\|tungstentrioxide\" gregtech/api/enums/Materials.class)",
+      "Bash(javap -p com/dreammaster/gthandler/GT_Loader_Materials.class)",
+      "Bash(javap -c -p com/dreammaster/gthandler/GT_Loader_Materials.class)",
+      "Bash(find /tmp -name \"GT_Loader_Materials.java\" -o -name \"GT_CustomLoader.java\")",
+      "Bash(javap -c -p gregtech/loaders/materials/MaterialsInit.class)",
+      "Bash(export LANG=C)",
+      "Bash(javap -p bartworks/system/material/WerkstoffLoader.class)",
+      "Bash(javap -p gtnhlanth/common/register/BotWerkstoffMaterialPool.class)",
+      "Bash(javap -p gregtech/api/enums/OreMixes.class)",
+      "Bash(javap -p bartworks/system/material/Werkstoff.class)",
+      "Bash(xargs -I{} sh -c 'jar tf \"{}\" 2>/dev/null | grep -l \"WerkstoffLoader\" && echo \"FOUND IN: {}\"')",
+      "Bash(./gradlew dependencies *)",
+      "Bash(xargs grep -l \"ferberite\\\\|huebnerite\\\\|bartworks\")",
+      "Bash(javap -c -p bartworks/system/material/Werkstoff.class)",
+      "Bash(javap -c -p bartworks/system/material/WerkstoffLoader.class)"
+    ]
+  }
+}
