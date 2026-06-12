@@ -2,6 +2,7 @@ package neuvillette.libertas;
 
 import neuvillette.libertas.multiblock.StoneMiner;
 import neuvillette.libertas.recipe.GregTechRecipes;
+import neuvillette.libertas.recipe.StoneMinerRecipes;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -24,12 +25,16 @@ public class CommonProxy {
     public void init(FMLInitializationEvent event) {
         // Register the Stone Miner multi-block controller
         new StoneMiner(29100, "stoneminer", "石头矿机").getStackForm(1);
+
+        // Initialize recipe maps (triggers class loading so RecipeMapBuilder.build() runs)
+        LibertasMod.LOG.info("Registering StoneMinerRecipes: " + LiRecipeMaps.StoneMinerRecipes.unlocalizedName);
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)
     // Recipes are registered here to ensure all material bridge data (WerkstoffLoader, etc.) is ready.
     public void postInit(FMLPostInitializationEvent event) {
         GregTechRecipes.registerRecipes();
+        StoneMinerRecipes.registerRecipes();
     }
 
     // register server commands in this event handler (Remove if not needed)
