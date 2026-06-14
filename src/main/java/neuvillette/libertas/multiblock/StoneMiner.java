@@ -220,7 +220,8 @@ public class StoneMiner extends MTESteamMultiBlockBase<StoneMiner> implements IS
         tt.addInfo("输入总线放置对应电路指定种类");
         tt.addInfo("电路 1: 铁矿 | 电路 2: 铜矿 | 电路 3: 锡矿");
         tt.addInfo("热量 ≥ 200 时启动，执行后扣 200 热量");
-        tt.toolTipFinisher();
+        tt.addInfo("机器不工作开过量销毁");
+        tt.toolTipFinisher("Libertas");
         return tt;
     }
 
