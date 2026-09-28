@@ -215,7 +215,10 @@ public class JsonItemRenderer implements IItemRenderer {
         GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
         GL11.glPushMatrix();
         try {
+            // GL post-multiplies: the LAST emitted transform is applied to the vertices FIRST. The model tweak must
+            // run on raw 0..1 model coordinates (innermost), with the per-path transform layered on top (outer).
             applyItemTransform(type);
+            applyModelTweak();
 
             // The texture is authored emissive in Blockbench (full-bright, flat preview), so faces render unshaded
             // to match. Lighting is disabled; the per-vertex color is still written explicitly so a glColor4f left
@@ -246,6 +249,22 @@ public class JsonItemRenderer implements IItemRenderer {
             GL11.glPopMatrix();
             GL11.glPopAttrib();
         }
+    }
+
+    /// Whole-model presentation tweaks, applied in model space before any per-path transform so all four render
+    /// paths (GUI / both hands / ground) stay consistent. The anchor is the model's base centre (0.5, 0, 0.5),
+    /// which is where the weapon is gripped - scaling keeps the hold point fixed and the weapon grows upward,
+    /// and spinning turns it around its own vertical axis.
+    private static final float MODEL_SCALE = 1.5f;
+    /// Counter-clockwise (viewed from above, +Y down at the XZ plane) around the vertical axis; positive GL
+    /// rotation about +Y moves +X toward -Z, which is exactly CCW in that view.
+    private static final float MODEL_SPIN_DEG = 22.5f;
+
+    private static void applyModelTweak() {
+        GL11.glTranslatef(0.5f, 0f, 0.5f);
+        GL11.glScalef(MODEL_SCALE, MODEL_SCALE, MODEL_SCALE);
+        GL11.glRotatef(MODEL_SPIN_DEG, 0f, 1f, 0f);
+        GL11.glTranslatef(-0.5f, 0f, -0.5f);
     }
 
     private void applyItemTransform(ItemRenderType type) {
