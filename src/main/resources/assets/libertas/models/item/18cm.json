@@ -1,5 +1,9 @@
 {
 	"credit": "Made with Blockbench",
+	"display": {
+		"firstperson_righthand": {"scale": [2, 2, 2]},
+		"thirdperson_righthand": {"scale": [2, 2, 2]}
+	},
 	"textures": {
 		"0": "libertas:blocks/sakura_tech_stick",
 		"particle": "libertas:blocks/sakura_tech_stick"
