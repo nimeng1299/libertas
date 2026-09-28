@@ -10,7 +10,12 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = Libertas.MODID, version = Tags.VERSION, name = "Libertas", acceptedMinecraftVersions = "[1.7.10]")
+@Mod(
+    modid = Libertas.MODID,
+    version = Tags.VERSION,
+    name = "Libertas",
+    acceptedMinecraftVersions = "[1.7.10]",
+    dependencies = "required-after:gtnhlib")
 public class Libertas {
 
     public static final String MODID = "libertas";

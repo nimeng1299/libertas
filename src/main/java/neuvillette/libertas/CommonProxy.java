@@ -4,6 +4,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import neuvillette.libertas.items.ModItems;
 
 public class CommonProxy {
 
@@ -11,6 +12,8 @@ public class CommonProxy {
     // GameRegistry." (Remove if not needed)
     public void preInit(FMLPreInitializationEvent event) {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
+
+        ModItems.init();
 
         Libertas.LOG.info(Config.greeting);
         Libertas.LOG.info("I am Libertas at version " + Tags.VERSION);
