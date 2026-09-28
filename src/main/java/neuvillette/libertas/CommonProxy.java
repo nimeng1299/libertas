@@ -12,6 +12,8 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
 
+        ModItems.registerItems();
+
         Libertas.LOG.info(Config.greeting);
         Libertas.LOG.info("I am Libertas at version " + Tags.VERSION);
     }
