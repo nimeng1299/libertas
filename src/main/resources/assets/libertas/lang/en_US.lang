@@ -2,3 +2,5 @@ item.18cm.name=18cm的木棍
 tooltip.libertas.18cm.level=§7XP Level: §e%1$s
 tooltip.libertas.18cm.progress=§7Overflow: §a%1$s§7/§f%2$s §7(§a%3$s§7 to next level)
 msg.libertas.18cm.absorb=§aAbsorbed §e%1$s §axp! Weapon level: §e%2$s
+item.purpleMood.name=Purple Mood
+itemGroup.libertas.name=Libertas

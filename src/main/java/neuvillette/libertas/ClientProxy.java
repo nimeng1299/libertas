@@ -15,5 +15,9 @@ public class ClientProxy extends CommonProxy {
         // Register the JSON model renderer for 18cm的木棍
         MinecraftForgeClient
             .registerItemRenderer(ModItems.stick18cm, new JsonItemRenderer(Libertas.MODID, "item/18cm"));
+
+        // Register the JSON model renderer for 紫色心情
+        MinecraftForgeClient
+            .registerItemRenderer(ModItems.purpleMood, new JsonItemRenderer(Libertas.MODID, "item/purpleMood"));
     }
 }

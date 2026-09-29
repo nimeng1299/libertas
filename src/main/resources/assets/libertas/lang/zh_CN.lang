@@ -2,3 +2,5 @@ item.18cm.name=18cm的木棍
 tooltip.libertas.18cm.level=§7经验等级: §e%1$s
 tooltip.libertas.18cm.progress=§7溢出经验: §a%1$s§7/§f%2$s §7(距下一级还需 §a%3$s§7)
 msg.libertas.18cm.absorb=§a吸入 §e%1$s §a点经验! 当前武器等级: §eLv.%2$s
+item.purpleMood.name=紫色心情
+itemGroup.libertas.name=神秘科技
