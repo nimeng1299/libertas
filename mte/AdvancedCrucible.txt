@@ -1,0 +1,30 @@
+
+
+Structure:
+
+Blocks:
+A-> addElement('A', Casings.BronzePlatedBricks.asElement())
+
+Offsets:
+1, 1, 0
+
+Dimensions (Width, Height, Length)
+3, 3, 3
+
+Normal Scan:
+
+//spotless:off
+new String[][]{
+    {"AAA",
+    "A~A",
+    "AAA"
+},{
+    "A A",
+    "A A",
+    "AAA"
+},{
+    "AAA",
+    "AAA",
+    "AAA"
+}}
+//spotless:on

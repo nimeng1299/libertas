@@ -15,7 +15,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
     version = Tags.VERSION,
     name = "Libertas",
     acceptedMinecraftVersions = "[1.7.10]",
-    dependencies = "required-after:gtnhlib")
+    dependencies = "required-after:gtnhlib;required-after:gregtech")
 public class Libertas {
 
     public static final String MODID = "libertas";

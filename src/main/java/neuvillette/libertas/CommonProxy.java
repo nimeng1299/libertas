@@ -5,6 +5,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import neuvillette.libertas.items.ModItems;
+import neuvillette.libertas.machines.ModMachines;
 
 public class CommonProxy {
 
@@ -20,7 +21,10 @@ public class CommonProxy {
     }
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)
-    public void init(FMLInitializationEvent event) {}
+    public void init(FMLInitializationEvent event) {
+        // GT 的 MetaTileEntity 只能在 GT preInit 之后、postInit 之前注册，init 阶段正处窗口内
+        ModMachines.init();
+    }
 
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)
     public void postInit(FMLPostInitializationEvent event) {}
