@@ -4,3 +4,5 @@ tooltip.libertas.18cm.progress=§7Overflow: §a%1$s§7/§f%2$s §7(§a%3$s§7 to
 msg.libertas.18cm.absorb=§aAbsorbed §e%1$s §axp! Weapon level: §e%2$s
 item.purpleMood.name=Purple Mood
 itemGroup.libertas.name=Libertas
+gt.blockmachines.hatch.essentiamelter.name=Essentia Melter Hatch
+libertas.essentia_hatch.empty=No essentia stored

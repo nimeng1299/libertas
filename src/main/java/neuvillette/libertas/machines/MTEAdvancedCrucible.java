@@ -5,6 +5,10 @@ import java.util.List;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import com.cleanroommc.modularui.factory.PosGuiData;
+import com.cleanroommc.modularui.screen.ModularPanel;
+import com.cleanroommc.modularui.screen.UISettings;
+import com.cleanroommc.modularui.value.sync.PanelSyncManager;
 import com.gtnewhorizon.structurelib.alignment.IAlignmentLimits;
 import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructable;
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
@@ -18,9 +22,13 @@ import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.metatileentity.implementations.MTEEnhancedMultiBlockBase;
+import gregtech.api.modularui2.GTGuiTheme;
 import gregtech.api.render.TextureFactory;
 import gregtech.api.structure.error.StructureError;
 import gregtech.api.util.MultiblockTooltipBuilder;
+import gregtech.common.gui.modularui.multiblock.base.MTEMultiBlockBaseGui;
+
+import org.jetbrains.annotations.NotNull;
 
 public class MTEAdvancedCrucible extends MTEEnhancedMultiBlockBase<MTEAdvancedCrucible>
     implements ISurvivalConstructable {
@@ -109,6 +117,26 @@ public class MTEAdvancedCrucible extends MTEEnhancedMultiBlockBase<MTEAdvancedCr
     @Override
     public IAlignmentLimits getAlignmentLimits() {
         return IAlignmentLimits.UPRIGHT;
+    }
+
+    @Override
+    public GTGuiTheme getGuiTheme() {
+        return ModGuiThemes.ADVANCED_CRUCIBLE;
+    }
+
+    /**
+     * 主题的面板背景在部分环境下不生效（主题 JSON 间接解析），这里在 GUI 构建时显式指定背景贴图兜底。
+     */
+    @Override
+    protected @NotNull MTEMultiBlockBaseGui<?> getGui() {
+        return new MTEMultiBlockBaseGui<>(this) {
+
+            @Override
+            protected ModularPanel getBasePanel(PosGuiData guiData, PanelSyncManager syncManager, UISettings uiSettings) {
+                return super.getBasePanel(guiData, syncManager, uiSettings)
+                    .background(ModGuiThemes.CRUCIBLE_BACKGROUND);
+            }
+        };
     }
 
     @Override

@@ -9,11 +9,15 @@ import net.minecraft.item.ItemStack;
 public final class ModMachines {
 
     public static ItemStack advancedCrucible;
+    public static ItemStack essentiaMelter;
 
     private ModMachines() {}
 
     public static void init() {
         advancedCrucible = new MTEAdvancedCrucible(19000, "multimachine.advancedcrucible", "Advanced Crucible")
             .getStackForm(1L);
+        essentiaMelter = new MTEHatchEssentiaMelter(19001, "hatch.essentiamelter", "Essentia Melter Hatch")
+            .getStackForm(1L);
+        ModGuiThemes.init();
     }
 }

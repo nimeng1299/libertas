@@ -4,3 +4,5 @@ tooltip.libertas.18cm.progress=§7溢出经验: §a%1$s§7/§f%2$s §7(距下一
 msg.libertas.18cm.absorb=§a吸入 §e%1$s §a点经验! 当前武器等级: §eLv.%2$s
 item.purpleMood.name=紫色心情
 itemGroup.libertas.name=神秘科技
+gt.blockmachines.hatch.essentiamelter.name=要素熔炼舱
+libertas.essentia_hatch.empty=未储存要素
