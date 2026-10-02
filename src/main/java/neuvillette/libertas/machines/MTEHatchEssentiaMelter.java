@@ -3,14 +3,17 @@ package neuvillette.libertas.machines;
 import static gregtech.api.enums.Textures.BlockIcons.ITEM_IN_SIGN;
 import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_PIPE_IN;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.StringJoiner;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import com.cleanroommc.modularui.api.drawable.IKey;
@@ -51,6 +54,9 @@ public class MTEHatchEssentiaMelter extends MTEHatch {
     public static final int MAX_PER_ASPECT = 64;
     /** 转化周期：每秒尝试熔解槽内第一个物品一件。 */
     public static final int MELT_INTERVAL = 20;
+    /** 要素屏 (40,26)-(164,72) 内约 46px，字体 9px/行，GUI 最多显示 4 行。 */
+    public static final int GUI_MAX_LINES = 4;
+    public static final int WAILA_MAX_LINES = 8;
 
     private final AspectList storedEssentia = new AspectList();
 
@@ -205,32 +211,46 @@ public class MTEHatchEssentiaMelter extends MTEHatch {
     }
 
     // -----------------------------------------------------------------------
-    // 内容展示：WAILA（服务器端）+ GUI（StringSyncValue 同步）
+    // 内容展示：WAILA 正文在客户端合成，服务端数据经 getWailaNBTData -> accessor.getNBTData()
+    // 传递（GT5U 电源状态同款模式）；GUI 走 StringSyncValue
     // -----------------------------------------------------------------------
 
-    private String getEssentiaSummary(int maxAspects) {
-        if (storedEssentia.size() == 0) {
-            return StatCollector.translateToLocal("libertas.essentia_hatch.empty");
+    @Override
+    public void getWailaNBTData(EntityPlayerMP player, TileEntity tile, NBTTagCompound tag, World world, int x, int y,
+        int z) {
+        super.getWailaNBTData(player, tile, tag, world, x, y, z);
+        storedEssentia.writeToNBT(tag, "essentia");
+    }
+
+    private List<String> summarizeLines(AspectList essentia, int maxLines) {
+        final List<String> lines = new ArrayList<>();
+        if (essentia == null || essentia.size() == 0) {
+            lines.add(StatCollector.translateToLocal("libertas.essentia_hatch.empty"));
+            return lines;
         }
-        final StringJoiner joiner = new StringJoiner(", ");
         int shown = 0;
-        for (Aspect aspect : storedEssentia.getAspects()) {
-            if (shown++ >= maxAspects) {
-                joiner.add(EnumChatFormatting.GRAY + "+" + (storedEssentia.size() - maxAspects));
+        for (Aspect aspect : essentia.getAspects()) {
+            if (shown++ >= maxLines) {
+                lines.add(EnumChatFormatting.GRAY + "...");
                 break;
             }
-            final int amount = storedEssentia.getAmount(aspect);
-            final String name = StatCollector.translateToLocal("aspect." + aspect.getTag());
-            joiner.add(aspect.getChatcolor() + name + EnumChatFormatting.GRAY + " x" + amount);
+            // Aspect.getName() = tag 首字母大写（TC 自身的显示方式）；getChatcolor() 在部分要素上为 null，不使用
+            lines.add(
+                EnumChatFormatting.WHITE + aspect.getName()
+                    + EnumChatFormatting.GRAY
+                    + " x"
+                    + essentia.getAmount(aspect));
         }
-        return joiner.toString();
+        return lines;
     }
 
     @Override
     public void getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,
         IWailaConfigHandler config) {
         super.getWailaBody(itemStack, currenttip, accessor, config);
-        currenttip.add(getEssentiaSummary(Integer.MAX_VALUE));
+        final AspectList essentia = new AspectList();
+        essentia.readFromNBT(accessor.getNBTData(), "essentia");
+        currenttip.addAll(summarizeLines(essentia, WAILA_MAX_LINES));
     }
 
     /**
@@ -239,7 +259,9 @@ public class MTEHatchEssentiaMelter extends MTEHatch {
      */
     @Override
     public ModularPanel buildUI(PosGuiData guiData, PanelSyncManager syncManager, UISettings uiSettings) {
-        final StringSyncValue essentiaText = new StringSyncValue(() -> getEssentiaSummary(4));
+        // TextRenderer.draw 检测到 \n 走多行路径，直接以换行符连接各要素
+        final StringSyncValue essentiaText = new StringSyncValue(
+            () -> String.join("\n", summarizeLines(storedEssentia, GUI_MAX_LINES)));
         syncManager.syncValue("essentiaText", essentiaText);
         syncManager.registerSlotGroup("item_inv", 0);
 
@@ -257,7 +279,7 @@ public class MTEHatchEssentiaMelter extends MTEHatch {
             .child(
                 IKey.dynamic(essentiaText::getValue)
                     .asWidget()
-                    .top(31)
+                    .top(26)
                     .left(44));
     }
 }

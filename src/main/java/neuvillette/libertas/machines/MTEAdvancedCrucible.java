@@ -5,6 +5,8 @@ import java.util.List;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import org.jetbrains.annotations.NotNull;
+
 import com.cleanroommc.modularui.factory.PosGuiData;
 import com.cleanroommc.modularui.screen.ModularPanel;
 import com.cleanroommc.modularui.screen.UISettings;
@@ -27,8 +29,6 @@ import gregtech.api.render.TextureFactory;
 import gregtech.api.structure.error.StructureError;
 import gregtech.api.util.MultiblockTooltipBuilder;
 import gregtech.common.gui.modularui.multiblock.base.MTEMultiBlockBaseGui;
-
-import org.jetbrains.annotations.NotNull;
 
 public class MTEAdvancedCrucible extends MTEEnhancedMultiBlockBase<MTEAdvancedCrucible>
     implements ISurvivalConstructable {
@@ -132,7 +132,8 @@ public class MTEAdvancedCrucible extends MTEEnhancedMultiBlockBase<MTEAdvancedCr
         return new MTEMultiBlockBaseGui<>(this) {
 
             @Override
-            protected ModularPanel getBasePanel(PosGuiData guiData, PanelSyncManager syncManager, UISettings uiSettings) {
+            protected ModularPanel getBasePanel(PosGuiData guiData, PanelSyncManager syncManager,
+                UISettings uiSettings) {
                 return super.getBasePanel(guiData, syncManager, uiSettings)
                     .background(ModGuiThemes.CRUCIBLE_BACKGROUND);
             }
