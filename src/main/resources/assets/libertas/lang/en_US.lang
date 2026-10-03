@@ -6,3 +6,6 @@ item.purpleMood.name=Purple Mood
 itemGroup.libertas.name=Libertas
 gt.blockmachines.hatch.essentiamelter.name=Essentia Melter Hatch
 libertas.essentia_hatch.empty=No essentia stored
+
+gt.blockmachines.multimachine.advancedcrucible.name=Advanced Crucible
+libertas.gui.recipe_result.insufficient_essentia=Insufficient Essentia: %s

@@ -34,6 +34,7 @@ import gregtech.api.modularui2.GTGuiTextures;
 import gregtech.api.modularui2.GTGuiTheme;
 import gregtech.api.modularui2.GTGuis;
 import gregtech.api.render.TextureFactory;
+import gregtech.common.tileentities.machines.ISmartInputHatch;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import thaumcraft.api.ThaumcraftApiHelper;
@@ -46,9 +47,10 @@ import thaumcraft.api.aspects.AspectList;
  * 掉落物不带要素，内容随之清空。
  *
  * <p>
- * 要素不通过管道对外输出（{@link #allowPullStack} 恒 false），只供读取方（控制器逻辑或 WAILA/GUI 查看）使用。
+ * 作为多方块部件（Advanced Crucible）时实现 {@link ISmartInputHatch}：要素变化即时通知控制器重查配方，
+ * 且控制器会做周期性检查；要素仅供多方块控制器抽取（{@link #takeAspect}），不通过管道输出。
  */
-public class MTEHatchEssentiaMelter extends MTEHatch {
+public class MTEHatchEssentiaMelter extends MTEHatch implements ISmartInputHatch {
 
     public static final int INPUT_SLOT = 0;
     public static final int MAX_PER_ASPECT = 64;
@@ -142,6 +144,39 @@ public class MTEHatchEssentiaMelter extends MTEHatch {
 
         if (--input.stackSize <= 0) mInventory[INPUT_SLOT] = null;
         getBaseMetaTileEntity().markDirty();
+        // 要素变化即时通知挂接的多方块控制器重查配方
+        notifyWatchers();
+    }
+
+    // -----------------------------------------------------------------------
+    // 要素读取与抽取：供多方块控制器（Advanced Crucible）查询和消耗
+    // -----------------------------------------------------------------------
+
+    /** 当前存储的要素只读视图。 */
+    public AspectList getStoredEssentia() {
+        return storedEssentia;
+    }
+
+    public int getAspectAmount(Aspect aspect) {
+        return storedEssentia.getAmount(aspect);
+    }
+
+    /**
+     * 从本舱抽取指定要素，返回实际抽取量（不超过存量与 max）。
+     */
+    public int takeAspect(Aspect aspect, int max) {
+        int take = Math.min(storedEssentia.getAmount(aspect), max);
+        if (take > 0) {
+            storedEssentia.remove(aspect, take);
+            getBaseMetaTileEntity().markDirty();
+        }
+        return take;
+    }
+
+    @Override
+    public boolean needsPeriodicChecks() {
+        // 要素缓慢累积（无物品变化事件），控制器需要周期性重查配方
+        return true;
     }
 
     // -----------------------------------------------------------------------

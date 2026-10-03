@@ -6,3 +6,6 @@ item.purpleMood.name=紫色心情
 itemGroup.libertas.name=神秘科技
 gt.blockmachines.hatch.essentiamelter.name=要素熔炼舱
 libertas.essentia_hatch.empty=未储存要素
+
+gt.blockmachines.multimachine.advancedcrucible.name=高级坩埚
+libertas.gui.recipe_result.insufficient_essentia=要素不足：%s
