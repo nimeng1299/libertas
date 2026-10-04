@@ -14,7 +14,6 @@ import thaumcraft.common.tiles.TileInfusionMatrix;
 /// "稳定度 10000" 在 TC 的实现里等价于不稳定度(越高越乱)不高于 -10000:
 /// - 未开始注魔时压 symmetry (craftingStart 会以 symmetry + recipeInstability 算出 instability);
 /// - 注魔过程中直接压 instability (craftCycle 每 countDelay tick 用 instability 做事故判定, >=499 必触发)。
-/// 写成"不低于"的下限而不是每 tick 累加, 避免长时间注魔溢出, 也保证多块同放效果一致 (不叠加)。
 public class TileAzureTear extends TileEntity {
 
     /// 稳定度 (即祭坛 symmetry/instability 的下限).
