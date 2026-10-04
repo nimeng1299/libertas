@@ -13,3 +13,9 @@ libertas.gui.recipe_result.insufficient_essentia=Insufficient Essentia: %s
 tile.azureTear.name=Azure Tear
 tooltip.libertas.azureTear.effect=§7Near an Infusion Altar (within 12 blocks of its core): §cStability -10000
 tooltip.libertas.azureTear.lore=§oA tear fallen from the azure sky - and every ritual weeps.
+
+tile.essentiaJar.name=Essentia Jar
+libertas.essentia_jar.empty=No essentia stored
+tooltip.libertas.essentiaJar.empty=§7Empty
+tooltip.libertas.essentiaJar.stored=§7Stored essentia:
+tooltip.libertas.essentiaJar.usage=§7On an essentia container: right-click to draw ALL, sneak-right-click to pour

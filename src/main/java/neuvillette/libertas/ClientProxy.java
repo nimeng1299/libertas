@@ -14,6 +14,8 @@ public class ClientProxy extends CommonProxy {
     /// ISBRH render id of the JSON block renderer. ClientProxy is only ever class-loaded on the client;
     /// the id is assigned in init(), long before any world rendering happens.
     public static int JSON_BLOCK_RENDER_ID = -1;
+    /// 要素罐 (essentiaJar) 的 ISBRH render id, 同上
+    public static int ESSENTIA_JAR_RENDER_ID = -1;
 
     @Override
     public void init(FMLInitializationEvent event) {
@@ -35,5 +37,13 @@ public class ClientProxy extends CommonProxy {
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemAzureTear,
             new JsonItemRenderer(Libertas.MODID, "block/azureTear", 1.0f, 0.0f));
+
+        // 要素罐: 同碧空之泪的渲染管线 (世界 ISBRH + 物品复用同一份 JSON 模型)
+        final JsonBlockRenderer essentiaJarRenderer = new JsonBlockRenderer(Libertas.MODID, "block/essentiaJar");
+        RenderingRegistry.registerBlockHandler(essentiaJarRenderer.getRenderId(), essentiaJarRenderer);
+        ESSENTIA_JAR_RENDER_ID = essentiaJarRenderer.getRenderId();
+        MinecraftForgeClient.registerItemRenderer(
+            ModBlocks.itemEssentiaJar,
+            new JsonItemRenderer(Libertas.MODID, "block/essentiaJar", 1.0f, 0.0f));
     }
 }

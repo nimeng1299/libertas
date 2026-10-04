@@ -13,3 +13,9 @@ libertas.gui.recipe_result.insufficient_essentia=要素不足：%s
 tile.azureTear.name=碧空之泪
 tooltip.libertas.azureTear.effect=§7放在注魔祭坛旁（核心 12 格内）：§c稳定度 -10000
 tooltip.libertas.azureTear.lore=§o天空坠下的一滴泪，让所有仪式为之哭泣。
+
+tile.essentiaJar.name=要素罐
+libertas.essentia_jar.empty=未储存要素
+tooltip.libertas.essentiaJar.empty=§7空
+tooltip.libertas.essentiaJar.stored=§7已存要素：
+tooltip.libertas.essentiaJar.usage=§7对准源质容器：右键全部吸取，潜行右键倒入

@@ -10,6 +10,8 @@ public final class ModBlocks {
 
     public static Block azureTear;
     public static Item itemAzureTear;
+    public static Block essentiaJar;
+    public static Item itemEssentiaJar;
 
     private ModBlocks() {}
 
@@ -20,5 +22,12 @@ public final class ModBlocks {
         GameRegistry.registerTileEntity(TileAzureTear.class, "libertas.azure_tear");
 
         itemAzureTear.setCreativeTab(ModCreativeTabs.tabLibertas);
+
+        essentiaJar = new BlockEssentiaJar();
+        GameRegistry.registerBlock(essentiaJar, ItemBlockEssentiaJar.class, "essentiaJar");
+        itemEssentiaJar = Item.getItemFromBlock(essentiaJar);
+        GameRegistry.registerTileEntity(TileEssentiaJar.class, "libertas.essentia_jar");
+
+        itemEssentiaJar.setCreativeTab(ModCreativeTabs.tabLibertas);
     }
 }

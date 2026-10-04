@@ -11,14 +11,14 @@ import thaumcraft.common.tiles.TileInfusionMatrix;
 /// (TileInfusionMatrix.getSurroundings 的 xx/zz ∈ [-12,12], yy ∈ [-5,10])。反向推算: 以本方块为中心
 /// 水平 ±12 格、垂直 [y-5, y+10] 内的 TileInfusionMatrix 都会被本方块影响。
 ///
-/// "稳定度 -10000" 在 TC 的实现里等价于不稳定度(越高越乱)不低于 10000:
+/// "稳定度 10000" 在 TC 的实现里等价于不稳定度(越高越乱)不高于 -10000:
 /// - 未开始注魔时压 symmetry (craftingStart 会以 symmetry + recipeInstability 算出 instability);
 /// - 注魔过程中直接压 instability (craftCycle 每 countDelay tick 用 instability 做事故判定, >=499 必触发)。
 /// 写成"不低于"的下限而不是每 tick 累加, 避免长时间注魔溢出, 也保证多块同放效果一致 (不叠加)。
 public class TileAzureTear extends TileEntity {
 
-    /// 稳定度降低量 (即祭坛 symmetry/instability 的下限).
-    public static final int STABILITY_PENALTY = 10000;
+    /// 稳定度 (即祭坛 symmetry/instability 的下限).
+    public static final int STABILITY_PENALTY = -10000;
     /// 找不到祭坛时的全量扫描间隔 (tick).
     private static final int SCAN_INTERVAL = 40;
 
@@ -91,9 +91,9 @@ public class TileAzureTear extends TileEntity {
 
     private static void destabilise(TileInfusionMatrix matrix) {
         if (matrix.crafting) {
-            if (matrix.instability < STABILITY_PENALTY) matrix.instability = STABILITY_PENALTY;
+            if (matrix.instability > STABILITY_PENALTY) matrix.instability = STABILITY_PENALTY;
         } else {
-            if (matrix.symmetry < STABILITY_PENALTY) matrix.symmetry = STABILITY_PENALTY;
+            if (matrix.symmetry > STABILITY_PENALTY) matrix.symmetry = STABILITY_PENALTY;
         }
     }
 
