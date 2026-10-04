@@ -10,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
@@ -37,6 +38,7 @@ import gregtech.api.render.TextureFactory;
 import gregtech.common.tileentities.machines.ISmartInputHatch;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
+import mcp.mobius.waila.api.SpecialChars;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -58,7 +60,6 @@ public class MTEHatchEssentiaMelter extends MTEHatch implements ISmartInputHatch
     public static final int MELT_INTERVAL = 20;
     /** 要素屏 (40,26)-(164,72) 内约 46px，字体 9px/行，GUI 最多显示 4 行。 */
     public static final int GUI_MAX_LINES = 4;
-    public static final int WAILA_MAX_LINES = 8;
 
     private final AspectList storedEssentia = new AspectList();
 
@@ -246,17 +247,48 @@ public class MTEHatchEssentiaMelter extends MTEHatch implements ISmartInputHatch
     }
 
     // -----------------------------------------------------------------------
-    // 内容展示：WAILA 正文在客户端合成，服务端数据经 getWailaNBTData -> accessor.getNBTData()
-    // 传递（GT5U 电源状态同款模式）；GUI 走 StringSyncValue
+    // WAILA：复刻 WAILA 自带 thaumcraft 模块的 HUDHandlerIAspectContainer——
+    // 正文在客户端合成，服务端经 getWailaNBTData 写入与 TC 完全相同的 NBT 结构
+    // （"Aspects" 标签列表：key=要素 tag，value=数量），正文行用
+    // SpecialChars.getRenderString("waila.tcaspect", tag) 调 TTRenderAspectString 画要素图标，
+    // 后接 TAB + ALIGNRIGHT + WHITE + 数量，与 TC 坩埚/jar 的显示完全一致。
+    // GT 的 TE 不是 IAspectContainer，无法命中 WAILA 的 isInstance 注册，故在 GT 的
+    // getWailaBody 里自行输出同样的渲染标签。
     // -----------------------------------------------------------------------
 
     @Override
     public void getWailaNBTData(EntityPlayerMP player, TileEntity tile, NBTTagCompound tag, World world, int x, int y,
         int z) {
         super.getWailaNBTData(player, tile, tag, world, x, y, z);
-        storedEssentia.writeToNBT(tag, "essentia");
+        final NBTTagList aspects = new NBTTagList();
+        for (Aspect aspect : storedEssentia.getAspects()) {
+            final NBTTagCompound entry = new NBTTagCompound();
+            entry.setString("key", aspect.getTag());
+            entry.setInteger("value", storedEssentia.getAmount(aspect));
+            aspects.appendTag(entry);
+        }
+        tag.setTag("Aspects", aspects);
     }
 
+    @Override
+    public void getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,
+        IWailaConfigHandler config) {
+        super.getWailaBody(itemStack, currenttip, accessor, config);
+        if (!config.getConfig("thaumcraft.aspects")) return;
+        final NBTTagCompound tag = accessor.getNBTData();
+        if (!tag.hasKey("Aspects")) return;
+        final NBTTagList aspects = tag.getTagList("Aspects", 10);
+        for (int i = 0; i < aspects.tagCount(); i++) {
+            final NBTTagCompound entry = aspects.getCompoundTagAt(i);
+            currenttip.add(
+                SpecialChars.getRenderString("waila.tcaspect", entry.getString("key")) + SpecialChars.TAB
+                    + SpecialChars.ALIGNRIGHT
+                    + SpecialChars.WHITE
+                    + entry.getInteger("value"));
+        }
+    }
+
+    /** GUI 要素屏文本：每要素一行，超出 maxLines 用 "..." 收尾。 */
     private List<String> summarizeLines(AspectList essentia, int maxLines) {
         final List<String> lines = new ArrayList<>();
         if (essentia == null || essentia.size() == 0) {
@@ -277,15 +309,6 @@ public class MTEHatchEssentiaMelter extends MTEHatch implements ISmartInputHatch
                     + essentia.getAmount(aspect));
         }
         return lines;
-    }
-
-    @Override
-    public void getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,
-        IWailaConfigHandler config) {
-        super.getWailaBody(itemStack, currenttip, accessor, config);
-        final AspectList essentia = new AspectList();
-        essentia.readFromNBT(accessor.getNBTData(), "essentia");
-        currenttip.addAll(summarizeLines(essentia, WAILA_MAX_LINES));
     }
 
     /**

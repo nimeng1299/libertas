@@ -11,7 +11,7 @@ gt.blockmachines.multimachine.advancedcrucible.name=Advanced Crucible
 libertas.gui.recipe_result.insufficient_essentia=Insufficient Essentia: %s
 
 tile.azureTear.name=Azure Tear
-tooltip.libertas.azureTear.effect=§7Near an Infusion Altar (within 12 blocks of its core): §cStability -10000
+tooltip.libertas.azureTear.effect=§7Near an Infusion Altar (within 12 blocks of its core): §aStability +10000
 tooltip.libertas.azureTear.lore=§oA tear fallen from the azure sky - and every ritual weeps.
 
 item.deepSeaEcho.name=Deep Sea Echo

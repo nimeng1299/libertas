@@ -12,6 +12,7 @@ public final class ModMachines {
 
     public static ItemStack advancedCrucible;
     public static ItemStack essentiaMelter;
+    public static ItemStack runewovenPact;
 
     private ModMachines() {}
 
@@ -20,6 +21,7 @@ public final class ModMachines {
             .getStackForm(1L);
         essentiaMelter = new MTEHatchEssentiaMelter(19001, "hatch.essentiamelter", "Essentia Melter Hatch")
             .getStackForm(1L);
+        runewovenPact = new MTERunewovenPact(19002, "multimachine.runewovenpact", "秘纹织契").getStackForm(1L);
         ModGuiThemes.init();
         // 自定义配方检查失败原因（GUI 状态区显示），必须先注册才能被同步显示
         CheckRecipeResultRegistry.register(new ResultInsufficientEssentia());

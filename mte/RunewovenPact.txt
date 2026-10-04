@@ -1,0 +1,67 @@
+
+
+Structure:
+
+Blocks:
+A-> addElement('A', Casings.FrostProofMachineCasing.asElement())
+B -> ofBlock(tile.blockStoneDevice, 6);
+
+Special Tiles:
+C -> ofSpecialTileAdder(neuvillette.libertas.blocks.TileAzureTear);
+D -> ofSpecialTileAdder(thaumcraft.common.tiles.TileInfusionMatrix);
+E -> ofSpecialTileAdder(thaumcraft.common.tiles.TilePedestal);
+F -> ofSpecialTileAdder(thaumcraft.common.tiles.TileInfusionPillar);
+
+Offsets:
+3, 4, 0
+
+Dimensions (Width, Height, Length)
+7, 5, 7
+
+Normal Scan:
+
+//spotless:off
+new String[][]{
+    {"       ",
+    "       ",
+    "       ",
+    "  EEE  ",
+    "AAA~AAA"
+},{
+    "       ",
+    "       ",
+    "       ",
+    "       ",
+    "AAAAAAA"
+},{
+    "       ",
+    "       ",
+    "  B B  ",
+    "E F F E",
+    "AAAAAAA"
+},{
+    "       ",
+    "   D   ",
+    "       ",
+    "E  E  E",
+    "AAACAAA"
+},{
+    "       ",
+    "       ",
+    "  B B  ",
+    "E F F E",
+    "AAAAAAA"
+},{
+    "       ",
+    "       ",
+    "       ",
+    "       ",
+    "AAAAAAA"
+},{
+    "       ",
+    "       ",
+    "       ",
+    "  EEE  ",
+    "AAAAAAA"
+}}
+//spotless:on

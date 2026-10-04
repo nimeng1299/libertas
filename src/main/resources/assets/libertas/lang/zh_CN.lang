@@ -11,7 +11,7 @@ gt.blockmachines.multimachine.advancedcrucible.name=高级坩埚
 libertas.gui.recipe_result.insufficient_essentia=要素不足：%s
 
 tile.azureTear.name=碧空之泪
-tooltip.libertas.azureTear.effect=§7放在注魔祭坛旁（核心 12 格内）：§c稳定度 -10000
+tooltip.libertas.azureTear.effect=§7放在注魔祭坛旁（核心 12 格内）：§a稳定度 +10000
 tooltip.libertas.azureTear.lore=§o天空坠下的一滴泪，让所有仪式为之哭泣。
 
 item.deepSeaEcho.name=深海回响
