@@ -52,7 +52,7 @@ import thaumcraft.common.tiles.TilePedestal;
 /**
  * 秘纹织契：围绕神秘时代注魔祭坛（符文矩阵 + 台座 + 注魔支柱 + 碧空之泪）搭建的多方块，
  * 自动执行神秘注魔配方（{@link InfusionRecipe}）。中心物品与组件都从输入总线取料，
- * 要素从要素熔炼仓抽取，产物进输出总线；无限并行，固定 5 秒（100 tick）耗时。
+ * 要素从要素熔炼仓抽取，产物进输出总线；并行 1（每轮只做一次注魔），固定 5 秒（100 tick）耗时。
  *
  * <p>
  * 特殊方块（矩阵/台座/支柱/碧空之泪）不能由多方块代放，需要按结构提示手工摆放，
@@ -256,8 +256,8 @@ public class MTERunewovenPact extends MTELibertasMultiBlockBase<MTERunewovenPact
     // -----------------------------------------------------------------------
     // 配方逻辑：注魔配方（Thaumcraft InfusionRecipe），中心物品与组件都从输入总线
     // 取料（TC 的台座/矩阵原料池合并为总线物品池，多余物品不阻碍匹配），要素从
-    // 熔炼仓抽取，产物进输出总线；无限并行，固定 100 tick。不做研究解锁与
-    // 不稳定度判定（机器合成无玩家参与）。
+    // 熔炼仓抽取，产物进输出总线；并行 1（每轮只做一次注魔），固定 100 tick。
+    // 不做研究解锁与不稳定度判定（机器合成无玩家参与）。
     // -----------------------------------------------------------------------
 
     @Override
@@ -272,38 +272,25 @@ public class MTERunewovenPact extends MTELibertasMultiBlockBase<MTERunewovenPact
             }
         }
 
-        List<ItemStack> outputs = new ArrayList<>();
-        int crafts = 0;
-        // 有配方命中但要素不足时，记录缺口用于 GUI 提示
-        AspectList deficit = null;
-
-        // 无限并行：反复取料-扣要素，直到凑不出完整的一组原料
-        while (true) {
-            final InfusionRecipe recipe = findAndConsumeRecipe();
-            if (recipe == null) break;
+        // 单次处理：找到一个原料齐备的配方即停
+        final InfusionRecipe recipe = findAndConsumeRecipe();
+        if (recipe != null) {
             AspectList missing = computeDeficit(recipe.getAspects(), available);
             if (missing.size() > 0) {
                 rollbackLastConsumption();
-                if (deficit == null) deficit = missing;
-                break;
+                return new ResultInsufficientEssentia(missing);
             }
             drainEssentia(recipe.getAspects(), available);
-            outputs.add(((ItemStack) recipe.getRecipeOutput()).copy());
-            crafts++;
-        }
-
-        if (crafts > 0) {
             for (MTEHatchInputBus bus : mInputBusses) {
                 bus.getBaseMetaTileEntity()
                     .markDirty();
             }
-            mOutputItems = outputs.toArray(new ItemStack[0]);
+            mOutputItems = new ItemStack[] { ((ItemStack) recipe.getRecipeOutput()).copy() };
             mMaxProgresstime = DURATION_TICKS;
             mEfficiency = 10000;
             mEfficiencyIncrease = 10000;
             return CheckRecipeResultRegistry.SUCCESSFUL;
         }
-        if (deficit != null) return new ResultInsufficientEssentia(deficit);
         return CheckRecipeResultRegistry.NO_RECIPE;
     }
 
