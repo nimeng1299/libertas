@@ -122,5 +122,12 @@ public final class ModRecipes {
                 ModMachines.greatWizardOven.copy(),
                 new ItemStack(com.emoniph.witchery.Witchery.Blocks.OVEN_IDLE, 1, 0),
                 new ItemStack(ModItems.jigsaw)));
+
+        // 巫师蒸馏塔: 巫术蒸馏塔 + 拼图，无序合成
+        GameRegistry.addRecipe(
+            new ShapelessOreRecipe(
+                ModMachines.wizardDistillationTower.copy(),
+                new ItemStack(com.emoniph.witchery.Witchery.Blocks.DISTILLERY_IDLE, 1, 0),
+                new ItemStack(ModItems.jigsaw)));
     }
 }

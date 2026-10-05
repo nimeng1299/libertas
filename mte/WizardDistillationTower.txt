@@ -1,0 +1,45 @@
+
+
+Structure:
+
+Blocks:
+A -> ofBlock(tile.blockCosmeticSlabStone, 0);
+B -> ofBlock(tile.blockCosmeticSolid, 6);
+C -> ofBlock(tile.blockCosmeticSolid, 7);
+D-> addElement('D', ofBlock(Blocks.wooden_slab, 0)
+
+Offsets:
+1, 4, 1
+
+Dimensions (Width, Height, Length)
+6, 5, 4
+
+Normal Scan:
+
+//spotless:off
+new String[][]{
+    {"    C ",
+    "    C ",
+    "    C ",
+    "    C ",
+    "   DCD"
+},{
+    "    C ",
+    "AAA   ",
+    "BBB   ",
+    "BBB   ",
+    "B~BD D"
+},{
+    " CCCC ",
+    "ACA   ",
+    "BBB   ",
+    "B B   ",
+    "BBBD D"
+},{
+    "      ",
+    "AAA   ",
+    "BBB   ",
+    "BBB   ",
+    "BBBDDD"
+}}
+//spotless:on

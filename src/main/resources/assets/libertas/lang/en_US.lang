@@ -72,3 +72,17 @@ libertas.mbtt.great_wizard_oven.structure.1=Eternal fire on Netherrack inside th
 libertas.mbtt.great_wizard_oven.structure.2=Arcane Stone Bricks form the top rim,
 libertas.mbtt.great_wizard_oven.structure.3=any Arcane Stone Block position may be replaced by an Input/Output Bus
 GT5U.gui.text.recipe_result.libertas_missing_clay_jar=Missing Empty Clay Jars: each fume output consumes 1 (smelt Soft Clay Jars into Empty Clay Jars first)
+
+gt.blockmachines.multimachine.wizarddistillationtower.name=Wizard Distillation Tower
+
+libertas.mbtt.wizard_distillation_tower.type=Distillation Tower
+libertas.mbtt.wizard_distillation_tower.info.1=Automatically runs Witchery Distillery recipes (live mirror of the vanilla recipe list, no fuel or altar power needed)
+libertas.mbtt.wizard_distillation_tower.info.2=Ingredients and Empty Clay Jars come from Input Busses, results go to Output Busses
+libertas.mbtt.wizard_distillation_tower.info.3=One distillation per operation, fixed 3s duration
+libertas.mbtt.wizard_distillation_tower.controller=Ground level of the main body, center of the front opening
+libertas.mbtt.wizard_distillation_tower.casing=Arcane Stone Block (Thaumcraft)
+libertas.mbtt.wizard_distillation_tower.input_bus.desc=Ingredients + Empty Clay Jars
+libertas.mbtt.wizard_distillation_tower.structure.1=Chimney and cornice are Arcane Stone Bricks, deck is Arcane Stone Slabs and Oak Slabs
+libertas.mbtt.wizard_distillation_tower.structure.2=The main body is built from Arcane Stone Blocks,
+libertas.mbtt.wizard_distillation_tower.structure.3=any Arcane Stone Block position may be replaced by an Input/Output Bus
+GT5U.gui.text.recipe_result.libertas_distillery_missing_jar=Missing Empty Clay Jars: each distillation recipe consumes its required amount (smelt Soft Clay Jars into Empty Clay Jars first)

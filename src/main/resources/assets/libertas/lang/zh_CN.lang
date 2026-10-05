@@ -72,3 +72,17 @@ libertas.mbtt.great_wizard_oven.structure.1=炉膛内为地狱岩上的永恒之
 libertas.mbtt.great_wizard_oven.structure.2=奥术石砖构成炉顶围边，
 libertas.mbtt.great_wizard_oven.structure.3=任意奥术石块位均可替换为输入/输出总线
 GT5U.gui.text.recipe_result.libertas_missing_clay_jar=缺少空黏土罐：产出烟气每份消耗 1 个空黏土罐（软黏土罐需先熔烧成空黏土罐）
+
+gt.blockmachines.multimachine.wizarddistillationtower.name=巫师蒸馏塔
+
+libertas.mbtt.wizard_distillation_tower.type=蒸馏塔
+libertas.mbtt.wizard_distillation_tower.info.1=自动运行巫术(Witchery)蒸馏塔的蒸馏配方（实时镜像原版配方列表，无需燃料与祭坛供能）
+libertas.mbtt.wizard_distillation_tower.info.2=原料与空黏土罐来自输入总线，产物进入输出总线
+libertas.mbtt.wizard_distillation_tower.info.3=每轮只蒸馏一份（并行 1），固定 3 秒完成
+libertas.mbtt.wizard_distillation_tower.controller=主体底层，正面开口正中
+libertas.mbtt.wizard_distillation_tower.casing=奥术石块（神秘时代）
+libertas.mbtt.wizard_distillation_tower.input_bus.desc=蒸馏原料与空黏土罐
+libertas.mbtt.wizard_distillation_tower.structure.1=烟囱与檐口为奥术石砖，台面铺奥术石台阶与橡木台阶
+libertas.mbtt.wizard_distillation_tower.structure.2=主体由奥术石块砌成，
+libertas.mbtt.wizard_distillation_tower.structure.3=任意奥术石块位均可替换为输入/输出总线
+GT5U.gui.text.recipe_result.libertas_distillery_missing_jar=缺少空黏土罐：每份蒸馏配方消耗对应数量的空黏土罐（软黏土罐需先熔烧成空黏土罐）
