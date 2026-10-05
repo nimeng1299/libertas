@@ -27,6 +27,9 @@ public class CommonProxy {
     public void init(FMLInitializationEvent event) {
         // GT 的 MetaTileEntity 只能在 GT preInit 之后、postInit 之前注册，init 阶段正处窗口内
         ModMachines.init();
+
+        // 工作台配方引用 MTE 的 ItemStack 和各 mod preInit 注册的 OreDict，须在其后注册
+        ModRecipes.init();
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)
