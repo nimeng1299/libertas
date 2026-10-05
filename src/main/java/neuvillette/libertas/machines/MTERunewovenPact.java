@@ -3,6 +3,7 @@ package neuvillette.libertas.machines;
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.ofBlock;
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.ofSpecificTileAdder;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
+import static net.minecraft.util.StatCollector.translateToLocal;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -125,23 +126,32 @@ public class MTERunewovenPact extends MTELibertasMultiBlockBase<MTERunewovenPact
 
     @Override
     protected MultiblockTooltipBuilder createTooltip() {
-        return new MultiblockTooltipBuilder().addMachineType("Infusion")
-            .addInfo("Automatically runs Thaumcraft infusion crafting recipes")
-            .addInfo("Central item and components come from Input Busses")
-            .addInfo("Essentia is drained from the attached Essentia Melters")
-            .addInfo("Infinite parallel, fixed 5s duration")
-            .addInfo("If essentia is lacking, the GUI shows what is missing")
+        return new MultiblockTooltipBuilder().addMachineType(translateToLocal("libertas.mbtt.runewoven_pact.type"))
+            .addInfo(translateToLocal("libertas.mbtt.runewoven_pact.info.1"))
+            .addInfo(translateToLocal("libertas.mbtt.runewoven_pact.info.2"))
+            .addInfo(translateToLocal("libertas.mbtt.shared.info.essentia"))
+            .addInfo(translateToLocal("libertas.mbtt.runewoven_pact.info.3"))
+            .addInfo(translateToLocal("libertas.mbtt.shared.info.missing"))
             .beginStructureBlock(7, 5, 7, true)
-            .addController("Top layer, front center")
-            .addCasing("0-47", "Frost Proof Machine Casing", false)
-            .addOtherStructurePart("Input Bus", "Central item + pedestal components", 1)
-            .addOtherStructurePart("Output Bus", "Receives the crafted items", 1)
-            .addOtherStructurePart("Essentia Melter", "Stores essentia consumed by recipes", 1)
-            .addStructureInfo("Runic Matrix, Arcane Pedestals and Infusion Pillars")
-            .addStructureInfo("must be placed by hand (Thaumcraft blocks),")
-            .addStructureInfo("plus an Azure Tear right above the Runic Matrix")
-            .addStructureFooter("GregTech multiblocks may wallshare each of their sides")
-            .addStructureFooter("to save on blocks, casings, glass, buses/hatches, etc.")
+            .addController(translateToLocal("libertas.mbtt.runewoven_pact.controller"))
+            .addCasing("0-47", translateToLocal("libertas.mbtt.runewoven_pact.casing"), false)
+            .addOtherStructurePart(
+                translateToLocal("libertas.mbtt.part.input_bus"),
+                translateToLocal("libertas.mbtt.runewoven_pact.input_bus.desc"),
+                1)
+            .addOtherStructurePart(
+                translateToLocal("libertas.mbtt.part.output_bus"),
+                translateToLocal("libertas.mbtt.part.output_bus.desc"),
+                1)
+            .addOtherStructurePart(
+                translateToLocal("libertas.mbtt.part.essentia_melter"),
+                translateToLocal("libertas.mbtt.part.essentia_melter.desc"),
+                1)
+            .addStructureInfo(translateToLocal("libertas.mbtt.runewoven_pact.structure.1"))
+            .addStructureInfo(translateToLocal("libertas.mbtt.runewoven_pact.structure.2"))
+            .addStructureInfo(translateToLocal("libertas.mbtt.runewoven_pact.structure.3"))
+            .addStructureFooter(translateToLocal("libertas.mbtt.footer.1"))
+            .addStructureFooter(translateToLocal("libertas.mbtt.footer.2"))
             .toolTipFinisher("Libertas");
     }
 

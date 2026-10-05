@@ -2,6 +2,7 @@ package neuvillette.libertas.machines;
 
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.ofBlock;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
+import static net.minecraft.util.StatCollector.translateToLocal;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -88,22 +89,31 @@ public class MTEAdvancedCrucible extends MTELibertasMultiBlockBase<MTEAdvancedCr
 
     @Override
     protected MultiblockTooltipBuilder createTooltip() {
-        return new MultiblockTooltipBuilder().addMachineType("Crucible")
-            .addInfo("Automatically runs Thaumcraft crucible crafting recipes")
-            .addInfo("Catalysts come from Input Busses, results go to Output Busses")
-            .addInfo("Essentia is drained from the attached Essentia Melters")
-            .addInfo("Infinite parallel, fixed 1 tick duration")
-            .addInfo("If essentia is lacking, the GUI shows what is missing")
+        return new MultiblockTooltipBuilder().addMachineType(translateToLocal("libertas.mbtt.advanced_crucible.type"))
+            .addInfo(translateToLocal("libertas.mbtt.advanced_crucible.info.1"))
+            .addInfo(translateToLocal("libertas.mbtt.advanced_crucible.info.2"))
+            .addInfo(translateToLocal("libertas.mbtt.shared.info.essentia"))
+            .addInfo(translateToLocal("libertas.mbtt.advanced_crucible.info.3"))
+            .addInfo(translateToLocal("libertas.mbtt.shared.info.missing"))
             .beginStructureBlock(3, 3, 3, true)
-            .addController("Front center")
-            .addCasing("0-24", "Bronze Plated Bricks", false)
-            .addOtherStructurePart("Input Bus", "Catalyst items for crucible recipes", 1)
-            .addOtherStructurePart("Output Bus", "Receives the crafted items", 1)
-            .addOtherStructurePart("Essentia Melter", "Stores essentia consumed by recipes", 1)
-            .addStructureInfo("Interior: air column behind the controller")
-            .addStructureInfo("Any casing position may be replaced by a bus or an Essentia Melter")
-            .addStructureFooter("GregTech multiblocks may wallshare each of their sides")
-            .addStructureFooter("to save on blocks, casings, glass, buses/hatches, etc.")
+            .addController(translateToLocal("libertas.mbtt.advanced_crucible.controller"))
+            .addCasing("0-24", translateToLocal("libertas.mbtt.advanced_crucible.casing"), false)
+            .addOtherStructurePart(
+                translateToLocal("libertas.mbtt.part.input_bus"),
+                translateToLocal("libertas.mbtt.advanced_crucible.input_bus.desc"),
+                1)
+            .addOtherStructurePart(
+                translateToLocal("libertas.mbtt.part.output_bus"),
+                translateToLocal("libertas.mbtt.part.output_bus.desc"),
+                1)
+            .addOtherStructurePart(
+                translateToLocal("libertas.mbtt.part.essentia_melter"),
+                translateToLocal("libertas.mbtt.part.essentia_melter.desc"),
+                1)
+            .addStructureInfo(translateToLocal("libertas.mbtt.advanced_crucible.structure.1"))
+            .addStructureInfo(translateToLocal("libertas.mbtt.advanced_crucible.structure.2"))
+            .addStructureFooter(translateToLocal("libertas.mbtt.footer.1"))
+            .addStructureFooter(translateToLocal("libertas.mbtt.footer.2"))
             .toolTipFinisher("Libertas");
     }
 

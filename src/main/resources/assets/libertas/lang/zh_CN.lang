@@ -23,3 +23,36 @@ libertas.essentia_jar.empty=未储存要素
 tooltip.libertas.essentiaJar.empty=§7空
 tooltip.libertas.essentiaJar.stored=§7已存要素：
 tooltip.libertas.essentiaJar.usage=§7对准源质容器：右键全部吸取，潜行右键倒入
+
+gt.blockmachines.multimachine.runewovenpact.name=秘纹织契
+
+libertas.mbtt.footer.1=GregTech 多方块的各个面可以互相贴靠共享
+libertas.mbtt.footer.2=以节省方块、外壳、玻璃、总线/舱室等
+libertas.mbtt.shared.info.essentia=要素从相邻的要素熔炼舱中抽取
+libertas.mbtt.shared.info.missing=要素不足时，GUI 会显示缺少哪些要素
+libertas.mbtt.part.input_bus=输入总线
+libertas.mbtt.part.output_bus=输出总线
+libertas.mbtt.part.output_bus.desc=接收合成产物
+libertas.mbtt.part.essentia_melter=要素熔炼舱
+libertas.mbtt.part.essentia_melter.desc=储存配方消耗的要素
+
+libertas.mbtt.advanced_crucible.type=坩埚
+libertas.mbtt.advanced_crucible.info.1=自动运行神秘时代的坩埚合成配方
+libertas.mbtt.advanced_crucible.info.2=催化剂来自输入总线，产物进入输出总线
+libertas.mbtt.advanced_crucible.info.3=无限并行，固定 1 tick 完成
+libertas.mbtt.advanced_crucible.controller=前方正中
+libertas.mbtt.advanced_crucible.casing=青铜镶砖外壳
+libertas.mbtt.advanced_crucible.input_bus.desc=坩埚配方的催化剂物品
+libertas.mbtt.advanced_crucible.structure.1=内部：控制器后方为空气柱
+libertas.mbtt.advanced_crucible.structure.2=任意外壳位均可替换为总线或要素熔炼舱
+
+libertas.mbtt.runewoven_pact.type=注魔
+libertas.mbtt.runewoven_pact.info.1=自动运行神秘时代的注魔合成配方
+libertas.mbtt.runewoven_pact.info.2=核心物品与组件来自输入总线
+libertas.mbtt.runewoven_pact.info.3=无限并行，固定 5 秒完成
+libertas.mbtt.runewoven_pact.controller=顶层的正前方中央
+libertas.mbtt.runewoven_pact.casing=防冻机械外壳
+libertas.mbtt.runewoven_pact.input_bus.desc=核心物品与基座组件
+libertas.mbtt.runewoven_pact.structure.1=符文矩阵、奥术基座与注魔立柱（神秘时代的方块）
+libertas.mbtt.runewoven_pact.structure.2=均需手动摆放，
+libertas.mbtt.runewoven_pact.structure.3=并在符文矩阵正上方放置一枚碧空之泪

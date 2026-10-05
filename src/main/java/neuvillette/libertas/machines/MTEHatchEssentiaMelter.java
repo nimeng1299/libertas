@@ -26,7 +26,6 @@ import com.cleanroommc.modularui.value.sync.StringSyncValue;
 import com.cleanroommc.modularui.widgets.slot.ItemSlot;
 import com.cleanroommc.modularui.widgets.slot.ModularSlot;
 
-import gregtech.api.casing.Casings;
 import gregtech.api.enums.HarvestTool;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
@@ -228,13 +227,11 @@ public class MTEHatchEssentiaMelter extends MTEHatch implements ISmartInputHatch
     }
 
     // -----------------------------------------------------------------------
-    // 外观：青铜镶砖外壳 + 输入管口指示，与 Advanced Crucible 配色一致
+    // 外观：外壳贴图随所在多方块变化——MTEHatch 基类的 getCasingTexture() 读取
+    // updateTexture(page<<7|index) 存下的 casing 贴图（控制器 addToMachineList 时传入，
+    // 见 MTEAdvancedCrucible.addEssentiaMelterToMachineList）；未入结构时回落为
+    // MACHINE_CASINGS[mTier]，与其他舱室行为一致。前脸保持输入管口指示不变。
     // -----------------------------------------------------------------------
-
-    @Override
-    public ITexture getCasingTexture() {
-        return Casings.BronzePlatedBricks.getCasingTexture();
-    }
 
     @Override
     public ITexture[] getTexturesActive(ITexture aBaseTexture) {

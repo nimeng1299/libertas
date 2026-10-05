@@ -23,3 +23,36 @@ libertas.essentia_jar.empty=No essentia stored
 tooltip.libertas.essentiaJar.empty=§7Empty
 tooltip.libertas.essentiaJar.stored=§7Stored essentia:
 tooltip.libertas.essentiaJar.usage=§7On an essentia container: right-click to draw ALL, sneak-right-click to pour
+
+gt.blockmachines.multimachine.runewovenpact.name=Runewoven Pact
+
+libertas.mbtt.footer.1=GregTech multiblocks may wallshare each of their sides
+libertas.mbtt.footer.2=to save on blocks, casings, glass, buses/hatches, etc.
+libertas.mbtt.shared.info.essentia=Essentia is drained from the attached Essentia Melters
+libertas.mbtt.shared.info.missing=If essentia is lacking, the GUI shows what is missing
+libertas.mbtt.part.input_bus=Input Bus
+libertas.mbtt.part.output_bus=Output Bus
+libertas.mbtt.part.output_bus.desc=Receives the crafted items
+libertas.mbtt.part.essentia_melter=Essentia Melter
+libertas.mbtt.part.essentia_melter.desc=Stores essentia consumed by recipes
+
+libertas.mbtt.advanced_crucible.type=Crucible
+libertas.mbtt.advanced_crucible.info.1=Automatically runs Thaumcraft crucible crafting recipes
+libertas.mbtt.advanced_crucible.info.2=Catalysts come from Input Busses, results go to Output Busses
+libertas.mbtt.advanced_crucible.info.3=Infinite parallel, fixed 1 tick duration
+libertas.mbtt.advanced_crucible.controller=Front center
+libertas.mbtt.advanced_crucible.casing=Bronze Plated Bricks
+libertas.mbtt.advanced_crucible.input_bus.desc=Catalyst items for crucible recipes
+libertas.mbtt.advanced_crucible.structure.1=Interior: air column behind the controller
+libertas.mbtt.advanced_crucible.structure.2=Any casing position may be replaced by a bus or an Essentia Melter
+
+libertas.mbtt.runewoven_pact.type=Infusion
+libertas.mbtt.runewoven_pact.info.1=Automatically runs Thaumcraft infusion crafting recipes
+libertas.mbtt.runewoven_pact.info.2=Central item and components come from Input Busses
+libertas.mbtt.runewoven_pact.info.3=Infinite parallel, fixed 5s duration
+libertas.mbtt.runewoven_pact.controller=Top layer, front center
+libertas.mbtt.runewoven_pact.casing=Frost Proof Machine Casing
+libertas.mbtt.runewoven_pact.input_bus.desc=Central item + pedestal components
+libertas.mbtt.runewoven_pact.structure.1=Runic Matrix, Arcane Pedestals and Infusion Pillars
+libertas.mbtt.runewoven_pact.structure.2=must be placed by hand (Thaumcraft blocks),
+libertas.mbtt.runewoven_pact.structure.3=plus an Azure Tear right above the Runic Matrix
