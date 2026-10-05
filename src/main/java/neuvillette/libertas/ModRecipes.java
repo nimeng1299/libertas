@@ -115,5 +115,12 @@ public final class ModRecipes {
                 ModMachines.essentiaMelter.copy(),
                 new ItemStack(ModBlocks.essentiaJar),
                 new ItemStack(ModItems.jigsaw)));
+
+        // 大巫师烤炉: 巫术巫师烤炉 + 拼图，无序合成
+        GameRegistry.addRecipe(
+            new ShapelessOreRecipe(
+                ModMachines.greatWizardOven.copy(),
+                new ItemStack(com.emoniph.witchery.Witchery.Blocks.OVEN_IDLE, 1, 0),
+                new ItemStack(ModItems.jigsaw)));
     }
 }

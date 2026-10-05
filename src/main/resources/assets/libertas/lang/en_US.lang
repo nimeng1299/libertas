@@ -57,3 +57,18 @@ libertas.mbtt.runewoven_pact.input_bus.desc=Central item + pedestal components
 libertas.mbtt.runewoven_pact.structure.1=Runic Matrix, Arcane Pedestals and Infusion Pillars
 libertas.mbtt.runewoven_pact.structure.2=must be placed by hand (Thaumcraft blocks),
 libertas.mbtt.runewoven_pact.structure.3=plus an Azure Tear right above the Runic Matrix
+
+gt.blockmachines.multimachine.greatwizardoven.name=Great Wizard Oven
+
+libertas.mbtt.great_wizard_oven.type=Witch's Oven
+libertas.mbtt.great_wizard_oven.info.1=Automatically runs Witchery Witch's Oven recipes (furnace recipes yielding coal/food/wood ash)
+libertas.mbtt.great_wizard_oven.info.2=No fuel needed; items and Empty Clay Jars come from Input Busses, results go to Output Busses
+libertas.mbtt.great_wizard_oven.info.3=Consumes 1 Empty Clay Jar per fume; both outputs are 100% guaranteed
+libertas.mbtt.great_wizard_oven.info.4=16 parallels per operation, fixed 5s duration
+libertas.mbtt.great_wizard_oven.controller=Front center
+libertas.mbtt.great_wizard_oven.casing=Arcane Stone Block (Thaumcraft)
+libertas.mbtt.great_wizard_oven.input_bus.desc=Items to bake + Empty Clay Jars
+libertas.mbtt.great_wizard_oven.structure.1=Eternal fire on Netherrack inside the firebox, End Rods at the bottom corners
+libertas.mbtt.great_wizard_oven.structure.2=Arcane Stone Bricks form the top rim,
+libertas.mbtt.great_wizard_oven.structure.3=any Arcane Stone Block position may be replaced by an Input/Output Bus
+GT5U.gui.text.recipe_result.libertas_missing_clay_jar=Missing Empty Clay Jars: each fume output consumes 1 (smelt Soft Clay Jars into Empty Clay Jars first)

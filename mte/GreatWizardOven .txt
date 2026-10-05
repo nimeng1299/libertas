@@ -1,0 +1,52 @@
+
+
+Structure:
+
+Blocks:
+A -> ofBlock(tile.blockCosmeticSolid, 6);
+B -> ofBlock(tile.blockCosmeticSolid, 7);
+C -> ofBlock(tile.etfuturum.end_rod, 0);
+D-> addElement('D', ofBlock(Blocks.fire, 0)
+E-> addElement('E', ofBlock(Blocks.netherrack, 0)
+
+Offsets:
+2, 2, 0
+
+Dimensions (Width, Height, Length)
+5, 5, 5
+
+Normal Scan:
+
+//spotless:off
+new String[][]{
+    {"ABBBA",
+    "ABBBA",
+    "AA~AA",
+    "C   C",
+    "C   C"
+},{
+    "B   B",
+    "B   B",
+    "AAAAA",
+    " DDD ",
+    " EEE "
+},{
+    "B   B",
+    "B   B",
+    "AAAAA",
+    " DDD ",
+    " EEE "
+},{
+    "B   B",
+    "B   B",
+    "AAAAA",
+    " DDD ",
+    " EEE "
+},{
+    "ABBBA",
+    "ABBBA",
+    "AAAAA",
+    "C   C",
+    "C   C"
+}}
+//spotless:on

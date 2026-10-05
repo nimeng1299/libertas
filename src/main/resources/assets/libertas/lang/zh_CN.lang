@@ -57,3 +57,18 @@ libertas.mbtt.runewoven_pact.input_bus.desc=核心物品与基座组件
 libertas.mbtt.runewoven_pact.structure.1=符文矩阵、奥术基座与注魔立柱（神秘时代的方块）
 libertas.mbtt.runewoven_pact.structure.2=均需手动摆放，
 libertas.mbtt.runewoven_pact.structure.3=并在符文矩阵正上方放置一枚碧空之泪
+
+gt.blockmachines.multimachine.greatwizardoven.name=大巫师烤炉
+
+libertas.mbtt.great_wizard_oven.type=巫师烤炉
+libertas.mbtt.great_wizard_oven.info.1=自动运行巫术(Witchery)巫师烤炉的熔烧配方：熔炉配方中产物为煤/食物/木灰的部分
+libertas.mbtt.great_wizard_oven.info.2=无需燃料，被烤物与空黏土罐来自输入总线，产物进入输出总线
+libertas.mbtt.great_wizard_oven.info.3=产烟气时消耗 1 个空黏土罐，主产物与烟气均为 100% 产出
+libertas.mbtt.great_wizard_oven.info.4=每轮并行 16，固定 5 秒完成
+libertas.mbtt.great_wizard_oven.controller=前方正中
+libertas.mbtt.great_wizard_oven.casing=奥术石块（神秘时代）
+libertas.mbtt.great_wizard_oven.input_bus.desc=被烤物与空黏土罐
+libertas.mbtt.great_wizard_oven.structure.1=炉膛内为地狱岩上的永恒之火，顶侧四角为末地烛
+libertas.mbtt.great_wizard_oven.structure.2=奥术石砖构成炉顶围边，
+libertas.mbtt.great_wizard_oven.structure.3=任意奥术石块位均可替换为输入/输出总线
+GT5U.gui.text.recipe_result.libertas_missing_clay_jar=缺少空黏土罐：产出烟气每份消耗 1 个空黏土罐（软黏土罐需先熔烧成空黏土罐）

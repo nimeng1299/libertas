@@ -56,5 +56,7 @@ dependencies {
         exclude group: "com.github.GTNewHorizons", module: "AE2FluidCraft-Rework"
     }
 
+    implementation("ganymedes01.etfuturum:Et-Futurum-Requiem:2.6.60-GTNH") { transitive = false }
+
     implementation rfg.deobf("curse.maven:witchery-69673:2234410")
 }
