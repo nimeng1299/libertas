@@ -9,6 +9,7 @@ public final class ModItems {
     public static Item stick18cm;
     public static Item purpleMood;
     public static Item deepSeaEcho;
+    public static Item jigsaw;
 
     private ModItems() {}
 
@@ -22,9 +23,13 @@ public final class ModItems {
         deepSeaEcho = new ItemDeepSeaEcho();
         GameRegistry.registerItem(deepSeaEcho, "deepSeaEcho");
 
+        jigsaw = new ItemJigsaw();
+        GameRegistry.registerItem(jigsaw, "jigsaw");
+
         // 物品构造完再建标签页 (图标引用 purpleMood), 并把法杖从 TC 的标签页挪过来
         ModCreativeTabs.init();
         purpleMood.setCreativeTab(ModCreativeTabs.tabLibertas);
         deepSeaEcho.setCreativeTab(ModCreativeTabs.tabLibertas);
+        jigsaw.setCreativeTab(ModCreativeTabs.tabLibertas);
     }
 }

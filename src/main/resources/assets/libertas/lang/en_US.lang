@@ -17,6 +17,7 @@ tooltip.libertas.azureTear.lore=§oA tear fallen from the azure sky - and every 
 item.deepSeaEcho.name=Deep Sea Echo
 tooltip.libertas.deepSeaEcho.stats=§7Mining level: §e32 §7| Dig time: §e0.5s §7| Unbreakable
 tooltip.libertas.deepSeaEcho.lore=§oAn echo rising from the abyss - and the waves part before it.
+item.jigsaw.name=Jigsaw
 
 tile.essentiaJar.name=Essentia Jar
 libertas.essentia_jar.empty=No essentia stored

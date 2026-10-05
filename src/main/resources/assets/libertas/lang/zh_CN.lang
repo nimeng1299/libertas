@@ -17,6 +17,7 @@ tooltip.libertas.azureTear.lore=§o天空坠下的一滴泪，让所有仪式为
 item.deepSeaEcho.name=深海回响
 tooltip.libertas.deepSeaEcho.stats=§7挖掘等级: §e32 §7| 挖掘时长: §e0.5s §7| 无限耐久
 tooltip.libertas.deepSeaEcho.lore=§o深渊的回响自海底传来，浪涛为它让路。
+item.jigsaw.name=拼图
 
 tile.essentiaJar.name=要素罐
 libertas.essentia_jar.empty=未储存要素
