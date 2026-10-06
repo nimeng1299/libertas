@@ -116,5 +116,13 @@ libertas.gui.mechanicalManaPool.upgrade=升级槽
 libertas.gui.mechanicalManaPool.mode.normal=配方：普通魔力池
 libertas.gui.mechanicalManaPool.mode.alchemy=配方：炼金 + 普通
 libertas.gui.mechanicalManaPool.mode.conjuration=配方：炼造 + 普通
-tooltip.libertas.mechanicalManaPool.model=§9模型来源: §fBotanical Machinery
+tooltip.libertas.modelSource=§9模型来源: §fBotanical Machinery
 libertas.gui.mechanicalManaPool.recipes=§7点击查看魔力池配方 (NEI)
+
+tile.mechanicalRunicAltar.name=机械符文祭坛
+container.libertas.mechanicalRunicAltar=机械符文祭坛
+libertas.gui.mechanicalRunicAltar.livingrock=活石
+libertas.gui.mechanicalRunicAltar.livingrock.usage=§7每次运行配方消耗 §a1 §7个活石
+libertas.gui.mechanicalRunicAltar.input=配料
+libertas.gui.mechanicalRunicAltar.output=输出
+libertas.gui.mechanicalRunicAltar.recipes=§7点击查看符文祭坛配方 (NEI)

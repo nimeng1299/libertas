@@ -170,7 +170,19 @@ public final class ModRecipes {
                     new ItemStack(botaniaPool, 1, OreDictionary.WILDCARD_VALUE),
                     new ItemStack(ModItems.jigsaw)));
         } else {
-            Libertas.LOG.warn("Botania pool block not found, advanced mana pool recipe skipped");
+            Libertas.LOG.warn("Botania pool block not found, mechanical mana pool recipe skipped");
+        }
+
+        // 机械符文祭坛: Botania 符文祭坛 + 拼图，无序合成
+        final Block botaniaRuneAltar = GameRegistry.findBlock("Botania", "runeAltar");
+        if (botaniaRuneAltar != null) {
+            GameRegistry.addRecipe(
+                new ShapelessOreRecipe(
+                    new ItemStack(ModBlocks.mechanicalRunicAltar),
+                    new ItemStack(botaniaRuneAltar, 1, OreDictionary.WILDCARD_VALUE),
+                    new ItemStack(ModItems.jigsaw)));
+        } else {
+            Libertas.LOG.warn("Botania runic altar block not found, mechanical runic altar recipe skipped");
         }
     }
 }

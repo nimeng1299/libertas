@@ -8,10 +8,10 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
-/// 机械魔力池的物品形态: tooltip 注明方块模型出处。
-public class ItemBlockMechanicalManaPool extends ItemBlock {
+/// 机械符文祭坛的物品形态: tooltip 注明方块模型出处。
+public class ItemBlockMechanicalRunicAltar extends ItemBlock {
 
-    public ItemBlockMechanicalManaPool(Block block) {
+    public ItemBlockMechanicalRunicAltar(Block block) {
         super(block);
     }
 

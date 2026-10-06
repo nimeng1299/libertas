@@ -3,7 +3,7 @@
 		"format_version": "4.5",
 		"box_uv": false
 	},
-	"name": "mechanicalManaPool",
+	"name": "mechanicalRunicAltar",
 	"model_identifier": "",
 	"visible_box": [
 		1.0,
@@ -19,7 +19,7 @@
 	},
 	"elements": [
 		{
-			"name": "base",
+			"name": "top",
 			"box_uv": false,
 			"rescale": false,
 			"locked": false,
@@ -27,12 +27,12 @@
 			"allow_mirror_modeling": true,
 			"from": [
 				2,
-				1,
+				5,
 				2
 			],
 			"to": [
 				14,
-				1.1,
+				9,
 				14
 			],
 			"autouv": 0,
@@ -46,38 +46,38 @@
 				"north": {
 					"uv": [
 						0,
-						2,
-						1,
-						14
+						4,
+						16,
+						10
 					],
-					"texture": 1
+					"texture": 3
 				},
 				"east": {
 					"uv": [
 						0,
-						2,
-						1,
-						14
+						4,
+						16,
+						10
 					],
-					"texture": 1
+					"texture": 3
 				},
 				"south": {
 					"uv": [
 						0,
-						2,
-						1,
-						14
+						4,
+						16,
+						10
 					],
-					"texture": 1
+					"texture": 3
 				},
 				"west": {
 					"uv": [
 						0,
-						2,
-						1,
-						14
+						4,
+						16,
+						10
 					],
-					"texture": 1
+					"texture": 3
 				},
 				"up": {
 					"uv": [
@@ -86,7 +86,7 @@
 						16,
 						16
 					],
-					"texture": 1
+					"texture": 2
 				},
 				"down": {
 					"uv": [
@@ -99,273 +99,24 @@
 				}
 			},
 			"type": "cube",
-			"uuid": "22090ebd-863b-5d2a-84c7-25b601f789c9"
+			"uuid": "14335651-48c4-5d13-93a2-b5b4de5e4c25"
 		},
 		{
-			"name": "wall_n",
+			"name": "middle",
 			"box_uv": false,
 			"rescale": false,
 			"locked": false,
 			"render_order": "default",
 			"allow_mirror_modeling": true,
 			"from": [
-				2,
-				1,
-				2
-			],
-			"to": [
-				14,
 				6,
-				3
-			],
-			"autouv": 0,
-			"color": 7,
-			"origin": [
-				8.0,
-				8.0,
-				8.0
-			],
-			"faces": {
-				"north": {
-					"uv": [
-						0,
-						8,
-						16,
-						15
-					],
-					"texture": 1
-				},
-				"east": {
-					"uv": [
-						15,
-						8,
-						16,
-						15
-					],
-					"texture": 1
-				},
-				"south": {
-					"uv": [
-						0,
-						8,
-						16,
-						15
-					],
-					"texture": 1
-				},
-				"west": {
-					"uv": [
-						0,
-						8,
-						1,
-						15
-					],
-					"texture": 1
-				},
-				"up": {
-					"uv": [
-						0,
-						0,
-						16,
-						1
-					],
-					"texture": 1
-				},
-				"down": {
-					"uv": [
-						0,
-						15,
-						16,
-						16
-					],
-					"texture": 1
-				}
-			},
-			"type": "cube",
-			"uuid": "8209949b-1002-5e3a-8eb6-a815ab16831e"
-		},
-		{
-			"name": "wall_e",
-			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"render_order": "default",
-			"allow_mirror_modeling": true,
-			"from": [
-				13,
-				1,
-				3
-			],
-			"to": [
-				14,
-				6,
-				13
-			],
-			"autouv": 0,
-			"color": 7,
-			"origin": [
-				8.0,
-				8.0,
-				8.0
-			],
-			"faces": {
-				"north": {
-					"uv": [
-						0,
-						8,
-						1,
-						15
-					],
-					"texture": 1
-				},
-				"east": {
-					"uv": [
-						1,
-						8,
-						15,
-						15
-					],
-					"texture": 1
-				},
-				"south": {
-					"uv": [
-						15,
-						8,
-						16,
-						15
-					],
-					"texture": 1
-				},
-				"west": {
-					"uv": [
-						1,
-						8,
-						15,
-						15
-					],
-					"texture": 1
-				},
-				"up": {
-					"uv": [
-						15,
-						1,
-						16,
-						15
-					],
-					"texture": 1
-				},
-				"down": {
-					"uv": [
-						15,
-						1,
-						16,
-						15
-					],
-					"texture": 1
-				}
-			},
-			"type": "cube",
-			"uuid": "ce70d8e9-6d1f-5f61-ae42-25d136e67d0d"
-		},
-		{
-			"name": "wall_s",
-			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"render_order": "default",
-			"allow_mirror_modeling": true,
-			"from": [
-				2,
-				1,
-				13
-			],
-			"to": [
-				14,
-				6,
-				14
-			],
-			"autouv": 0,
-			"color": 7,
-			"origin": [
-				8.0,
-				8.0,
-				8.0
-			],
-			"faces": {
-				"north": {
-					"uv": [
-						0,
-						8,
-						16,
-						15
-					],
-					"texture": 1
-				},
-				"east": {
-					"uv": [
-						0,
-						8,
-						1,
-						15
-					],
-					"texture": 1
-				},
-				"south": {
-					"uv": [
-						0,
-						8,
-						16,
-						15
-					],
-					"texture": 1
-				},
-				"west": {
-					"uv": [
-						15,
-						8,
-						16,
-						15
-					],
-					"texture": 1
-				},
-				"up": {
-					"uv": [
-						0,
-						15,
-						16,
-						16
-					],
-					"texture": 1
-				},
-				"down": {
-					"uv": [
-						0,
-						0,
-						16,
-						1
-					],
-					"texture": 1
-				}
-			},
-			"type": "cube",
-			"uuid": "73b775ef-2711-5bef-ba50-b9377faf0f70"
-		},
-		{
-			"name": "wall_w",
-			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"render_order": "default",
-			"allow_mirror_modeling": true,
-			"from": [
-				2,
-				1,
-				3
-			],
-			"to": [
 				3,
-				6,
-				13
+				6
+			],
+			"to": [
+				10,
+				5,
+				10
 			],
 			"autouv": 0,
 			"color": 7,
@@ -377,61 +128,144 @@
 			"faces": {
 				"north": {
 					"uv": [
-						15,
-						8,
-						16,
-						15
+						4,
+						10,
+						12,
+						12
 					],
-					"texture": 1
+					"texture": 3
 				},
 				"east": {
 					"uv": [
-						1,
-						8,
-						15,
-						15
+						4,
+						10,
+						12,
+						12
 					],
-					"texture": 1
+					"texture": 3
 				},
 				"south": {
 					"uv": [
-						0,
-						8,
-						1,
-						15
+						4,
+						10,
+						12,
+						12
 					],
-					"texture": 1
+					"texture": 3
 				},
 				"west": {
 					"uv": [
-						1,
-						8,
-						15,
-						15
+						4,
+						10,
+						12,
+						12
 					],
-					"texture": 1
+					"texture": 3
 				},
 				"up": {
 					"uv": [
-						0,
-						1,
-						1,
-						15
+						0.0,
+						0.0,
+						0.0,
+						0.0
+					],
+					"texture": null
+				},
+				"down": {
+					"uv": [
+						0.0,
+						0.0,
+						0.0,
+						0.0
+					],
+					"texture": null
+				}
+			},
+			"type": "cube",
+			"uuid": "7b19a8ba-5d98-5a04-b14d-c0ac66c04564"
+		},
+		{
+			"name": "bottom",
+			"box_uv": false,
+			"rescale": false,
+			"locked": false,
+			"render_order": "default",
+			"allow_mirror_modeling": true,
+			"from": [
+				4,
+				1,
+				4
+			],
+			"to": [
+				12,
+				3,
+				12
+			],
+			"autouv": 0,
+			"color": 7,
+			"origin": [
+				8.0,
+				8.0,
+				8.0
+			],
+			"faces": {
+				"north": {
+					"uv": [
+						2,
+						12,
+						14,
+						16
+					],
+					"texture": 3
+				},
+				"east": {
+					"uv": [
+						2,
+						12,
+						14,
+						16
+					],
+					"texture": 3
+				},
+				"south": {
+					"uv": [
+						2,
+						12,
+						14,
+						16
+					],
+					"texture": 3
+				},
+				"west": {
+					"uv": [
+						2,
+						12,
+						14,
+						16
+					],
+					"texture": 3
+				},
+				"up": {
+					"uv": [
+						2,
+						2,
+						14,
+						14
 					],
 					"texture": 1
 				},
 				"down": {
 					"uv": [
-						0,
-						1,
-						1,
-						15
+						2,
+						2,
+						14,
+						14
 					],
 					"texture": 1
 				}
 			},
 			"type": "cube",
-			"uuid": "62c37e0b-3d95-5bbb-91de-4b44ab52aeb6"
+			"uuid": "8ff09d84-0c90-5640-9c07-e7833b1528a4"
 		},
 		{
 			"name": "plate",
@@ -514,7 +348,7 @@
 				}
 			},
 			"type": "cube",
-			"uuid": "4cb415cd-5c14-55ab-84f0-cabcd0186e73"
+			"uuid": "cf64fd7d-d257-555a-a2b0-498ef1cca59a"
 		},
 		{
 			"name": "bar_nw",
@@ -597,7 +431,7 @@
 				}
 			},
 			"type": "cube",
-			"uuid": "30835cc1-90e8-5070-aeb6-00c408ae05b9"
+			"uuid": "96979bf2-904a-5742-a33d-9cab5e340c73"
 		},
 		{
 			"name": "bar_ne",
@@ -680,7 +514,7 @@
 				}
 			},
 			"type": "cube",
-			"uuid": "d95510e0-8564-57a3-b1ee-545046f4ee74"
+			"uuid": "ab92c1e1-9662-57bd-9423-7fb305a79aee"
 		},
 		{
 			"name": "bar_sw",
@@ -763,7 +597,7 @@
 				}
 			},
 			"type": "cube",
-			"uuid": "85f5f143-b14e-5804-9aa1-6613234932f6"
+			"uuid": "8ad34f1e-83b4-51fa-b9b5-473a13fcebb4"
 		},
 		{
 			"name": "bar_se",
@@ -846,7 +680,7 @@
 				}
 			},
 			"type": "cube",
-			"uuid": "2015f03f-c2d7-51be-bcae-05735b0d402e"
+			"uuid": "ae77e7f4-8f37-5a24-9c78-9b5cd227b987"
 		},
 		{
 			"name": "rail_n",
@@ -929,7 +763,7 @@
 				}
 			},
 			"type": "cube",
-			"uuid": "1e33ecb6-73f8-539a-b66d-a0846984cedf"
+			"uuid": "fdc446bb-5306-5e70-a683-e21879c9ffa3"
 		},
 		{
 			"name": "rail_e",
@@ -1012,7 +846,7 @@
 				}
 			},
 			"type": "cube",
-			"uuid": "f7d79ec2-3ae9-5d95-9f53-6a4fed3ca947"
+			"uuid": "4679bee7-c6b1-5d56-b143-013670723b31"
 		},
 		{
 			"name": "rail_s",
@@ -1095,7 +929,7 @@
 				}
 			},
 			"type": "cube",
-			"uuid": "689942f0-4d51-5fb4-9328-4999e49456ad"
+			"uuid": "76463425-c33a-52d3-82d3-d0f99ab41079"
 		},
 		{
 			"name": "rail_w",
@@ -1178,19 +1012,19 @@
 				}
 			},
 			"type": "cube",
-			"uuid": "2af5f919-e3ad-55ae-aa72-9af4ecdac2a0"
+			"uuid": "7d8112c6-6ce8-512d-ba94-cb5ef9f8276a"
 		}
 	],
 	"outliner": [
 		{
-			"name": "mechanicalManaPool",
+			"name": "mechanicalRunicAltar",
 			"origin": [
 				8.0,
 				8.0,
 				8.0
 			],
 			"color": 7,
-			"uuid": "1618db37-195e-5df5-afd8-a2a6aaab7d13",
+			"uuid": "8dc76a36-0018-510b-a4ce-6dcf86c1e12a",
 			"export": true,
 			"mirror_uv": false,
 			"isOpen": true,
@@ -1198,20 +1032,18 @@
 			"visibility": true,
 			"autouv": 0,
 			"children": [
-				"22090ebd-863b-5d2a-84c7-25b601f789c9",
-				"8209949b-1002-5e3a-8eb6-a815ab16831e",
-				"ce70d8e9-6d1f-5f61-ae42-25d136e67d0d",
-				"73b775ef-2711-5bef-ba50-b9377faf0f70",
-				"62c37e0b-3d95-5bbb-91de-4b44ab52aeb6",
-				"4cb415cd-5c14-55ab-84f0-cabcd0186e73",
-				"30835cc1-90e8-5070-aeb6-00c408ae05b9",
-				"d95510e0-8564-57a3-b1ee-545046f4ee74",
-				"85f5f143-b14e-5804-9aa1-6613234932f6",
-				"2015f03f-c2d7-51be-bcae-05735b0d402e",
-				"1e33ecb6-73f8-539a-b66d-a0846984cedf",
-				"f7d79ec2-3ae9-5d95-9f53-6a4fed3ca947",
-				"689942f0-4d51-5fb4-9328-4999e49456ad",
-				"2af5f919-e3ad-55ae-aa72-9af4ecdac2a0"
+				"14335651-48c4-5d13-93a2-b5b4de5e4c25",
+				"7b19a8ba-5d98-5a04-b14d-c0ac66c04564",
+				"8ff09d84-0c90-5640-9c07-e7833b1528a4",
+				"cf64fd7d-d257-555a-a2b0-498ef1cca59a",
+				"96979bf2-904a-5742-a33d-9cab5e340c73",
+				"ab92c1e1-9662-57bd-9423-7fb305a79aee",
+				"8ad34f1e-83b4-51fa-b9b5-473a13fcebb4",
+				"ae77e7f4-8f37-5a24-9c78-9b5cd227b987",
+				"fdc446bb-5306-5e70-a683-e21879c9ffa3",
+				"4679bee7-c6b1-5d56-b143-013670723b31",
+				"76463425-c33a-52d3-82d3-d0f99ab41079",
+				"7d8112c6-6ce8-512d-ba94-cb5ef9f8276a"
 			]
 		}
 	],
@@ -1240,13 +1072,13 @@
 			"visible": true,
 			"internal": true,
 			"saved": false,
-			"uuid": "bbd883ad-3353-5b17-b59a-9d3c4673b904",
+			"uuid": "08e37adf-7512-555d-ac51-a62ece706363",
 			"relative_path": "",
 			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABsElEQVR4nOXaPUrGQBSF4TeHQRTERvgqG8V1iMtxW3auwFrExg1YiCiCiAgiiKBYqK25H+RymYjCebr8zCTNmczczHB2cPzFD+taZcpib2t0vLa9MTp+u3mZbH99ckXFzv7u5POilc3x+388vU/eL8wJc8Jci5l//RxnJhsTssw/nt5N9pc9L7ZfMD0GZZmPhDlhTphr8USW+ZjJqizzvWNClTAnzAlzLc7t5858VM18dV6SifMGYU6YE+aG+6PLUT0gE8eEmNEoy2zWvtpflI1xwpwwJ8y1eGJprp1kqPe73Ns+yt43EuaEOWGuZZmvrgXmXltUM10lzAlzwlyrZrSayd7+qv8eq4Q5YU6Ya1nNrZrRqFq3z/rLrmduDy9Gx8KcMCfMtd71+Nzf5Wp/2ZgQ+4tjmjAnzAlzQ/ZfoHdfXszg3GuNqvh8YU6YE+Ya/8zc+xEywpwwJ8y13665Zar7A6LePUXCnDAnzLWY+d6aW2Zprj/z3uMqYU6YE+ZatUFc/2fXs3lF9btdzXx2vzAnzAlzw/P5w6gmWJ0XVGuCvfWA3u9+JMwJc/rrF/hr3535pUjzbko3AAAAAElFTkSuQmCC"
 		},
 		{
 			"path": "",
-			"name": "livingrock0.png",
+			"name": "runeAltar0.png",
 			"folder": "",
 			"namespace": "",
 			"id": "1",
@@ -1268,9 +1100,65 @@
 			"visible": true,
 			"internal": true,
 			"saved": false,
-			"uuid": "2bf199e7-b519-558e-aab0-578db71f01b7",
+			"uuid": "b771e0a1-b970-58de-947c-b70767bf559a",
 			"relative_path": "",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAAAolJREFUGBkFwd2K20YYAFA9Zh+gD9He9GYhJPSihWxYiJeYtbGxhY0kLDRIjMQIfUjMDB8aMSMNli38h9jslg0plLb0quc43//9DxSWma9M+vc/b9/++pOQeYurTgfHQRVs0zQSddl10rY49LVzHC92vAGn6sCfXy/jONiOf3vtx1O9t2nfVcpwrgptmNEUDXOyIkBdiYq2fVlbjrpAzYaxHa76eKovN3Pt8bDn/QmbpgBIHCgi01YcmdYyJEsGG1Gnx6tSIrrezOmi+6M4d7TfZ21bYw0O9Z6Q79J0RsMVI4uSr3Wbns7icrO359ZasJqcD9wei9YEqmVOEq5YvLB13EiCckfohKYzKcjh0AwHaXB32dO+hb2FFndDkzgCS2Dh97fRaJlkAWF+Bh5UBDUzHR+OVQU+gKcqktMFwK8O1iUDUlAPZb5Z/laWUYmxqElCnyQmxwGC1QdIPst0kfrvoJg6XHpC5bWSxJ/lwQPyIAe3Ei6jszL3ROEKMjUwz4J3y08/eF/uHImbxtCMbUn0SP2Puf97mSwgmzWKdgiYbd/G08vrBdL7cP0zkCdHCpImXxRuGvQkrCSsga6D9XtGl1hEefT0MvZvLwOEj0X4CeKpQ7zPq8efutq9naFti6IiWeLmxJ/88iNd3hPiVvEWySLb3CfBx5K6Tuw+BLO7CjZ2j1pJiVmtVLR6CB4+QLatxJZ6E4weRTpP0rmqY8ceQIDHgRiNCmLNt3t7+eN5HPoqT6ac3Su+ubbE1lGtkoOJHdkJbSQDApBA4tpj2+8VYunN35PFXSNXh5Z8HXEYcG+ZFqGTph7wXcRmfjAJ/WnFwkZDIdLAmxTJjFeh7eB8rZXOpNmBEf8DELBLaGTfSV8AAAAASUVORK5CYII="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAAAsdJREFUGBkFwX9vmmgAAGC+5/65S5Ysy3Vru7tuaq2iKONV4QUBbZn1ehoaa9ooqfGNBAyGNxIgBIxSUn+kv2J22R/3Ge55iN7dAAiwUj4VpNLtrXrd75HkFxmeyGJWUQSGTtXrHBQrssw1ZKic84Ryddm4amPXiDbuz18v+/0ueXD/+7XeP4WPibl+cKKV60b2cmVJIgUlmigz2WDpeI4hn1fCxIUiEyyt3T7evS63T+FlW3pdBxfN2vopWCxsAIoEYPKr2KlBWhS5EbqmQYrlS9vXKPLG7bbUuhTXW68lU+fNchyHkAcElTkK3HvT7BijnoXUuXuzjM2nZ+/lLXn7GScJTpboeeMmWzteaYJME8XciTVRG3yhzpGBf09SB1Tp2PfQZrNQLjgJnr08GucyaDZAHNwr9SLBwgq2Rj31Clsjfaoha1gGGeygYGlJcm23dRw8xHggVMmZoQLwOwH5ioWRbQwCf5b66/18Pp4HEy9EuvGPH+jbHc6e/IZ1xTdVc0gD5pCocRkvmoWRj4ad79mPgavNcN/x+pbRmc8Gnt1nycMV7mJd0TUx8/kdwcHUYmWU6TQat4yhOBvyleKfeNpZRIYMQTC9W+Gub6qg9GF0kwbkEcGxpKm3BZiqw4yPexz4Cqiv2g1jGdeQyX/PH001Wu0qIPfJHsmgcEiQmT96rdRD2H97xnFs2w6a6v0ZGv7IvTeuJYT6zuQuQOr0VtI1sUJ9IwrfPmodqgpSjSZcRj4Hy7wgjHtNrQlAOV1l08bgB8x/YktfdLMr8AWicQE8PHAxkkQY4YlYS9sO2sRot3Zm+t81+kPk3rZlMgnHYaRfSAWCk1lR4iyMMNax3o/wZP0YBcF80GWQSi383iZG/+6D3S5oNmiRzRGlUgbUzvL08Wn2IHd6WKVzdREwbCmbOWCKx7VqriGDVpsXxDInnQGJ/R/rdvg9Z/ZPjAAAAABJRU5ErkJggg=="
+		},
+		{
+			"path": "",
+			"name": "runeAltar1.png",
+			"folder": "",
+			"namespace": "",
+			"id": "2",
+			"group": "",
+			"width": 16,
+			"height": 16,
+			"uv_width": 16,
+			"uv_height": 16,
+			"particle": false,
+			"use_as_default": false,
+			"layers_enabled": false,
+			"sync_to_project": "",
+			"render_mode": "default",
+			"render_sides": "auto",
+			"frame_time": 1,
+			"frame_order_type": "loop",
+			"frame_order": "",
+			"frame_interpolate": false,
+			"visible": true,
+			"internal": true,
+			"saved": false,
+			"uuid": "56c1d5fb-96bf-5893-a4e9-5b0f87374e41",
+			"relative_path": "",
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAAAu1JREFUGBkFwX9P2mgAAOB+sUvOsNwunndzc5m5bedp3BanTmC4AS1gsUh4mVCwLd6Y5+0wGCQQaCQ0NC0p4Q1NS960pK1EfsRNY7bsj32GPQ9WqtZAlk7uEVk2VqkUT8slknzN0W84JpTPZxPxwMFBmmaSHJfOcXT+nwyW//hv7uMx1CRzrH359vn2djq80L5/G91eGZdDeXShmrammV3LVliGotk4tpcIIUvVVYkgfMZQQ1YXWUqUCkV3ApMr4/ONfT1CkZB/dIUGgy4AuxhI7NiO+ujRQpgKN4RTQAPdkCfXpqk3r2/sV76N0UQnCF8sHnEcg84AjMI9SDuX5YLUKClC0ePzWo4cwd1B//bNF4ekyKElfBprw0nXsfksF8d2I2+UVnFotLye9dXVh+ubzyS50NeF8XgwHfdx/G0MRCkqcDmEDjrPH+xiKToJlQbSzm2rL7Z5QanvRANQFZClBIngdKKqsA5hzVSFjlQEYAWjM0kFCnNzM6jfmf/j116v2UMt3RBE6f8+EidTGCYJKOZfb2/I9ThIuLH9NK6bnQf37gr1wuKfC0jjO7Cs6mVFKvQ6Nb1bDuI+G56Qe5TIM/jWEyxNBwa21FaqQvNIqjOdesa/vQbbhYEpBdxbqF1F2rnSKkKZbZwFAenB0ilSFo9NVHHd+ene77ObGy+gdMafJRTpFHWbK8sPt9ZWt9zrsHHUbXAg6sZIfKN0FLgwyjefoON0H8zfbYvlhcXZx3/dl07Z5ZVFtVVFQrFdYUWeSVJ+LOp/yReoGdfPc7/cscz+b7MupPHN0iF/CGC7ury0INU++LzPA36PKJ9kM1Es9x7osKZBweWaMWHL0qqawv79ZP7p0uOO+J+msKZWWXuxNDSahim+Z6NYmksxbFqBAoQiFMsmbI0uTYR6tZOEUKQG/dLYEb7eoukUHebiTCqCxWI42A/vxL1EaDNCuN/FIwcMSKRiIXwzsevdfxfJceDoOJNl9tJsGLCpHzbv5GLK79D0AAAAAElFTkSuQmCC"
+		},
+		{
+			"path": "",
+			"name": "runeAltar2.png",
+			"folder": "",
+			"namespace": "",
+			"id": "3",
+			"group": "",
+			"width": 16,
+			"height": 16,
+			"uv_width": 16,
+			"uv_height": 16,
+			"particle": false,
+			"use_as_default": false,
+			"layers_enabled": false,
+			"sync_to_project": "",
+			"render_mode": "default",
+			"render_sides": "auto",
+			"frame_time": 1,
+			"frame_order_type": "loop",
+			"frame_order": "",
+			"frame_interpolate": false,
+			"visible": true,
+			"internal": true,
+			"saved": false,
+			"uuid": "aca4db32-995e-57c4-99fe-3cead1516497",
+			"relative_path": "",
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAMAUExURQAAAGxYRnpuW3h0ZHx1YHt8bHx6bH57b3+GcYF3aYB6a4N6bIl+bYN6cIB7cYJ+dYeCb4mEZ4mBb4mJYYmIb4CAd4aAc4aDcYSEcYeAe4SEeoWGeYWJeomAcIiCcYqCc4mDdoqDd4+Ac42Eco6Ec4iDeomFeYuGfoqMdouNd42Id4uJeImMfY+If4yLfo6PeIyOeo+MfI+MfY6UfZSJcpGPeJONfpaQf5WUfKaVWKiceLSpeYiLgIqPgYiNhIyJgI6NgI6Pgo2PiomUjY+Qio6VjZGLgJWPiZGQgZGThZOVhJGVhpaTgJKTiZORjpaViZaWiZSVjJaZiZaaiJqSgpmUgZyZjJ6ciZycjZCRkZeWnZyekJ2elp6hlbGXia+jiLGig7elg7GpiLaol7ymlL6slL2whre2nLe8m7qxk7ywk726nqiloLq8obq9o7y9or66qrq+sbfAsMGwkMGxl8O0lcS6msq3n822nMG2ocC5pcG8pcC8psS+osS6qse5rc2+rcnAlMHEqsbBr8TEr8fKrcvEqMvEqcrEr8DEt8TAtMfEsMbGtsTHt8TEusvKt8rPt83Ls8vNvs/QutHLqNDJrNPJrdHNr9bPqtDEudHLt9TNs9fPudHQvNHUvNvVt+LVt+HZvM3Lwc3NxsrQwc3TwM/Qy9XVw9PUy9TTy9TTzdfZzdnXwNrVxNnXxN3ax9zdxN3cx93by93dzdfc1drZ0Nvb0ejlzevn5QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOx+LG4AAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAAAsSAAALEgHS3X78AAAAGnRFWHRTb2Z0d2FyZQBQYWludC5ORVQgdjMuNS4xMUfzQjcAAADeSURBVChTY/iPBsgR4DWS4BfT8IqIiQ3wCQu28Gbgr5oza2JGfv+2TbMXrl03O4TBqStnZWGRTO/SwI3dLW7VwgwunaqLmHtsJ+Q6bmApU0kTYTBYsoyvxLBJU7xZq9wkzZKJQX+edHpWsXztXPeG9CxBa1kGh2zT6W3tCkk1upXT23hKhRi4rGaEL7cpkGRMEa1XSs1UZOBM0F7tNykyOU6tlbtCOc+DIajDftXMaVE71gs0Tl1gPjmUwXVFZ1/dlq2L4xOnzN++eY0Zg5QOByu7uq8dm5yef7SnsTMAZLaFxGrJvsEAAAAASUVORK5CYII="
 		}
 	]
 }

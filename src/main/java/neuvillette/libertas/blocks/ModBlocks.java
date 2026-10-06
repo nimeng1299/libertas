@@ -16,6 +16,8 @@ public final class ModBlocks {
     public static Item itemSpiritSpring;
     public static Block mechanicalManaPool;
     public static Item itemMechanicalManaPool;
+    public static Block mechanicalRunicAltar;
+    public static Item itemMechanicalRunicAltar;
 
     private ModBlocks() {}
 
@@ -46,5 +48,12 @@ public final class ModBlocks {
         GameRegistry.registerTileEntity(TileMechanicalManaPool.class, "libertas.mechanical_mana_pool");
 
         itemMechanicalManaPool.setCreativeTab(ModCreativeTabs.tabLibertas);
+
+        mechanicalRunicAltar = new BlockMechanicalRunicAltar();
+        GameRegistry.registerBlock(mechanicalRunicAltar, ItemBlockMechanicalRunicAltar.class, "mechanicalRunicAltar");
+        itemMechanicalRunicAltar = Item.getItemFromBlock(mechanicalRunicAltar);
+        GameRegistry.registerTileEntity(TileMechanicalRunicAltar.class, "libertas.mechanical_runic_altar");
+
+        itemMechanicalRunicAltar.setCreativeTab(ModCreativeTabs.tabLibertas);
     }
 }

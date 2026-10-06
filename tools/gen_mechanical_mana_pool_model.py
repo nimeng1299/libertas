@@ -14,7 +14,7 @@ This script converts it to the 1.7.10 custom renderer format:
      Upstream texture refs are kept: #pool -> botania:blocks/livingrock0
      (resolved at runtime from the installed Botania jar, matching the look of
      real Botania pools), #frame -> a painted dragonstone-style texture.
-  2. src/main/resources/assets/libertas/textures/blocks/mechanical_mana_pool_frame.png
+  2. src/main/resources/assets/libertas/textures/blocks/mechanical_frame.png
      Painted dragonstone look-alike (pink-magenta gemstone; palette matched
      against Botania's texture, see tools/botanical_machinery/NOTICE.md).
   3. blockbench/mechanicalManaPool.bbmodel
@@ -41,11 +41,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC_JSON = os.path.join(ROOT, "tools/botanical_machinery/mechanical_mana_pool.json")
 LIVINGROCK_PNG = os.path.join(ROOT, "tools/botanical_machinery/livingrock0.png")
 JSON_OUT = os.path.join(ROOT, "src/main/resources/assets/libertas/models/block/mechanicalManaPool.json")
-FRAME_OUT = os.path.join(ROOT, "src/main/resources/assets/libertas/textures/blocks/mechanical_mana_pool_frame.png")
+FRAME_OUT = os.path.join(ROOT, "src/main/resources/assets/libertas/textures/blocks/mechanical_frame.png")
 BB_OUT = os.path.join(ROOT, "blockbench/mechanicalManaPool.bbmodel")
 
 POOL_REF = "botania:blocks/livingrock0"
-FRAME_REF = "libertas:blocks/mechanical_mana_pool_frame"
+FRAME_REF = "libertas:blocks/mechanical_frame"
 
 FRAME_TEX_PX = 64  # painted at 4 px per uv unit (uv space stays 0..16)
 
@@ -175,7 +175,7 @@ def main():
             "children": children,
         }],
         "textures": [
-            _texture_entry("mechanical_mana_pool_frame.png", "0", frame_png, FRAME_TEX_PX),
+            _texture_entry("mechanical_frame.png", "0", frame_png, FRAME_TEX_PX),
             _texture_entry("livingrock0.png", "1", livingrock_png, 16),
         ],
     }

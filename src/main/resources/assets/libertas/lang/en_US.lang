@@ -116,5 +116,13 @@ libertas.gui.mechanicalManaPool.upgrade=Upgrade
 libertas.gui.mechanicalManaPool.mode.normal=Recipes: Normal Pool
 libertas.gui.mechanicalManaPool.mode.alchemy=Recipes: Alchemy + Normal
 libertas.gui.mechanicalManaPool.mode.conjuration=Recipes: Conjuration + Normal
-tooltip.libertas.mechanicalManaPool.model=§9Model from: §fBotanical Machinery
+tooltip.libertas.modelSource=§9Model from: §fBotanical Machinery
 libertas.gui.mechanicalManaPool.recipes=§7Click to view mana pool recipes (NEI)
+
+tile.mechanicalRunicAltar.name=Mechanical Runic Altar
+container.libertas.mechanicalRunicAltar=Mechanical Runic Altar
+libertas.gui.mechanicalRunicAltar.livingrock=Livingrock
+libertas.gui.mechanicalRunicAltar.livingrock.usage=§7Consumes §a1 §7Livingrock per recipe run
+libertas.gui.mechanicalRunicAltar.input=Ingredients
+libertas.gui.mechanicalRunicAltar.output=Output
+libertas.gui.mechanicalRunicAltar.recipes=§7Click to view runic altar recipes (NEI)
