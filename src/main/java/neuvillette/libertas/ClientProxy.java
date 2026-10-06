@@ -18,6 +18,8 @@ public class ClientProxy extends CommonProxy {
     public static int ESSENTIA_JAR_RENDER_ID = -1;
     /// 灵泉 (spiritSpring) 的 ISBRH render id, 同上
     public static int SPIRIT_SPRING_RENDER_ID = -1;
+    /// 机械魔力池 (mechanicalManaPool) 的 ISBRH render id, 同上
+    public static int MECHANICAL_MANA_POOL_RENDER_ID = -1;
 
     @Override
     public void init(FMLInitializationEvent event) {
@@ -59,5 +61,15 @@ public class ClientProxy extends CommonProxy {
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemSpiritSpring,
             new JsonItemRenderer(Libertas.MODID, "block/spiritSpring", 1.0f, 0.0f));
+
+        // 机械魔力池: 同灵泉的渲染管线 (世界 ISBRH + 物品复用同一份 JSON 模型)
+        final JsonBlockRenderer mechanicalManaPoolRenderer = new JsonBlockRenderer(
+            Libertas.MODID,
+            "block/mechanicalManaPool");
+        RenderingRegistry.registerBlockHandler(mechanicalManaPoolRenderer.getRenderId(), mechanicalManaPoolRenderer);
+        MECHANICAL_MANA_POOL_RENDER_ID = mechanicalManaPoolRenderer.getRenderId();
+        MinecraftForgeClient.registerItemRenderer(
+            ModBlocks.itemMechanicalManaPool,
+            new JsonItemRenderer(Libertas.MODID, "block/mechanicalManaPool", 1.0f, 0.0f));
     }
 }

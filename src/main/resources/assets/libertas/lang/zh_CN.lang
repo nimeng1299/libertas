@@ -107,3 +107,14 @@ libertas.mbtt.great_wizard_cauldron.input_bus.desc=成套的炼药原料（含�
 libertas.mbtt.great_wizard_cauldron.structure.1=顶檐与四角炉腿为圆石墙，锅圈由奥术石块砌成
 libertas.mbtt.great_wizard_cauldron.structure.2=锅体内部与底部开口保持空心
 libertas.mbtt.great_wizard_cauldron.structure.3=任意奥术石块位均可替换为输入/输出总线
+
+tile.mechanicalManaPool.name=机械魔力池
+container.libertas.mechanicalManaPool=机械魔力池
+libertas.gui.mechanicalManaPool.input=输入
+libertas.gui.mechanicalManaPool.output=输出
+libertas.gui.mechanicalManaPool.upgrade=升级槽
+libertas.gui.mechanicalManaPool.mode.normal=配方：普通魔力池
+libertas.gui.mechanicalManaPool.mode.alchemy=配方：炼金 + 普通
+libertas.gui.mechanicalManaPool.mode.conjuration=配方：炼造 + 普通
+tooltip.libertas.mechanicalManaPool.model=§9模型来源: §fBotanical Machinery
+libertas.gui.mechanicalManaPool.recipes=§7点击查看魔力池配方 (NEI)

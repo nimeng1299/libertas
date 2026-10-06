@@ -159,5 +159,18 @@ public final class ModRecipes {
         } else {
             Libertas.LOG.warn("Botania not found, zephyr bloom recipe skipped");
         }
+
+        // 机械魔力池: Botania 魔力池 + 拼图，无序合成。
+        // 用通配 meta 匹配，常规/创造/活力稀释/华丽魔力池均可作为基底
+        final Block botaniaPool = GameRegistry.findBlock("Botania", "pool");
+        if (botaniaPool != null) {
+            GameRegistry.addRecipe(
+                new ShapelessOreRecipe(
+                    new ItemStack(ModBlocks.mechanicalManaPool),
+                    new ItemStack(botaniaPool, 1, OreDictionary.WILDCARD_VALUE),
+                    new ItemStack(ModItems.jigsaw)));
+        } else {
+            Libertas.LOG.warn("Botania pool block not found, advanced mana pool recipe skipped");
+        }
     }
 }

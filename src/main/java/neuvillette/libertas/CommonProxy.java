@@ -4,8 +4,10 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import neuvillette.libertas.blocks.ModBlocks;
 import neuvillette.libertas.botania.ModBotania;
+import neuvillette.libertas.gui.ModGuiHandler;
 import neuvillette.libertas.items.ModItems;
 import neuvillette.libertas.machines.ModMachines;
 
@@ -15,6 +17,8 @@ public class CommonProxy {
     // GameRegistry." (Remove if not needed)
     public void preInit(FMLPreInitializationEvent event) {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
+
+        NetworkRegistry.INSTANCE.registerGuiHandler(Libertas.instance, new ModGuiHandler());
 
         ModItems.init();
 

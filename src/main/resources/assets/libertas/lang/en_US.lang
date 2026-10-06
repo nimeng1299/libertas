@@ -107,3 +107,14 @@ libertas.mbtt.great_wizard_cauldron.input_bus.desc=Complete ingredient sets incl
 libertas.mbtt.great_wizard_cauldron.structure.1=Cobblestone Walls form the top rim and the four corner legs, the cauldron ring is Arcane Stone Blocks
 libertas.mbtt.great_wizard_cauldron.structure.2=The cauldron interior and the bottom openings stay hollow
 libertas.mbtt.great_wizard_cauldron.structure.3=any Arcane Stone Block position may be replaced by an Input/Output Bus
+
+tile.mechanicalManaPool.name=Mechanical Mana Pool
+container.libertas.mechanicalManaPool=Mechanical Mana Pool
+libertas.gui.mechanicalManaPool.input=Input
+libertas.gui.mechanicalManaPool.output=Output
+libertas.gui.mechanicalManaPool.upgrade=Upgrade
+libertas.gui.mechanicalManaPool.mode.normal=Recipes: Normal Pool
+libertas.gui.mechanicalManaPool.mode.alchemy=Recipes: Alchemy + Normal
+libertas.gui.mechanicalManaPool.mode.conjuration=Recipes: Conjuration + Normal
+tooltip.libertas.mechanicalManaPool.model=§9Model from: §fBotanical Machinery
+libertas.gui.mechanicalManaPool.recipes=§7Click to view mana pool recipes (NEI)

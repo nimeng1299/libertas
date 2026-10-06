@@ -21,6 +21,10 @@ public class Libertas {
     public static final String MODID = "libertas";
     public static final Logger LOG = LogManager.getLogger(MODID);
 
+    /// FML 注入的 mod 实例 (openGui 等注册 API 需要引用它)
+    @Mod.Instance(MODID)
+    public static Libertas instance;
+
     @SidedProxy(clientSide = "neuvillette.libertas.ClientProxy", serverSide = "neuvillette.libertas.CommonProxy")
     public static CommonProxy proxy;
 
