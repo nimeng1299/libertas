@@ -22,6 +22,9 @@ item.deepSeaEcho.name=Deep Sea Echo
 tooltip.libertas.deepSeaEcho.stats=§7Mining level: §e32 §7| Dig time: §e0.5s §7| Unbreakable
 tooltip.libertas.deepSeaEcho.lore=§oAn echo rising from the abyss - and the waves part before it.
 item.jigsaw.name=Jigsaw
+tile.botania:flower.zephyrBloom.name=Zephyr Bloom
+tile.botania:flower.zephyrBloom.reference=A breeze dwelling between the petals - every breath wells up with mana.
+tooltip.libertas.zephyrBloom.effect=§7Generates §a5000 §7mana per tick, never wilts
 
 tile.essentiaJar.name=Essentia Jar
 libertas.essentia_jar.empty=No essentia stored

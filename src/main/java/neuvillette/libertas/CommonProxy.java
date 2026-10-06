@@ -5,6 +5,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import neuvillette.libertas.blocks.ModBlocks;
+import neuvillette.libertas.botania.ModBotania;
 import neuvillette.libertas.items.ModItems;
 import neuvillette.libertas.machines.ModMachines;
 
@@ -18,6 +19,9 @@ public class CommonProxy {
         ModItems.init();
 
         ModBlocks.init();
+
+        // Botania 特花的 subtile 注册须在 init 之前的资源拼接期完成
+        ModBotania.init();
 
         Libertas.LOG.info(Config.greeting);
         Libertas.LOG.info("I am Libertas at version " + Tags.VERSION);

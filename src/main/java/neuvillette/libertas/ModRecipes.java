@@ -10,6 +10,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import neuvillette.libertas.blocks.ModBlocks;
+import neuvillette.libertas.botania.ModBotania;
 import neuvillette.libertas.items.ModItems;
 import neuvillette.libertas.machines.ModMachines;
 import thaumcraft.common.config.ConfigBlocks;
@@ -145,5 +146,18 @@ public final class ModRecipes {
                 new ItemStack(ModBlocks.spiritSpring),
                 new ItemStack(com.emoniph.witchery.Witchery.Blocks.ALTAR, 1, OreDictionary.WILDCARD_VALUE),
                 new ItemStack(ModItems.jigsaw)));
+
+        // 风息花: Botania 火红莲(endoflame 特花) + 拼图，无序合成。
+        // 特花种类由 NBT 的 type 区分，Forge 原版无序配方不比对 NBT，须用带标签匹配的配方
+        // 锁定火红莲，否则任意特花 + 拼图都能合成
+        if (ModBotania.hasSpecialFlowerBlock()) {
+            GameRegistry.addRecipe(
+                new ShapelessNBTRecipe(
+                    ModBotania.subtileStack(ModBotania.SUBTILE_ZEPHYR_BLOOM),
+                    ModBotania.subtileStack("endoflame"),
+                    new ItemStack(ModItems.jigsaw)));
+        } else {
+            Libertas.LOG.warn("Botania not found, zephyr bloom recipe skipped");
+        }
     }
 }
