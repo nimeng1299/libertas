@@ -139,3 +139,11 @@ container.libertas.industrialAgglomerationPlate=工业凝聚板
 libertas.gui.industrialAgglomerationPlate.mana=§7每次配方消耗 §a500,000 §7魔力
 libertas.gui.industrialAgglomerationPlate.input=输入
 libertas.gui.industrialAgglomerationPlate.output=输出
+
+tile.mechanicalApothecary.name=机械花药台
+container.libertas.mechanicalApothecary=机械花药台
+libertas.gui.mechanicalApothecary.seed=种子
+libertas.gui.mechanicalApothecary.seed.usage=§7每次配方消耗 §a1 小麦种子 + 500 魔力 §7(无需水)
+libertas.gui.mechanicalApothecary.input=配料
+libertas.gui.mechanicalApothecary.output=输出
+libertas.gui.mechanicalApothecary.recipes=§7点击查看花药台配方 (NEI)

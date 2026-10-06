@@ -226,5 +226,17 @@ public final class ModRecipes {
         } else {
             Libertas.LOG.warn("Botania terra plate block not found, industrial agglomeration plate recipe skipped");
         }
+
+        // 机械花药台: Botania 花药台 + 拼图，无序合成 (通配 meta, 圆石/各生态石研钵均可)
+        final Block altar = GameRegistry.findBlock("Botania", "altar");
+        if (altar != null) {
+            GameRegistry.addRecipe(
+                new ShapelessOreRecipe(
+                    new ItemStack(ModBlocks.mechanicalApothecary),
+                    new ItemStack(altar, 1, OreDictionary.WILDCARD_VALUE),
+                    new ItemStack(ModItems.jigsaw)));
+        } else {
+            Libertas.LOG.warn("Botania altar block not found, mechanical apothecary recipe skipped");
+        }
     }
 }

@@ -46,6 +46,9 @@ public class NEILibertasConfig implements IConfigureNEI {
     /** Botania RecipeHandlerElvenTrade 的 overlay 标识（其源码内公开常量 RecipeHandlerElvenTrade.OVERLAY）。 */
     private static final String BOTANIA_ELVEN_TRADE = "botania.elvenTrade";
 
+    /** Botania RecipeHandlerPetalApothecary 的 overlay 标识（其源码内硬编码，无公开常量）。 */
+    private static final String BOTANIA_PETAL_APOTHECARY = "botania.petalApothecary";
+
     @Override
     public void loadConfig() {
         if (ModMachines.advancedCrucible != null) {
@@ -71,6 +74,9 @@ public class NEILibertasConfig implements IConfigureNEI {
         }
         if (ModBlocks.miniElfPortal != null) {
             API.addRecipeCatalyst(new ItemStack(ModBlocks.miniElfPortal), BOTANIA_ELVEN_TRADE);
+        }
+        if (ModBlocks.mechanicalApothecary != null) {
+            API.addRecipeCatalyst(new ItemStack(ModBlocks.mechanicalApothecary), BOTANIA_PETAL_APOTHECARY);
         }
     }
 

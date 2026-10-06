@@ -22,6 +22,8 @@ public final class ModBlocks {
     public static Item itemMiniElfPortal;
     public static Block industrialAgglomerationPlate;
     public static Item itemIndustrialAgglomerationPlate;
+    public static Block mechanicalApothecary;
+    public static Item itemMechanicalApothecary;
 
     private ModBlocks() {}
 
@@ -77,5 +79,12 @@ public final class ModBlocks {
             .registerTileEntity(TileIndustrialAgglomerationPlate.class, "libertas.industrial_agglomeration_plate");
 
         itemIndustrialAgglomerationPlate.setCreativeTab(ModCreativeTabs.tabLibertas);
+
+        mechanicalApothecary = new BlockMechanicalApothecary();
+        GameRegistry.registerBlock(mechanicalApothecary, ItemBlockMechanicalApothecary.class, "mechanicalApothecary");
+        itemMechanicalApothecary = Item.getItemFromBlock(mechanicalApothecary);
+        GameRegistry.registerTileEntity(TileMechanicalApothecary.class, "libertas.mechanical_apothecary");
+
+        itemMechanicalApothecary.setCreativeTab(ModCreativeTabs.tabLibertas);
     }
 }
