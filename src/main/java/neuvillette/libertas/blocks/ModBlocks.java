@@ -18,6 +18,8 @@ public final class ModBlocks {
     public static Item itemMechanicalManaPool;
     public static Block mechanicalRunicAltar;
     public static Item itemMechanicalRunicAltar;
+    public static Block miniElfPortal;
+    public static Item itemMiniElfPortal;
 
     private ModBlocks() {}
 
@@ -55,5 +57,12 @@ public final class ModBlocks {
         GameRegistry.registerTileEntity(TileMechanicalRunicAltar.class, "libertas.mechanical_runic_altar");
 
         itemMechanicalRunicAltar.setCreativeTab(ModCreativeTabs.tabLibertas);
+
+        miniElfPortal = new BlockMiniElfPortal();
+        GameRegistry.registerBlock(miniElfPortal, ItemBlockMiniElfPortal.class, "miniElfPortal");
+        itemMiniElfPortal = Item.getItemFromBlock(miniElfPortal);
+        GameRegistry.registerTileEntity(TileMiniElfPortal.class, "libertas.mini_elf_portal");
+
+        itemMiniElfPortal.setCreativeTab(ModCreativeTabs.tabLibertas);
     }
 }

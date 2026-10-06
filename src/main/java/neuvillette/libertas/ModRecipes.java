@@ -3,6 +3,7 @@ package neuvillette.libertas;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -183,6 +184,35 @@ public final class ModRecipes {
                     new ItemStack(ModItems.jigsaw)));
         } else {
             Libertas.LOG.warn("Botania runic altar block not found, mechanical runic altar recipe skipped");
+        }
+
+        // 微型精灵门: 3x3 有序合成
+        // 源质钢锭(elementium) / 梦之木 / 源质钢锭
+        // 微光活木(livingwood:5) / 拼图 / 微光活木
+        // 源质钢锭 / 精灵门核心(alfheimPortal, 通配 meta) / 源质钢锭
+        final Item botaniaManaResource = GameRegistry.findItem("Botania", "manaResource");
+        final Block dreamwood = GameRegistry.findBlock("Botania", "dreamwood");
+        final Block livingwood = GameRegistry.findBlock("Botania", "livingwood");
+        final Block alfheimPortal = GameRegistry.findBlock("Botania", "alfheimPortal");
+        if (botaniaManaResource != null && dreamwood != null && livingwood != null && alfheimPortal != null) {
+            GameRegistry.addRecipe(
+                new ShapedOreRecipe(
+                    new ItemStack(ModBlocks.miniElfPortal),
+                    "EDE",
+                    "SJS",
+                    "ECE",
+                    'E',
+                    new ItemStack(botaniaManaResource, 1, 7),
+                    'D',
+                    new ItemStack(dreamwood, 1, 0),
+                    'S',
+                    new ItemStack(livingwood, 1, 5),
+                    'C',
+                    new ItemStack(alfheimPortal, 1, OreDictionary.WILDCARD_VALUE),
+                    'J',
+                    new ItemStack(ModItems.jigsaw)));
+        } else {
+            Libertas.LOG.warn("Botania elven portal materials not found, mini elf portal recipe skipped");
         }
     }
 }

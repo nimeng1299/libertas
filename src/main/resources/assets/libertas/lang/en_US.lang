@@ -126,3 +126,10 @@ libertas.gui.mechanicalRunicAltar.livingrock.usage=§7Consumes §a1 §7Livingroc
 libertas.gui.mechanicalRunicAltar.input=Ingredients
 libertas.gui.mechanicalRunicAltar.output=Output
 libertas.gui.mechanicalRunicAltar.recipes=§7Click to view runic altar recipes (NEI)
+
+tile.miniElfPortal.name=Miniature Elven Portal
+container.libertas.miniElfPortal=Miniature Elven Portal
+libertas.gui.miniElfPortal.input=Input
+libertas.gui.miniElfPortal.output=Output
+libertas.gui.miniElfPortal.mana=§7Consumes §a500 §7mana per recipe
+libertas.gui.miniElfPortal.recipes=§7Click to view elven trade recipes (NEI)

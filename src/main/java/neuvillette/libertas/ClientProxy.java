@@ -22,6 +22,8 @@ public class ClientProxy extends CommonProxy {
     public static int MECHANICAL_MANA_POOL_RENDER_ID = -1;
     /// 机械符文祭坛 (mechanicalRunicAltar) 的 ISBRH render id, 同上
     public static int MECHANICAL_RUNIC_ALTAR_RENDER_ID = -1;
+    /// 微型精灵门 (miniElfPortal) 的 ISBRH render id, 同上
+    public static int MINI_ELF_PORTAL_RENDER_ID = -1;
 
     @Override
     public void init(FMLInitializationEvent event) {
@@ -84,5 +86,13 @@ public class ClientProxy extends CommonProxy {
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemMechanicalRunicAltar,
             new JsonItemRenderer(Libertas.MODID, "block/mechanicalRunicAltar", 1.0f, 0.0f));
+
+        // 微型精灵门: 同机械魔力池的渲染管线
+        final JsonBlockRenderer miniElfPortalRenderer = new JsonBlockRenderer(Libertas.MODID, "block/miniElfPortal");
+        RenderingRegistry.registerBlockHandler(miniElfPortalRenderer.getRenderId(), miniElfPortalRenderer);
+        MINI_ELF_PORTAL_RENDER_ID = miniElfPortalRenderer.getRenderId();
+        MinecraftForgeClient.registerItemRenderer(
+            ModBlocks.itemMiniElfPortal,
+            new JsonItemRenderer(Libertas.MODID, "block/miniElfPortal", 1.0f, 0.0f));
     }
 }

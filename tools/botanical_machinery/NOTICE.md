@@ -16,6 +16,10 @@
   correctly in Blockbench. The runtime model references `botania:blocks/livingrock0`
   directly (resolved from the installed Botania jar; not distributed here).
 
+- `livingwood0.png` / `alfheimPortal0.png`: Botania 1.7.10 textures, embedded
+  into the generated `blockbench/miniElfPortal.bbmodel` for preview; the runtime
+  model references `botania:blocks/livingwood0` / `botania:blocks/alfheimPortal0`
+  directly.
 - `runeAltar0/1/2.png`: Botania 1.7.10 runic altar textures, embedded into the
   generated `blockbench/mechanicalRunicAltar.bbmodel` for preview; the runtime
   model references `botania:blocks/runeAltar0/1/2` directly.

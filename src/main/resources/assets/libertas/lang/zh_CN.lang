@@ -126,3 +126,10 @@ libertas.gui.mechanicalRunicAltar.livingrock.usage=§7每次运行配方消耗 �
 libertas.gui.mechanicalRunicAltar.input=配料
 libertas.gui.mechanicalRunicAltar.output=输出
 libertas.gui.mechanicalRunicAltar.recipes=§7点击查看符文祭坛配方 (NEI)
+
+tile.miniElfPortal.name=微型精灵门
+container.libertas.miniElfPortal=微型精灵门
+libertas.gui.miniElfPortal.input=输入
+libertas.gui.miniElfPortal.output=输出
+libertas.gui.miniElfPortal.mana=§7每次配方消耗 §a500 §7魔力
+libertas.gui.miniElfPortal.recipes=§7点击查看精灵门交易配方 (NEI)
