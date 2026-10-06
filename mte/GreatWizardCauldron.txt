@@ -1,0 +1,31 @@
+
+
+Structure:
+
+Blocks:
+A -> ofBlock(tile.blockCosmeticSolid, 6);
+B-> addElement('B', ofBlock(Blocks.cobblestone_wall, 0)
+
+Offsets:
+1, 1, 0
+
+Dimensions (Width, Height, Length)
+3, 3, 3
+
+Normal Scan:
+
+//spotless:off
+new String[][]{
+    {"BBB",
+    "A~A",
+    "B B"
+},{
+    "B B",
+    "AAA",
+    "   "
+},{
+    "BBB",
+    "AAA",
+    "B B"
+}}
+//spotless:on

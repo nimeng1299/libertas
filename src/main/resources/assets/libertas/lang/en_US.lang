@@ -86,3 +86,17 @@ libertas.mbtt.wizard_distillation_tower.structure.1=Chimney and cornice are Arca
 libertas.mbtt.wizard_distillation_tower.structure.2=The main body is built from Arcane Stone Blocks,
 libertas.mbtt.wizard_distillation_tower.structure.3=any Arcane Stone Block position may be replaced by an Input/Output Bus
 GT5U.gui.text.recipe_result.libertas_distillery_missing_jar=Missing Empty Clay Jars: each distillation recipe consumes its required amount (smelt Soft Clay Jars into Empty Clay Jars first)
+
+gt.blockmachines.multimachine.greatwizardcauldron.name=Great Wizard Cauldron
+
+libertas.mbtt.great_wizard_cauldron.type=Witch's Cauldron
+libertas.mbtt.great_wizard_cauldron.info.1=Automatically runs Witchery Witch's Cauldron ritual recipes (live mirror of the vanilla recipe list, no water, heat or altar power needed)
+libertas.mbtt.great_wizard_cauldron.info.2=Each recipe's ingredients and trigger item (1 each) come from Input Busses, results go 100% to Output Busses
+libertas.mbtt.great_wizard_cauldron.info.3=One batch per operation (parallel 1), fixed 3s duration
+libertas.mbtt.great_wizard_cauldron.info.4=Recipes cover all ritual chalks, the Mutandis series, Endless Water/Fuel brews, cooked meats, the Player Compass and more
+libertas.mbtt.great_wizard_cauldron.controller=Front center of the cauldron ring
+libertas.mbtt.great_wizard_cauldron.casing=Arcane Stone Block (Thaumcraft)
+libertas.mbtt.great_wizard_cauldron.input_bus.desc=Complete ingredient sets incl. the trigger item
+libertas.mbtt.great_wizard_cauldron.structure.1=Cobblestone Walls form the top rim and the four corner legs, the cauldron ring is Arcane Stone Blocks
+libertas.mbtt.great_wizard_cauldron.structure.2=The cauldron interior and the bottom openings stay hollow
+libertas.mbtt.great_wizard_cauldron.structure.3=any Arcane Stone Block position may be replaced by an Input/Output Bus

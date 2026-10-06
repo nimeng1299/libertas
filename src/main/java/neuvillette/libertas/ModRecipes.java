@@ -129,5 +129,12 @@ public final class ModRecipes {
                 ModMachines.wizardDistillationTower.copy(),
                 new ItemStack(com.emoniph.witchery.Witchery.Blocks.DISTILLERY_IDLE, 1, 0),
                 new ItemStack(ModItems.jigsaw)));
+
+        // 大巫师炼药锅: 巫术巫师炼药锅(Witch's Cauldron, witchery:cauldron) + 拼图，无序合成
+        GameRegistry.addRecipe(
+            new ShapelessOreRecipe(
+                ModMachines.greatWizardCauldron.copy(),
+                new ItemStack(com.emoniph.witchery.Witchery.Blocks.CAULDRON, 1, 0),
+                new ItemStack(ModItems.jigsaw)));
     }
 }

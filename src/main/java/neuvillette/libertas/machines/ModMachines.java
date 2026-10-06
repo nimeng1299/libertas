@@ -15,6 +15,7 @@ public final class ModMachines {
     public static ItemStack runewovenPact;
     public static ItemStack greatWizardOven;
     public static ItemStack wizardDistillationTower;
+    public static ItemStack greatWizardCauldron;
 
     private ModMachines() {}
 
@@ -26,6 +27,8 @@ public final class ModMachines {
         runewovenPact = new MTERunewovenPact(19002, "multimachine.runewovenpact", "秘纹织契").getStackForm(1L);
         greatWizardOven = new MTEGreatWizardOven(19003, "multimachine.greatwizardoven", "大巫师烤炉").getStackForm(1L);
         wizardDistillationTower = new MTEWizardDistillationTower(19004, "multimachine.wizarddistillationtower", "巫师蒸馏塔")
+            .getStackForm(1L);
+        greatWizardCauldron = new MTEGreatWizardCauldron(19005, "multimachine.greatwizardcauldron", "大巫师炼药锅")
             .getStackForm(1L);
         ModGuiThemes.init();
         // 自定义配方检查失败原因（GUI 状态区显示），必须先注册才能被同步显示

@@ -1,0 +1,62 @@
+{
+ "meta": {
+  "format_version": "5.0",
+  "model_format": "free",
+  "box_uv": false
+ },
+ "name": "greatWizardCauldronController",
+ "model_identifier": "",
+ "visible_box": [
+  1,
+  1,
+  0
+ ],
+ "variable_placeholders": "",
+ "multi_file_ruleset": "",
+ "variable_placeholder_buttons": [],
+ "timeline_setups": [],
+ "unhandled_root_fields": {},
+ "ai_used": true,
+ "ai_agents": "zcode",
+ "resolution": {
+  "width": 16,
+  "height": 16
+ },
+ "elements": [],
+ "groups": [],
+ "outliner": [],
+ "textures": [
+  {
+   "name": "GREAT_WIZARD_CAULDRON",
+   "path": "",
+   "folder": "",
+   "namespace": "",
+   "id": "0",
+   "group": "",
+   "scope": 0,
+   "width": 16,
+   "height": 16,
+   "uv_width": 16,
+   "uv_height": 16,
+   "particle": false,
+   "use_as_default": false,
+   "layers_enabled": false,
+   "sync_to_project": "",
+   "file_format": "png",
+   "render_mode": "default",
+   "render_sides": "auto",
+   "wrap_mode": "limited",
+   "pbr_channel": "color",
+   "fps": 7,
+   "frame_time": 1,
+   "frame_order_type": "loop",
+   "frame_order": "",
+   "frame_interpolate": false,
+   "visible": true,
+   "internal": true,
+   "saved": false,
+   "uuid": "51182bb7-85ce-47b4-ad04-6b3dc002e182",
+   "source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABO0lEQVR4nGPU07D8z8vNz0AO+Pz1IwMLSLOxgRWDuLg4w8uXL1EUnL1wDCyHDJDVgeSZYBLommFAsTYHjNHVvXz1DEyzoGsASYiLScH595unYNgM5otJMTx59oCB0drY4z8DBYAFRMD8CbJl/tKpYLaakhGKwlv3zoFpL5cQuGtAYcCC4nyoE0GaYRpgAFkM2StM2Jx1QfoUg1SjBEPGQTMw/c32D1gMG2BCDlEYUHGRYbiz5wlDX80xhq6AKLgYTgPEkUIdBECaYRqCcroYilqswGI4DUAHMBfA2CCX4HUBDIBCFwSQNeOyGeZtRvR08PINRAI51JHZ4iKo3kVJByCwbc8ahjnSrxj0LfcwCLQqgsU+bNnDcPHnH4aUp2IoajHSAcwLIIUMSxkYGJZ+hMoIoahBTgeMlGZnAO2jjU6aXtv5AAAAAElFTkSuQmCC"
+  }
+ ]
+}

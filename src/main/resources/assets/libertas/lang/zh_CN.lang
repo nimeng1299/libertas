@@ -86,3 +86,17 @@ libertas.mbtt.wizard_distillation_tower.structure.1=烟囱与檐口为奥术石�
 libertas.mbtt.wizard_distillation_tower.structure.2=主体由奥术石块砌成，
 libertas.mbtt.wizard_distillation_tower.structure.3=任意奥术石块位均可替换为输入/输出总线
 GT5U.gui.text.recipe_result.libertas_distillery_missing_jar=缺少空黏土罐：每份蒸馏配方消耗对应数量的空黏土罐（软黏土罐需先熔烧成空黏土罐）
+
+gt.blockmachines.multimachine.greatwizardcauldron.name=大巫师炼药锅
+
+libertas.mbtt.great_wizard_cauldron.type=炼药锅
+libertas.mbtt.great_wizard_cauldron.info.1=自动运行巫术(Witchery)巫师炼药锅(Witch's Cauldron)的仪式配方（实时镜像原版配方列表，无需水、热源与祭坛供能）
+libertas.mbtt.great_wizard_cauldron.info.2=每份配方的原料与触发物各 1 份来自输入总线，产物 100% 进入输出总线
+libertas.mbtt.great_wizard_cauldron.info.3=每轮只炼一剂（并行 1），固定 3 秒完成
+libertas.mbtt.great_wizard_cauldron.info.4=配方涵盖各色粉笔、变异泰迪斯系列、无限水/燃料瓶、烤肉、玩家指南针等
+libertas.mbtt.great_wizard_cauldron.controller=锅圈正面正中
+libertas.mbtt.great_wizard_cauldron.casing=奥术石块（神秘时代）
+libertas.mbtt.great_wizard_cauldron.input_bus.desc=成套的炼药原料（含触发物）
+libertas.mbtt.great_wizard_cauldron.structure.1=顶檐与四角炉腿为圆石墙，锅圈由奥术石块砌成
+libertas.mbtt.great_wizard_cauldron.structure.2=锅体内部与底部开口保持空心
+libertas.mbtt.great_wizard_cauldron.structure.3=任意奥术石块位均可替换为输入/输出总线

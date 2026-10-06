@@ -16,7 +16,9 @@ import neuvillette.libertas.machines.ModMachines;
  * 把 Wizard Distillation Tower（巫师蒸馏塔）控制器注册为巫术蒸馏配方页
  * （Witchery 自带的 NEIDistilleryRecipeHandler，id = witchery_distilling）的处理机器，
  * 把 Great Wizard Oven（大巫师烤炉）控制器注册为巫师烤炉配方页
- * （Witchery 自带的 NEIWitchesOvenRecipeHandler，id = witchery_cooking）的处理机器：
+ * （Witchery 自带的 NEIWitchesOvenRecipeHandler，id = witchery_cooking）的处理机器，
+ * 把 Great Wizard Cauldron（大巫师炼药锅）控制器注册为巫师炼药锅配方页
+ * （Witchery 自带的 NEICauldronRecipeHandler，id = witchery_brewing_plus）的处理机器：
  * 页面上会与原版机器并列显示，对控制器按 U 可直达该页。
  */
 public class NEILibertasConfig implements IConfigureNEI {
@@ -26,6 +28,9 @@ public class NEILibertasConfig implements IConfigureNEI {
 
     /** Witchery NEIWitchesOvenRecipeHandler 的 overlay 标识（其源码内硬编码，无公开常量）。 */
     private static final String WITCHERY_COOKING = "witchery_cooking";
+
+    /** Witchery NEICauldronRecipeHandler 的 overlay 标识（其源码内硬编码，无公开常量）。 */
+    private static final String WITCHERY_BREWING_PLUS = "witchery_brewing_plus";
 
     @Override
     public void loadConfig() {
@@ -40,6 +45,9 @@ public class NEILibertasConfig implements IConfigureNEI {
         }
         if (ModMachines.greatWizardOven != null) {
             API.addRecipeCatalyst(ModMachines.greatWizardOven, WITCHERY_COOKING);
+        }
+        if (ModMachines.greatWizardCauldron != null) {
+            API.addRecipeCatalyst(ModMachines.greatWizardCauldron, WITCHERY_BREWING_PLUS);
         }
     }
 
