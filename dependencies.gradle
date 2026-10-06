@@ -59,4 +59,6 @@ dependencies {
     implementation("ganymedes01.etfuturum:Et-Futurum-Requiem:2.6.60-GTNH") { transitive = false }
 
     implementation rfg.deobf("curse.maven:witchery-69673:2234410")
+
+    implementation("com.github.GTNewHorizons:Botania:1.13.37-GTNH:dev")
 }
