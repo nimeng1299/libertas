@@ -4,16 +4,18 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
 import cpw.mods.fml.common.network.IGuiHandler;
+import neuvillette.libertas.blocks.TileIndustrialAgglomerationPlate;
 import neuvillette.libertas.blocks.TileMechanicalManaPool;
 import neuvillette.libertas.blocks.TileMechanicalRunicAltar;
 import neuvillette.libertas.blocks.TileMiniElfPortal;
 
-/// FML GUI 处理器: 机械魔力池、机械符文祭坛、微型精灵门。在 preInit 里注册 (CommonProxy)。
+/// FML GUI 处理器: 机械魔力池、机械符文祭坛、微型精灵门、工业凝聚板。在 preInit 里注册 (CommonProxy)。
 public class ModGuiHandler implements IGuiHandler {
 
     public static final int ID_MECHANICAL_MANA_POOL = 0;
     public static final int ID_MECHANICAL_RUNIC_ALTAR = 1;
     public static final int ID_MINI_ELF_PORTAL = 2;
+    public static final int ID_INDUSTRIAL_AGGLOMERATION_PLATE = 3;
 
     @Override
     public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
@@ -29,6 +31,12 @@ public class ModGuiHandler implements IGuiHandler {
         }
         if (id == ID_MINI_ELF_PORTAL && world.getTileEntity(x, y, z) instanceof TileMiniElfPortal) {
             return new ContainerMiniElfPortal(player.inventory, (TileMiniElfPortal) world.getTileEntity(x, y, z));
+        }
+        if (id == ID_INDUSTRIAL_AGGLOMERATION_PLATE
+            && world.getTileEntity(x, y, z) instanceof TileIndustrialAgglomerationPlate) {
+            return new ContainerIndustrialAgglomerationPlate(
+                player.inventory,
+                (TileIndustrialAgglomerationPlate) world.getTileEntity(x, y, z));
         }
         return null;
     }
@@ -50,6 +58,13 @@ public class ModGuiHandler implements IGuiHandler {
         if (id == ID_MINI_ELF_PORTAL && world.getTileEntity(x, y, z) instanceof TileMiniElfPortal) {
             return new GuiMiniElfPortal(
                 new ContainerMiniElfPortal(player.inventory, (TileMiniElfPortal) world.getTileEntity(x, y, z)));
+        }
+        if (id == ID_INDUSTRIAL_AGGLOMERATION_PLATE
+            && world.getTileEntity(x, y, z) instanceof TileIndustrialAgglomerationPlate) {
+            return new GuiIndustrialAgglomerationPlate(
+                new ContainerIndustrialAgglomerationPlate(
+                    player.inventory,
+                    (TileIndustrialAgglomerationPlate) world.getTileEntity(x, y, z)));
         }
         return null;
     }

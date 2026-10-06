@@ -24,6 +24,8 @@ public class ClientProxy extends CommonProxy {
     public static int MECHANICAL_RUNIC_ALTAR_RENDER_ID = -1;
     /// 微型精灵门 (miniElfPortal) 的 ISBRH render id, 同上
     public static int MINI_ELF_PORTAL_RENDER_ID = -1;
+    /// 工业凝聚板 (industrialAgglomerationPlate) 的 ISBRH render id, 同上
+    public static int INDUSTRIAL_AGGLOMERATION_PLATE_RENDER_ID = -1;
 
     @Override
     public void init(FMLInitializationEvent event) {
@@ -94,5 +96,17 @@ public class ClientProxy extends CommonProxy {
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemMiniElfPortal,
             new JsonItemRenderer(Libertas.MODID, "block/miniElfPortal", 1.0f, 0.0f));
+
+        // 工业凝聚板: 同机械魔力池的渲染管线
+        final JsonBlockRenderer industrialAgglomerationPlateRenderer = new JsonBlockRenderer(
+            Libertas.MODID,
+            "block/industrialAgglomerationPlate");
+        RenderingRegistry.registerBlockHandler(
+            industrialAgglomerationPlateRenderer.getRenderId(),
+            industrialAgglomerationPlateRenderer);
+        INDUSTRIAL_AGGLOMERATION_PLATE_RENDER_ID = industrialAgglomerationPlateRenderer.getRenderId();
+        MinecraftForgeClient.registerItemRenderer(
+            ModBlocks.itemIndustrialAgglomerationPlate,
+            new JsonItemRenderer(Libertas.MODID, "block/industrialAgglomerationPlate", 1.0f, 0.0f));
     }
 }

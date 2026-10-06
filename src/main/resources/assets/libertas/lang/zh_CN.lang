@@ -133,3 +133,9 @@ libertas.gui.miniElfPortal.input=输入
 libertas.gui.miniElfPortal.output=输出
 libertas.gui.miniElfPortal.mana=§7每次配方消耗 §a500 §7魔力
 libertas.gui.miniElfPortal.recipes=§7点击查看精灵门交易配方 (NEI)
+
+tile.industrialAgglomerationPlate.name=工业凝聚板
+container.libertas.industrialAgglomerationPlate=工业凝聚板
+libertas.gui.industrialAgglomerationPlate.mana=§7每次配方消耗 §a500,000 §7魔力
+libertas.gui.industrialAgglomerationPlate.input=输入
+libertas.gui.industrialAgglomerationPlate.output=输出

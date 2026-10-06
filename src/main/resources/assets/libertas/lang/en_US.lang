@@ -133,3 +133,9 @@ libertas.gui.miniElfPortal.input=Input
 libertas.gui.miniElfPortal.output=Output
 libertas.gui.miniElfPortal.mana=§7Consumes §a500 §7mana per recipe
 libertas.gui.miniElfPortal.recipes=§7Click to view elven trade recipes (NEI)
+
+tile.industrialAgglomerationPlate.name=Industrial Agglomeration Plate
+container.libertas.industrialAgglomerationPlate=Industrial Agglomeration Plate
+libertas.gui.industrialAgglomerationPlate.mana=§7Consumes §a500,000 §7mana per recipe
+libertas.gui.industrialAgglomerationPlate.input=Input
+libertas.gui.industrialAgglomerationPlate.output=Output

@@ -214,5 +214,17 @@ public final class ModRecipes {
         } else {
             Libertas.LOG.warn("Botania elven portal materials not found, mini elf portal recipe skipped");
         }
+
+        // 工业凝聚板: Botania 泰拉凝聚板 + 拼图，无序合成
+        final Block terraPlate = GameRegistry.findBlock("Botania", "terraPlate");
+        if (terraPlate != null) {
+            GameRegistry.addRecipe(
+                new ShapelessOreRecipe(
+                    new ItemStack(ModBlocks.industrialAgglomerationPlate),
+                    new ItemStack(terraPlate, 1, OreDictionary.WILDCARD_VALUE),
+                    new ItemStack(ModItems.jigsaw)));
+        } else {
+            Libertas.LOG.warn("Botania terra plate block not found, industrial agglomeration plate recipe skipped");
+        }
     }
 }

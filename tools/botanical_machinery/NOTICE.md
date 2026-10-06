@@ -20,6 +20,16 @@
   into the generated `blockbench/miniElfPortal.bbmodel` for preview; the runtime
   model references `botania:blocks/livingwood0` / `botania:blocks/alfheimPortal0`
   directly.
+- `industrial_agglomeration_factory.json`: verbatim copy of the Industrial
+  Agglomeration Factory block model from the same repository, used by
+  `tools/gen_industrial_agglomeration_plate_model.py` for the 工业凝聚板
+  (industrialAgglomerationPlate) geometry.
+- `lapis_block.png`: vanilla Minecraft lapis block texture, embedded into the
+  generated bbmodel for preview; the runtime model references
+  `minecraft:blocks/lapis_block` directly.
+- `terraPlate0/1/2.png`: Botania 1.7.10 terrestrial agglomeration plate
+  textures, embedded into the generated bbmodel for preview; the runtime model
+  references `botania:blocks/terraPlate1` (top) / `terraPlate2` (side) directly.
 - `runeAltar0/1/2.png`: Botania 1.7.10 runic altar textures, embedded into the
   generated `blockbench/mechanicalRunicAltar.bbmodel` for preview; the runtime
   model references `botania:blocks/runeAltar0/1/2` directly.

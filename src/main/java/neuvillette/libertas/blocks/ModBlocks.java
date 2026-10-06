@@ -20,6 +20,8 @@ public final class ModBlocks {
     public static Item itemMechanicalRunicAltar;
     public static Block miniElfPortal;
     public static Item itemMiniElfPortal;
+    public static Block industrialAgglomerationPlate;
+    public static Item itemIndustrialAgglomerationPlate;
 
     private ModBlocks() {}
 
@@ -64,5 +66,16 @@ public final class ModBlocks {
         GameRegistry.registerTileEntity(TileMiniElfPortal.class, "libertas.mini_elf_portal");
 
         itemMiniElfPortal.setCreativeTab(ModCreativeTabs.tabLibertas);
+
+        industrialAgglomerationPlate = new BlockIndustrialAgglomerationPlate();
+        GameRegistry.registerBlock(
+            industrialAgglomerationPlate,
+            ItemBlockIndustrialAgglomerationPlate.class,
+            "industrialAgglomerationPlate");
+        itemIndustrialAgglomerationPlate = Item.getItemFromBlock(industrialAgglomerationPlate);
+        GameRegistry
+            .registerTileEntity(TileIndustrialAgglomerationPlate.class, "libertas.industrial_agglomeration_plate");
+
+        itemIndustrialAgglomerationPlate.setCreativeTab(ModCreativeTabs.tabLibertas);
     }
 }
