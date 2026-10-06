@@ -14,6 +14,10 @@ tile.azureTear.name=碧空之泪
 tooltip.libertas.azureTear.effect=§7放在注魔祭坛旁（核心 12 格内）：§a稳定度 +10000
 tooltip.libertas.azureTear.lore=§o天空坠下的一滴泪，让所有仪式为之哭泣。
 
+tile.spiritSpring.name=灵泉
+tooltip.libertas.spiritSpring.effect=§7放在巫术祭坛正上方（任意一块）：§a基础魔力容量 +10 §7| §a容量上限 ×100 §7| §a魔力恢复 ×100
+tooltip.libertas.spiritSpring.lore=§o一泓静水，让祭坛永不干涸。
+
 item.deepSeaEcho.name=深海回响
 tooltip.libertas.deepSeaEcho.stats=§7挖掘等级: §e32 §7| 挖掘时长: §e0.5s §7| 无限耐久
 tooltip.libertas.deepSeaEcho.lore=§o深渊的回响自海底传来，浪涛为它让路。

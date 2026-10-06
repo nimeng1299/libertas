@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
@@ -135,6 +136,14 @@ public final class ModRecipes {
             new ShapelessOreRecipe(
                 ModMachines.greatWizardCauldron.copy(),
                 new ItemStack(com.emoniph.witchery.Witchery.Blocks.CAULDRON, 1, 0),
+                new ItemStack(ModItems.jigsaw)));
+
+        // 灵泉: 巫术祭坛(Witchery Altar, witchery:altar) + 拼图，无序合成。
+        // 祭坛物品的 meta 会随绑定/多方块连接状态变化(默认掉落保留所在格的 meta)，用通配 meta 匹配
+        GameRegistry.addRecipe(
+            new ShapelessOreRecipe(
+                new ItemStack(ModBlocks.spiritSpring),
+                new ItemStack(com.emoniph.witchery.Witchery.Blocks.ALTAR, 1, OreDictionary.WILDCARD_VALUE),
                 new ItemStack(ModItems.jigsaw)));
     }
 }

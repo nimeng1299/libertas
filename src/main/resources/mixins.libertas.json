@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"minVersion": "0.8.5",
+	"package": "neuvillette.libertas.mixin",
+	"compatibilityLevel": "JAVA_8",
+	"refmap": "mixins.libertas.refmap.json",
+	"mixins": [
+		"TileEntityAltarMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

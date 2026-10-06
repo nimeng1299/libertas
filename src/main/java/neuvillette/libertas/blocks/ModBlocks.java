@@ -12,6 +12,8 @@ public final class ModBlocks {
     public static Item itemAzureTear;
     public static Block essentiaJar;
     public static Item itemEssentiaJar;
+    public static Block spiritSpring;
+    public static Item itemSpiritSpring;
 
     private ModBlocks() {}
 
@@ -29,5 +31,11 @@ public final class ModBlocks {
         GameRegistry.registerTileEntity(TileEssentiaJar.class, "libertas.essentia_jar");
 
         itemEssentiaJar.setCreativeTab(ModCreativeTabs.tabLibertas);
+
+        spiritSpring = new BlockSpiritSpring();
+        GameRegistry.registerBlock(spiritSpring, ItemBlockSpiritSpring.class, "spiritSpring");
+        itemSpiritSpring = Item.getItemFromBlock(spiritSpring);
+
+        itemSpiritSpring.setCreativeTab(ModCreativeTabs.tabLibertas);
     }
 }
