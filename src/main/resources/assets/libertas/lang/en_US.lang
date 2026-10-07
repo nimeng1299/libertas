@@ -154,3 +154,11 @@ libertas.gui.mechanicalDaisy.mana=§7Consumes §a100 §7mana per recipe
 libertas.gui.mechanicalDaisy.input=Input
 libertas.gui.mechanicalDaisy.output=Output
 libertas.gui.mechanicalDaisy.recipes=§7Click to view pure daisy recipes (NEI)
+
+tile.mechanicalBrewery.name=Mechanical Botanical Brewery
+container.libertas.mechanicalBrewery=Mechanical Botanical Brewery
+libertas.gui.mechanicalBrewery.bottle=Bottle
+libertas.gui.mechanicalBrewery.bottle.usage=§7Consumes §a1 §7brew container per recipe; mana cost depends on the container (vial/flask)
+libertas.gui.mechanicalBrewery.input=Ingredients
+libertas.gui.mechanicalBrewery.output=Output
+libertas.gui.mechanicalBrewery.recipes=§7Click to view brewery recipes (NEI)

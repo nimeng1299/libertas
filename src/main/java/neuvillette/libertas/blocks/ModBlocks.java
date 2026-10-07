@@ -26,6 +26,8 @@ public final class ModBlocks {
     public static Item itemMechanicalApothecary;
     public static Block mechanicalDaisy;
     public static Item itemMechanicalDaisy;
+    public static Block mechanicalBrewery;
+    public static Item itemMechanicalBrewery;
 
     private ModBlocks() {}
 
@@ -95,5 +97,12 @@ public final class ModBlocks {
         GameRegistry.registerTileEntity(TileMechanicalDaisy.class, "libertas.mechanical_daisy");
 
         itemMechanicalDaisy.setCreativeTab(ModCreativeTabs.tabLibertas);
+
+        mechanicalBrewery = new BlockMechanicalBrewery();
+        GameRegistry.registerBlock(mechanicalBrewery, ItemBlockMechanicalBrewery.class, "mechanicalBrewery");
+        itemMechanicalBrewery = Item.getItemFromBlock(mechanicalBrewery);
+        GameRegistry.registerTileEntity(TileMechanicalBrewery.class, "libertas.mechanical_brewery");
+
+        itemMechanicalBrewery.setCreativeTab(ModCreativeTabs.tabLibertas);
     }
 }

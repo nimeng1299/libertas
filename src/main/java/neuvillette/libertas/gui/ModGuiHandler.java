@@ -6,12 +6,13 @@ import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 import neuvillette.libertas.blocks.TileIndustrialAgglomerationPlate;
 import neuvillette.libertas.blocks.TileMechanicalApothecary;
+import neuvillette.libertas.blocks.TileMechanicalBrewery;
 import neuvillette.libertas.blocks.TileMechanicalDaisy;
 import neuvillette.libertas.blocks.TileMechanicalManaPool;
 import neuvillette.libertas.blocks.TileMechanicalRunicAltar;
 import neuvillette.libertas.blocks.TileMiniElfPortal;
 
-/// FML GUI 处理器: 机械魔力池、机械符文祭坛、微型精灵门、工业凝聚板、机械花药台、机械白雏菊。在 preInit 里注册 (CommonProxy)。
+/// FML GUI 处理器: 机械魔力池、机械符文祭坛、微型精灵门、工业凝聚板、机械花药台、机械白雏菊、机械植物酿造台。在 preInit 里注册 (CommonProxy)。
 public class ModGuiHandler implements IGuiHandler {
 
     public static final int ID_MECHANICAL_MANA_POOL = 0;
@@ -20,6 +21,7 @@ public class ModGuiHandler implements IGuiHandler {
     public static final int ID_INDUSTRIAL_AGGLOMERATION_PLATE = 3;
     public static final int ID_MECHANICAL_APOTHECARY = 4;
     public static final int ID_MECHANICAL_DAISY = 5;
+    public static final int ID_MECHANICAL_BREWERY = 6;
 
     @Override
     public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
@@ -49,6 +51,11 @@ public class ModGuiHandler implements IGuiHandler {
         }
         if (id == ID_MECHANICAL_DAISY && world.getTileEntity(x, y, z) instanceof TileMechanicalDaisy) {
             return new ContainerMechanicalDaisy(player.inventory, (TileMechanicalDaisy) world.getTileEntity(x, y, z));
+        }
+        if (id == ID_MECHANICAL_BREWERY && world.getTileEntity(x, y, z) instanceof TileMechanicalBrewery) {
+            return new ContainerMechanicalBrewery(
+                player.inventory,
+                (TileMechanicalBrewery) world.getTileEntity(x, y, z));
         }
         return null;
     }
@@ -87,6 +94,10 @@ public class ModGuiHandler implements IGuiHandler {
         if (id == ID_MECHANICAL_DAISY && world.getTileEntity(x, y, z) instanceof TileMechanicalDaisy) {
             return new GuiMechanicalDaisy(
                 new ContainerMechanicalDaisy(player.inventory, (TileMechanicalDaisy) world.getTileEntity(x, y, z)));
+        }
+        if (id == ID_MECHANICAL_BREWERY && world.getTileEntity(x, y, z) instanceof TileMechanicalBrewery) {
+            return new GuiMechanicalBrewery(
+                new ContainerMechanicalBrewery(player.inventory, (TileMechanicalBrewery) world.getTileEntity(x, y, z)));
         }
         return null;
     }

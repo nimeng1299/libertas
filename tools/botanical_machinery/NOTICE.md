@@ -40,6 +40,12 @@
 - `enchantedSoil0/1.png` / `puredaisy.png`: Botania 1.7.10 textures, embedded
   into the generated bbmodel for preview; the runtime model references
   `botania:blocks/enchantedSoil0/1` / `botania:blocks/puredaisy` directly.
+- `mechanical_brewery.json`: verbatim copy of the Mechanical Brewery block
+  model from the same repository, used by `tools/gen_mechanical_brewery_model.py`
+  for the 机械植物酿造台 (mechanicalBrewery) geometry.
+- `cauldron_side/inner.png`: vanilla Minecraft cauldron textures, embedded into
+  the generated bbmodel for preview; the runtime model references
+  `minecraft:blocks/cauldron_side/inner` directly.
 - `runeAltar0/1/2.png`: Botania 1.7.10 runic altar textures, embedded into the
   generated `blockbench/mechanicalRunicAltar.bbmodel` for preview; the runtime
   model references `botania:blocks/runeAltar0/1/2` directly.

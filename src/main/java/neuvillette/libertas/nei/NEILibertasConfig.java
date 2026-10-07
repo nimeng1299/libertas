@@ -52,6 +52,9 @@ public class NEILibertasConfig implements IConfigureNEI {
     /** Botania RecipeHandlerPureDaisy 的 overlay 标识（其源码内硬编码，无公开常量）。 */
     private static final String BOTANIA_PURE_DAISY = "botania.pureDaisy";
 
+    /** Botania RecipeHandlerBrewery 的 overlay 标识（其源码内公开常量 RecipeHandlerBrewery.OVERLAY）。 */
+    private static final String BOTANIA_BREWERY = "botania.brewery";
+
     @Override
     public void loadConfig() {
         if (ModMachines.advancedCrucible != null) {
@@ -83,6 +86,9 @@ public class NEILibertasConfig implements IConfigureNEI {
         }
         if (ModBlocks.mechanicalDaisy != null) {
             API.addRecipeCatalyst(new ItemStack(ModBlocks.mechanicalDaisy), BOTANIA_PURE_DAISY);
+        }
+        if (ModBlocks.mechanicalBrewery != null) {
+            API.addRecipeCatalyst(new ItemStack(ModBlocks.mechanicalBrewery), BOTANIA_BREWERY);
         }
     }
 

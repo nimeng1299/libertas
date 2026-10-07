@@ -154,3 +154,11 @@ libertas.gui.mechanicalDaisy.mana=§7每次配方消耗 §a100 §7魔力
 libertas.gui.mechanicalDaisy.input=输入
 libertas.gui.mechanicalDaisy.output=输出
 libertas.gui.mechanicalDaisy.recipes=§7点击查看白雏菊配方 (NEI)
+
+tile.mechanicalBrewery.name=机械植物酿造台
+container.libertas.mechanicalBrewery=机械植物酿造台
+libertas.gui.mechanicalBrewery.bottle=瓶子
+libertas.gui.mechanicalBrewery.bottle.usage=§7每次配方消耗 §a1 §7个酿造容器；魔力消耗随瓶子而定 (玻璃瓶/保存瓶)
+libertas.gui.mechanicalBrewery.input=配料
+libertas.gui.mechanicalBrewery.output=输出
+libertas.gui.mechanicalBrewery.recipes=§7点击查看酿造配方 (NEI)

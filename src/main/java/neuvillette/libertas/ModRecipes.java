@@ -250,5 +250,17 @@ public final class ModRecipes {
         } else {
             Libertas.LOG.warn("Botania not found, mechanical daisy recipe skipped");
         }
+
+        // 机械植物酿造台: Botania 植物酿造台 + 拼图，无序合成
+        final Block brewery = GameRegistry.findBlock("Botania", "brewery");
+        if (brewery != null) {
+            GameRegistry.addRecipe(
+                new ShapelessOreRecipe(
+                    new ItemStack(ModBlocks.mechanicalBrewery),
+                    new ItemStack(brewery, 1, OreDictionary.WILDCARD_VALUE),
+                    new ItemStack(ModItems.jigsaw)));
+        } else {
+            Libertas.LOG.warn("Botania brewery block not found, mechanical brewery recipe skipped");
+        }
     }
 }
