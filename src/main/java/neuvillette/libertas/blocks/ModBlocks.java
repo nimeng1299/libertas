@@ -28,6 +28,8 @@ public final class ModBlocks {
     public static Item itemMechanicalDaisy;
     public static Block mechanicalBrewery;
     public static Item itemMechanicalBrewery;
+    public static Block crimsonSpring;
+    public static Item itemCrimsonSpring;
 
     private ModBlocks() {}
 
@@ -104,5 +106,12 @@ public final class ModBlocks {
         GameRegistry.registerTileEntity(TileMechanicalBrewery.class, "libertas.mechanical_brewery");
 
         itemMechanicalBrewery.setCreativeTab(ModCreativeTabs.tabLibertas);
+
+        crimsonSpring = new BlockCrimsonSpring();
+        GameRegistry.registerBlock(crimsonSpring, ItemBlockCrimsonSpring.class, "crimsonSpring");
+        itemCrimsonSpring = Item.getItemFromBlock(crimsonSpring);
+        GameRegistry.registerTileEntity(TileCrimsonSpring.class, "libertas.crimson_spring");
+
+        itemCrimsonSpring.setCreativeTab(ModCreativeTabs.tabLibertas);
     }
 }

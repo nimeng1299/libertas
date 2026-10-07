@@ -262,5 +262,18 @@ public final class ModRecipes {
         } else {
             Libertas.LOG.warn("Botania brewery block not found, mechanical brewery recipe skipped");
         }
+
+        // 赤泉: 血魔法献祭刀(AWWayofTime:sacrificialKnife) + 拼图，无序合成。
+        // 灵泉配方里巫术祭坛的同款思路: 直接按注册名取献祭刀, 不写死物品类引用
+        final Item sacrificialKnife = GameRegistry.findItem("AWWayofTime", "sacrificialKnife");
+        if (sacrificialKnife != null) {
+            GameRegistry.addRecipe(
+                new ShapelessOreRecipe(
+                    new ItemStack(ModBlocks.crimsonSpring),
+                    new ItemStack(sacrificialKnife),
+                    new ItemStack(ModItems.jigsaw)));
+        } else {
+            Libertas.LOG.warn("BloodMagic sacrificial knife not found, crimson spring recipe skipped");
+        }
     }
 }

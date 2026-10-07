@@ -32,6 +32,8 @@ public class ClientProxy extends CommonProxy {
     public static int MECHANICAL_DAISY_RENDER_ID = -1;
     /// 机械植物酿造台 (mechanicalBrewery) 的 ISBRH render id, 同上
     public static int MECHANICAL_BREWERY_RENDER_ID = -1;
+    /// 赤泉 (crimsonSpring) 的 ISBRH render id, 同上
+    public static int CRIMSON_SPRING_RENDER_ID = -1;
 
     @Override
     public void init(FMLInitializationEvent event) {
@@ -145,5 +147,13 @@ public class ClientProxy extends CommonProxy {
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemMechanicalBrewery,
             new JsonItemRenderer(Libertas.MODID, "block/mechanicalBrewery", 1.0f, 0.0f, true));
+
+        // 赤泉: 同灵泉的渲染管线 (世界 ISBRH + 物品复用同一份 JSON 模型)
+        final JsonBlockRenderer crimsonSpringRenderer = new JsonBlockRenderer(Libertas.MODID, "block/crimsonSpring");
+        RenderingRegistry.registerBlockHandler(crimsonSpringRenderer.getRenderId(), crimsonSpringRenderer);
+        CRIMSON_SPRING_RENDER_ID = crimsonSpringRenderer.getRenderId();
+        MinecraftForgeClient.registerItemRenderer(
+            ModBlocks.itemCrimsonSpring,
+            new JsonItemRenderer(Libertas.MODID, "block/crimsonSpring", 1.0f, 0.0f));
     }
 }

@@ -18,6 +18,10 @@ tile.spiritSpring.name=Spirit Spring
 tooltip.libertas.spiritSpring.effect=§7On a Witchery Altar (directly above any altar block): §aBase capacity +10 §7| §aCapacity x100 §7| §aRecharge x100
 tooltip.libertas.spiritSpring.lore=§oA spring of quiet water - and the altar never thirsts.
 
+tile.crimsonSpring.name=Crimson Spring
+tooltip.libertas.crimsonSpring.effect=§7Under a Blood Magic Blood Altar (directly below): §a+1000 LP every 5 ticks
+tooltip.libertas.crimsonSpring.lore=§oA spring of crimson water - and the altar above never runs dry.
+
 item.deepSeaEcho.name=Deep Sea Echo
 tooltip.libertas.deepSeaEcho.stats=§7Mining level: §e32 §7| Dig time: §e0.5s §7| Unbreakable
 tooltip.libertas.deepSeaEcho.lore=§oAn echo rising from the abyss - and the waves part before it.
