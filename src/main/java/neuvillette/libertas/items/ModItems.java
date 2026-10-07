@@ -10,6 +10,7 @@ public final class ModItems {
     public static Item purpleMood;
     public static Item deepSeaEcho;
     public static Item jigsaw;
+    public static Item cottonSwab;
 
     private ModItems() {}
 
@@ -26,10 +27,14 @@ public final class ModItems {
         jigsaw = new ItemJigsaw();
         GameRegistry.registerItem(jigsaw, "jigsaw");
 
+        cottonSwab = new ItemCottonSwab();
+        GameRegistry.registerItem(cottonSwab, "cottonSwab");
+
         // 物品构造完再建标签页 (图标引用 purpleMood), 并把法杖从 TC 的标签页挪过来
         ModCreativeTabs.init();
         purpleMood.setCreativeTab(ModCreativeTabs.tabLibertas);
         deepSeaEcho.setCreativeTab(ModCreativeTabs.tabLibertas);
         jigsaw.setCreativeTab(ModCreativeTabs.tabLibertas);
+        cottonSwab.setCreativeTab(ModCreativeTabs.tabLibertas);
     }
 }

@@ -101,6 +101,10 @@ public final class ModRecipes {
                 'S',
                 "stickWood"));
 
+        // 棉签: 线的左下角放木棍 (2x2 有序, 2x2 合成格即可摆放)
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(new ItemStack(ModItems.cottonSwab), " S", "T ", 'S', Items.string, 'T', "stickWood"));
+
         // 高级坩埚 / 秘纹织契 / 要素熔炼舱: 各自的核心方块 + 拼图，无序合成
         // 坩埚 = TC blockMetalDevice:0，符文矩阵 = TC blockStoneDevice:2（与 MTERunewovenPact 的结构引用一致）
         GameRegistry.addRecipe(

@@ -36,6 +36,8 @@ public class CommonProxy {
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)
     public void init(FMLInitializationEvent event) {
+        PlayerFirstJoinHandler.init();
+
         // GT 的 MetaTileEntity 只能在 GT preInit 之后、postInit 之前注册，init 阶段正处窗口内
         ModMachines.init();
 
