@@ -5,8 +5,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraftforge.common.MinecraftForge;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 
@@ -16,7 +16,9 @@ public class PlayerFirstJoinHandler {
     private static final String GIVEN_TAG = "libertas.givenFirstJoinBedrock";
 
     public static void init() {
-        MinecraftForge.EVENT_BUS.register(new PlayerFirstJoinHandler());
+        FMLCommonHandler.instance()
+            .bus()
+            .register(new PlayerFirstJoinHandler());
     }
 
     @SubscribeEvent
@@ -37,5 +39,6 @@ public class PlayerFirstJoinHandler {
 
         persisted.setBoolean(GIVEN_TAG, true);
         forgeData.setTag(EntityPlayer.PERSISTED_NBT_TAG, persisted);
+        Libertas.LOG.info("Gave first-join bedrock to " + player.getCommandSenderName());
     }
 }
