@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
@@ -60,6 +61,8 @@ public final class JsonBakedModel {
             final Vector3f to = loadVec3(obj.getAsJsonArray("to")).div(16f);
 
             final Matrix4f rot = obj.has("rotation") ? parseRotation(obj.getAsJsonObject("rotation")) : null;
+            final boolean shade = !obj.has("shade") || obj.get("shade")
+                .getAsBoolean();
 
             final JsonObject faces = obj.has("faces") ? obj.getAsJsonObject("faces") : new JsonObject();
             for (String faceName : new String[] { "north", "south", "east", "west", "up", "down" }) {
@@ -71,7 +74,13 @@ public final class JsonBakedModel {
                 final Vector4f uv = face.has("uv") ? loadVec4(face.getAsJsonArray("uv"))
                     : defaultUV(faceName, from, to);
 
-                quads.add(new Quad(faceName, from, to, rot, uv, texPath));
+                final int uvRotation = face.has("rotation") ? face.get("rotation")
+                    .getAsInt() : 0;
+                final ForgeDirection cullFace = face.has("cullface") ? direction(
+                    face.get("cullface")
+                        .getAsString())
+                    : ForgeDirection.UNKNOWN;
+                quads.add(new Quad(faceName, from, to, rot, uv, uvRotation, texPath, shade, cullFace));
             }
         }
     }
@@ -85,7 +94,6 @@ public final class JsonBakedModel {
             .getAsBoolean();
 
         final Matrix4f m = new Matrix4f();
-        // translate to origin, rotate, translate back: T(o)·R·T(-o)
         m.translate(origin.x, origin.y, origin.z);
         switch (json.get("axis")
             .getAsString()) {
@@ -101,10 +109,8 @@ public final class JsonBakedModel {
             default:
                 break;
         }
-        m.translate(-origin.x, -origin.y, -origin.z);
         if (rescale) {
-            // rescale to prevent 45-degree squishing - approximate by scaling the non-axis axes
-            final float s = (float) Math.sqrt(2);
+            final float s = 1f / (float) Math.cos(angle);
             switch (json.get("axis")
                 .getAsString()) {
                 case "x":
@@ -120,7 +126,27 @@ public final class JsonBakedModel {
                     break;
             }
         }
+        m.translate(-origin.x, -origin.y, -origin.z);
         return m;
+    }
+
+    private static ForgeDirection direction(String face) {
+        switch (face) {
+            case "down":
+                return ForgeDirection.DOWN;
+            case "up":
+                return ForgeDirection.UP;
+            case "north":
+                return ForgeDirection.NORTH;
+            case "south":
+                return ForgeDirection.SOUTH;
+            case "west":
+                return ForgeDirection.WEST;
+            case "east":
+                return ForgeDirection.EAST;
+            default:
+                return ForgeDirection.UNKNOWN;
+        }
     }
 
     private static Vector3f loadVec3(JsonArray a) {
@@ -146,17 +172,19 @@ public final class JsonBakedModel {
     }
 
     private static Vector4f defaultUV(String face, Vector3f from, Vector3f to) {
-        // vanilla-style default uvs mapped to 0..16 pixel space
         switch (face) {
             case "up":
-            case "down":
                 return new Vector4f(from.x * 16, from.z * 16, to.x * 16, to.z * 16);
+            case "down":
+                return new Vector4f(from.x * 16, (1 - to.z) * 16, to.x * 16, (1 - from.z) * 16);
             case "north":
+                return new Vector4f((1 - to.x) * 16, (1 - to.y) * 16, (1 - from.x) * 16, (1 - from.y) * 16);
             case "south":
-                return new Vector4f(from.x * 16, from.y * 16, to.x * 16, to.y * 16);
+                return new Vector4f(from.x * 16, (1 - to.y) * 16, to.x * 16, (1 - from.y) * 16);
             case "east":
+                return new Vector4f((1 - to.z) * 16, (1 - to.y) * 16, (1 - from.z) * 16, (1 - from.y) * 16);
             case "west":
-                return new Vector4f(from.z * 16, from.y * 16, to.z * 16, to.y * 16);
+                return new Vector4f(from.z * 16, (1 - to.y) * 16, to.z * 16, (1 - from.y) * 16);
             default:
                 return new Vector4f(0, 0, 16, 16);
         }
@@ -184,12 +212,30 @@ public final class JsonBakedModel {
         public final float[] u = new float[4];
         public final float[] v = new float[4];
         public final String texture;
+        public final Vector3f normal = new Vector3f();
+        public final boolean shade;
+        public final ForgeDirection cullFace;
+        public final int lightX;
+        public final int lightY;
+        public final int lightZ;
 
-        Quad(String face, Vector3f from, Vector3f to, Matrix4f rot, Vector4f uv, String texture) {
+        Quad(String face, Vector3f from, Vector3f to, Matrix4f rot, Vector4f uv, int uvRotation, String texture,
+            boolean shade, ForgeDirection cullFace) {
             this.face = face;
             this.texture = texture;
+            this.shade = shade;
+            this.cullFace = cullFace;
             buildVertices(face, from, to, rot);
-            buildUVs(face, uv);
+            buildUVs(uv, uvRotation);
+            lightX = (int) Math.floor((x[0] + x[1] + x[2] + x[3]) * 0.25f + normal.x * 0.0001f);
+            lightY = (int) Math.floor((y[0] + y[1] + y[2] + y[3]) * 0.25f + normal.y * 0.0001f);
+            lightZ = (int) Math.floor((z[0] + z[1] + z[2] + z[3]) * 0.25f + normal.z * 0.0001f);
+        }
+
+        public float getDiffuseLight() {
+            if (!shade) return 1f;
+            return 0.6f * normal.x * normal.x + (normal.y > 0 ? 1f : 0.5f) * normal.y * normal.y
+                + 0.8f * normal.z * normal.z;
         }
 
         /// Builds CCW vertices for the given face (correct outward winding in vanilla's coordinate system).
@@ -231,49 +277,18 @@ public final class JsonBakedModel {
                 y[i] = verts[i].y;
                 z[i] = verts[i].z;
             }
+            final ForgeDirection faceDirection = direction(face);
+            normal.set(faceDirection.offsetX, faceDirection.offsetY, faceDirection.offsetZ);
+            if (rot != null) normal.mulDirection(rot)
+                .normalize();
         }
 
         /// Assigns UVs in the same winding order as the vertices (normalized 0..1 against a 16-pixel convention).
-        private void buildUVs(String face, Vector4f uv) {
-            switch (face) {
-                case "up":
-                    u[0] = uv.x;
-                    v[0] = uv.y;
-                    u[1] = uv.x;
-                    v[1] = uv.w;
-                    u[2] = uv.z;
-                    v[2] = uv.w;
-                    u[3] = uv.z;
-                    v[3] = uv.y;
-                    break;
-                case "down":
-                    u[0] = uv.x;
-                    v[0] = uv.w;
-                    u[1] = uv.x;
-                    v[1] = uv.y;
-                    u[2] = uv.z;
-                    v[2] = uv.y;
-                    u[3] = uv.z;
-                    v[3] = uv.w;
-                    break;
-                case "north":
-                case "south":
-                case "east":
-                case "west":
-                default:
-                    u[0] = uv.x;
-                    v[0] = uv.y;
-                    u[1] = uv.x;
-                    v[1] = uv.w;
-                    u[2] = uv.z;
-                    v[2] = uv.w;
-                    u[3] = uv.z;
-                    v[3] = uv.y;
-                    break;
-            }
+        private void buildUVs(Vector4f uv, int rotation) {
             for (int i = 0; i < 4; i++) {
-                u[i] /= 16f;
-                v[i] /= 16f;
+                final int uvIndex = (i + rotation / 90) % 4;
+                u[i] = (uvIndex < 2 ? uv.x : uv.z) / 16f;
+                v[i] = (uvIndex == 0 || uvIndex == 3 ? uv.y : uv.w) / 16f;
             }
         }
     }

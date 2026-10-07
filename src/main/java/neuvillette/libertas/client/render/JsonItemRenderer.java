@@ -47,11 +47,17 @@ public class JsonItemRenderer implements IItemRenderer {
 
     private final float modelScale;
     private final float modelSpinDeg;
+    private final boolean shaded;
 
     public JsonItemRenderer(String domain, String modelPath, float modelScale, float modelSpinDeg) {
+        this(domain, modelPath, modelScale, modelSpinDeg, false);
+    }
+
+    public JsonItemRenderer(String domain, String modelPath, float modelScale, float modelSpinDeg, boolean shaded) {
         this.modelLoc = new ResourceLocation(domain, "models/" + modelPath + ".json");
         this.modelScale = modelScale;
         this.modelSpinDeg = modelSpinDeg;
+        this.shaded = shaded;
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -101,11 +107,7 @@ public class JsonItemRenderer implements IItemRenderer {
             applyItemTransform(type);
             applyModelTweak();
 
-            // The texture is authored emissive in Blockbench (full-bright, flat preview), so faces render unshaded
-            // to match. Lighting is disabled; the per-vertex color is still written explicitly so a glColor4f left
-            // over by callers cannot tint the model. Alpha test (instead of blending) keeps any cutout pixels from
-            // writing depth and occluding quads behind them.
-            GL11.glDisable(GL11.GL_LIGHTING);
+            GL11.glEnable(GL11.GL_NORMALIZE);
             GL11.glEnable(GL11.GL_ALPHA_TEST);
             GL11.glAlphaFunc(GL11.GL_GREATER, 0.1f);
             GL11.glDisable(GL11.GL_BLEND);
@@ -115,14 +117,23 @@ public class JsonItemRenderer implements IItemRenderer {
             // be flushed whenever the texture changes.
             final Tessellator t = Tessellator.instance;
             String boundTexture = null;
+            boolean lighting = false;
             for (JsonBakedModel.Quad q : quads) {
-                if (!q.texture.equals(boundTexture)) {
+                final boolean quadLighting = shaded && q.shade;
+                if (!q.texture.equals(boundTexture) || lighting != quadLighting) {
                     if (boundTexture != null) t.draw();
                     bindTexture(q.texture);
                     boundTexture = q.texture;
+                    lighting = quadLighting;
+                    if (lighting) {
+                        GL11.glEnable(GL11.GL_LIGHTING);
+                    } else {
+                        GL11.glDisable(GL11.GL_LIGHTING);
+                    }
                     t.startDrawingQuads();
                 }
                 t.setColorOpaque_F(1f, 1f, 1f);
+                t.setNormal(q.normal.x, q.normal.y, q.normal.z);
                 for (int i = 0; i < 4; i++) {
                     t.addVertexWithUV(q.x[i], q.y[i], q.z[i], q.u[i], q.v[i]);
                 }

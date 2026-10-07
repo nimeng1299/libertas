@@ -82,7 +82,7 @@ public class ClientProxy extends CommonProxy {
         MECHANICAL_MANA_POOL_RENDER_ID = mechanicalManaPoolRenderer.getRenderId();
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemMechanicalManaPool,
-            new JsonItemRenderer(Libertas.MODID, "block/mechanicalManaPool", 1.0f, 0.0f));
+            new JsonItemRenderer(Libertas.MODID, "block/mechanicalManaPool", 1.0f, 0.0f, true));
 
         // 机械符文祭坛: 同机械魔力池的渲染管线
         final JsonBlockRenderer mechanicalRunicAltarRenderer = new JsonBlockRenderer(
@@ -93,7 +93,7 @@ public class ClientProxy extends CommonProxy {
         MECHANICAL_RUNIC_ALTAR_RENDER_ID = mechanicalRunicAltarRenderer.getRenderId();
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemMechanicalRunicAltar,
-            new JsonItemRenderer(Libertas.MODID, "block/mechanicalRunicAltar", 1.0f, 0.0f));
+            new JsonItemRenderer(Libertas.MODID, "block/mechanicalRunicAltar", 1.0f, 0.0f, true));
 
         // 微型精灵门: 同机械魔力池的渲染管线
         final JsonBlockRenderer miniElfPortalRenderer = new JsonBlockRenderer(Libertas.MODID, "block/miniElfPortal");
@@ -101,7 +101,7 @@ public class ClientProxy extends CommonProxy {
         MINI_ELF_PORTAL_RENDER_ID = miniElfPortalRenderer.getRenderId();
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemMiniElfPortal,
-            new JsonItemRenderer(Libertas.MODID, "block/miniElfPortal", 1.0f, 0.0f));
+            new JsonItemRenderer(Libertas.MODID, "block/miniElfPortal", 1.0f, 0.0f, true));
 
         // 工业凝聚板: 同机械魔力池的渲染管线
         final JsonBlockRenderer industrialAgglomerationPlateRenderer = new JsonBlockRenderer(
@@ -113,7 +113,7 @@ public class ClientProxy extends CommonProxy {
         INDUSTRIAL_AGGLOMERATION_PLATE_RENDER_ID = industrialAgglomerationPlateRenderer.getRenderId();
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemIndustrialAgglomerationPlate,
-            new JsonItemRenderer(Libertas.MODID, "block/industrialAgglomerationPlate", 1.0f, 0.0f));
+            new JsonItemRenderer(Libertas.MODID, "block/industrialAgglomerationPlate", 1.0f, 0.0f, true));
 
         // 机械花药台: 同机械魔力池的渲染管线
         final JsonBlockRenderer mechanicalApothecaryRenderer = new JsonBlockRenderer(
@@ -124,7 +124,7 @@ public class ClientProxy extends CommonProxy {
         MECHANICAL_APOTHECARY_RENDER_ID = mechanicalApothecaryRenderer.getRenderId();
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemMechanicalApothecary,
-            new JsonItemRenderer(Libertas.MODID, "block/mechanicalApothecary", 1.0f, 0.0f));
+            new JsonItemRenderer(Libertas.MODID, "block/mechanicalApothecary", 1.0f, 0.0f, true));
 
         // 机械白雏菊: 同机械魔力池的渲染管线
         final JsonBlockRenderer mechanicalDaisyRenderer = new JsonBlockRenderer(
@@ -134,7 +134,7 @@ public class ClientProxy extends CommonProxy {
         MECHANICAL_DAISY_RENDER_ID = mechanicalDaisyRenderer.getRenderId();
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemMechanicalDaisy,
-            new JsonItemRenderer(Libertas.MODID, "block/mechanicalDaisy", 1.0f, 0.0f));
+            new JsonItemRenderer(Libertas.MODID, "block/mechanicalDaisy", 1.0f, 0.0f, true));
 
         // 机械植物酿造台: 同机械魔力池的渲染管线
         final JsonBlockRenderer mechanicalBreweryRenderer = new JsonBlockRenderer(
@@ -144,6 +144,6 @@ public class ClientProxy extends CommonProxy {
         MECHANICAL_BREWERY_RENDER_ID = mechanicalBreweryRenderer.getRenderId();
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemMechanicalBrewery,
-            new JsonItemRenderer(Libertas.MODID, "block/mechanicalBrewery", 1.0f, 0.0f));
+            new JsonItemRenderer(Libertas.MODID, "block/mechanicalBrewery", 1.0f, 0.0f, true));
     }
 }
