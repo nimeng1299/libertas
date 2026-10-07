@@ -61,4 +61,6 @@ dependencies {
     implementation rfg.deobf("curse.maven:witchery-69673:2234410")
 
     implementation("com.github.GTNewHorizons:Botania:1.13.37-GTNH:dev")
+
+    compileOnlyApi("com.github.GTNewHorizons:BloodMagic:1.9.14:dev")
 }
