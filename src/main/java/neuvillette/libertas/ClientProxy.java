@@ -34,6 +34,8 @@ public class ClientProxy extends CommonProxy {
     public static int MECHANICAL_BREWERY_RENDER_ID = -1;
     /// 赤泉 (crimsonSpring) 的 ISBRH render id, 同上
     public static int CRIMSON_SPRING_RENDER_ID = -1;
+    /// 猩红祭仪 (sanguineRite) 的 ISBRH render id, 同上 (模型按朝向 meta 旋转)
+    public static int SANGUINE_RITE_RENDER_ID = -1;
 
     @Override
     public void init(FMLInitializationEvent event) {
@@ -155,5 +157,16 @@ public class ClientProxy extends CommonProxy {
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemCrimsonSpring,
             new JsonItemRenderer(Libertas.MODID, "block/crimsonSpring", 1.0f, 0.0f));
+
+        // 猩红祭仪: 同机械机器的渲染管线, 但世界渲染按朝向 meta 旋转模型 (正面朝北绘制)
+        final JsonBlockRenderer sanguineRiteRenderer = new JsonBlockRenderer(
+            Libertas.MODID,
+            "block/sanguineRite",
+            true);
+        RenderingRegistry.registerBlockHandler(sanguineRiteRenderer.getRenderId(), sanguineRiteRenderer);
+        SANGUINE_RITE_RENDER_ID = sanguineRiteRenderer.getRenderId();
+        MinecraftForgeClient.registerItemRenderer(
+            ModBlocks.itemSanguineRite,
+            new JsonItemRenderer(Libertas.MODID, "block/sanguineRite", 1.0f, 0.0f, true));
     }
 }

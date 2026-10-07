@@ -1,0 +1,356 @@
+{
+	"credit": "sanguineRite - authored in Blockbench (blockbench/sanguineRite.bbmodel), exported by tools/gen_sanguine_rite_model.py",
+	"textures": {
+		"sanguineBase": "libertas:blocks/sanguineBase",
+		"sanguineCasing": "libertas:blocks/sanguineCasing",
+		"sanguineFront": "libertas:blocks/sanguineFront",
+		"sanguinePool": "libertas:blocks/sanguinePool"
+	},
+	"elements": [
+		{
+			"name": "plinth",
+			"from": [
+				0,
+				0,
+				0
+			],
+			"to": [
+				16,
+				3,
+				16
+			],
+			"faces": {
+				"north": {
+					"uv": [
+						0,
+						13,
+						16,
+						16
+					],
+					"texture": "#sanguineBase"
+				},
+				"east": {
+					"uv": [
+						0,
+						13,
+						16,
+						16
+					],
+					"texture": "#sanguineBase"
+				},
+				"south": {
+					"uv": [
+						0,
+						13,
+						16,
+						16
+					],
+					"texture": "#sanguineBase"
+				},
+				"west": {
+					"uv": [
+						0,
+						13,
+						16,
+						16
+					],
+					"texture": "#sanguineBase"
+				},
+				"up": {
+					"uv": [
+						0,
+						0,
+						16,
+						16
+					],
+					"texture": "#sanguineBase"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						16,
+						16
+					],
+					"texture": "#sanguineBase"
+				}
+			}
+		},
+		{
+			"name": "body",
+			"from": [
+				1,
+				3,
+				1
+			],
+			"to": [
+				15,
+				11,
+				15
+			],
+			"faces": {
+				"north": {
+					"uv": [
+						1,
+						5,
+						15,
+						13
+					],
+					"texture": "#sanguineCasing"
+				},
+				"east": {
+					"uv": [
+						1,
+						5,
+						15,
+						13
+					],
+					"texture": "#sanguineCasing"
+				},
+				"south": {
+					"uv": [
+						1,
+						5,
+						15,
+						13
+					],
+					"texture": "#sanguineCasing"
+				},
+				"west": {
+					"uv": [
+						1,
+						5,
+						15,
+						13
+					],
+					"texture": "#sanguineCasing"
+				},
+				"up": {
+					"uv": [
+						1,
+						1,
+						15,
+						15
+					],
+					"texture": "#sanguineCasing"
+				},
+				"down": {
+					"uv": [
+						1,
+						1,
+						15,
+						15
+					],
+					"texture": "#sanguineCasing"
+				}
+			}
+		},
+		{
+			"name": "cap",
+			"from": [
+				0,
+				11,
+				0
+			],
+			"to": [
+				16,
+				12,
+				16
+			],
+			"faces": {
+				"north": {
+					"uv": [
+						0,
+						4,
+						16,
+						5
+					],
+					"texture": "#sanguineCasing"
+				},
+				"east": {
+					"uv": [
+						0,
+						4,
+						16,
+						5
+					],
+					"texture": "#sanguineCasing"
+				},
+				"south": {
+					"uv": [
+						0,
+						4,
+						16,
+						5
+					],
+					"texture": "#sanguineCasing"
+				},
+				"west": {
+					"uv": [
+						0,
+						4,
+						16,
+						5
+					],
+					"texture": "#sanguineCasing"
+				},
+				"up": {
+					"uv": [
+						0,
+						0,
+						16,
+						16
+					],
+					"texture": "#sanguineCasing"
+				},
+				"down": {
+					"uv": [
+						0,
+						0,
+						16,
+						16
+					],
+					"texture": "#sanguineCasing"
+				}
+			}
+		},
+		{
+			"name": "pool",
+			"from": [
+				4,
+				12,
+				4
+			],
+			"to": [
+				12,
+				13,
+				12
+			],
+			"faces": {
+				"north": {
+					"uv": [
+						4,
+						3,
+						12,
+						4
+					],
+					"texture": "#sanguineCasing"
+				},
+				"east": {
+					"uv": [
+						4,
+						3,
+						12,
+						4
+					],
+					"texture": "#sanguineCasing"
+				},
+				"south": {
+					"uv": [
+						4,
+						3,
+						12,
+						4
+					],
+					"texture": "#sanguineCasing"
+				},
+				"west": {
+					"uv": [
+						4,
+						3,
+						12,
+						4
+					],
+					"texture": "#sanguineCasing"
+				},
+				"up": {
+					"uv": [
+						0,
+						0,
+						16,
+						16
+					],
+					"texture": "#sanguinePool"
+				},
+				"down": {
+					"uv": [
+						4,
+						4,
+						12,
+						12
+					],
+					"texture": "#sanguineCasing"
+				}
+			}
+		},
+		{
+			"name": "emblem",
+			"from": [
+				4,
+				3,
+				0
+			],
+			"to": [
+				12,
+				11,
+				1
+			],
+			"faces": {
+				"north": {
+					"uv": [
+						0,
+						0,
+						16,
+						16
+					],
+					"texture": "#sanguineFront"
+				},
+				"east": {
+					"uv": [
+						15,
+						5,
+						16,
+						13
+					],
+					"texture": "#sanguineCasing"
+				},
+				"south": {
+					"uv": [
+						4,
+						5,
+						12,
+						13
+					],
+					"texture": "#sanguineCasing"
+				},
+				"west": {
+					"uv": [
+						0,
+						5,
+						1,
+						13
+					],
+					"texture": "#sanguineCasing"
+				},
+				"up": {
+					"uv": [
+						4,
+						0,
+						12,
+						1
+					],
+					"texture": "#sanguineCasing"
+				},
+				"down": {
+					"uv": [
+						4,
+						15,
+						12,
+						16
+					],
+					"texture": "#sanguineCasing"
+				}
+			}
+		}
+	]
+}

@@ -152,3 +152,15 @@ libertas.gui.mechanicalBrewery.recipes=§7点击查看酿造配方 (NEI)
 libertas.gui.shared.input=输入
 libertas.gui.shared.output=输出
 libertas.gui.shared.manaPerCraft=§7每次配方消耗 §a%1$s §7魔力
+
+tile.sanguineRite.name=猩红祭仪
+container.libertas.sanguineRite=猩红祭仪
+tooltip.libertas.sanguineRite.usage=§7须将 §d血之祭坛 §7紧贴其正后方放置
+libertas.gui.sanguineRite.reset=重置
+libertas.gui.sanguineRite.reset.usage=§7忘记当前跟踪的配方 (§8祭坛内的物品请自行取回§7)
+libertas.gui.sanguineRite.noAltar=§c后方没有血之祭坛
+libertas.gui.sanguineRite.altar=§7血之祭坛  等级 §a%1$s
+libertas.gui.sanguineRite.idle=§7待机  §8把祭坛原料放进输入槽即可
+libertas.gui.sanguineRite.working=§a注入中… §a%1$s%%
+libertas.gui.sanguineRite.blocked=§e产物等待输出槽空出
+libertas.gui.sanguineRite.recipes=§7点击查看血之祭坛配方 (NEI)

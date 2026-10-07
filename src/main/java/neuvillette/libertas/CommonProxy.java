@@ -10,6 +10,7 @@ import neuvillette.libertas.botania.ModBotania;
 import neuvillette.libertas.gui.ModGuiHandler;
 import neuvillette.libertas.items.ModItems;
 import neuvillette.libertas.machines.ModMachines;
+import neuvillette.libertas.network.ModNetwork;
 
 public class CommonProxy {
 
@@ -19,6 +20,8 @@ public class CommonProxy {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
 
         NetworkRegistry.INSTANCE.registerGuiHandler(Libertas.instance, new ModGuiHandler());
+
+        ModNetwork.init();
 
         ModItems.init();
 

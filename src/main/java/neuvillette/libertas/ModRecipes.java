@@ -275,5 +275,17 @@ public final class ModRecipes {
         } else {
             Libertas.LOG.warn("BloodMagic sacrificial knife not found, crimson spring recipe skipped");
         }
+
+        // 猩红祭仪: 血魔法血之祭坛(AWWayofTime:Altar) + 拼图，无序合成
+        final Block bloodAltar = GameRegistry.findBlock("AWWayofTime", "Altar");
+        if (bloodAltar != null) {
+            GameRegistry.addRecipe(
+                new ShapelessOreRecipe(
+                    new ItemStack(ModBlocks.sanguineRite),
+                    new ItemStack(bloodAltar, 1, OreDictionary.WILDCARD_VALUE),
+                    new ItemStack(ModItems.jigsaw)));
+        } else {
+            Libertas.LOG.warn("BloodMagic altar block not found, sanguine rite recipe skipped");
+        }
     }
 }

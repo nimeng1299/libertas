@@ -23,7 +23,9 @@ import neuvillette.libertas.machines.ModMachines;
  * 把 Great Wizard Cauldron（大巫师炼药锅）控制器注册为巫师炼药锅配方页
  * （Witchery 自带的 NEICauldronRecipeHandler，id = witchery_brewing_plus）的处理机器，
  * 把 Advanced Mana Pool（机械魔力池）注册为 Botania 魔力池配方页
- * （Botania 自带的 RecipeHandlerManaPool，id = botania.manaPool）的处理机器：
+ * （Botania 自带的 RecipeHandlerManaPool，id = botania.manaPool）的处理机器，
+ * 把 Sanguine Rite（猩红祭仪）注册为血魔法血之祭坛配方页
+ * （BloodMagic 自带的 NEIAltarRecipeHandler，id = altarrecipes）的处理机器：
  * 页面上会与原版机器并列显示，对控制器按 U 可直达该页。
  */
 public class NEILibertasConfig implements IConfigureNEI {
@@ -54,6 +56,9 @@ public class NEILibertasConfig implements IConfigureNEI {
 
     /** Botania RecipeHandlerBrewery 的 overlay 标识（其源码内公开常量 RecipeHandlerBrewery.OVERLAY）。 */
     private static final String BOTANIA_BREWERY = "botania.brewery";
+
+    /** BloodMagic NEIAltarRecipeHandler 的 overlay 标识（其源码内硬编码，无公开常量）。 */
+    private static final String BLOOD_MAGIC_ALTAR = "altarrecipes";
 
     @Override
     public void loadConfig() {
@@ -89,6 +94,9 @@ public class NEILibertasConfig implements IConfigureNEI {
         }
         if (ModBlocks.mechanicalBrewery != null) {
             API.addRecipeCatalyst(new ItemStack(ModBlocks.mechanicalBrewery), BOTANIA_BREWERY);
+        }
+        if (ModBlocks.sanguineRite != null) {
+            API.addRecipeCatalyst(new ItemStack(ModBlocks.sanguineRite), BLOOD_MAGIC_ALTAR);
         }
     }
 
