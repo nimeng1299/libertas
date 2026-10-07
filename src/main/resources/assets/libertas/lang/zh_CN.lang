@@ -164,3 +164,13 @@ libertas.gui.sanguineRite.idle=§7待机  §8把祭坛原料放进输入槽即�
 libertas.gui.sanguineRite.working=§a注入中… §a%1$s%%
 libertas.gui.sanguineRite.blocked=§e产物等待输出槽空出
 libertas.gui.sanguineRite.recipes=§7点击查看血之祭坛配方 (NEI)
+
+gt.blockmachines.multimachine.minimining.name=迷你矿机
+
+libertas.mbtt.mini_mining.type=采矿机
+libertas.mbtt.mini_mining.info.1=每 3 秒随机挖掘产出 1 个矿石：铁矿石、铜矿石、锡矿石或煤矿石
+libertas.mbtt.mini_mining.info.2=无需电力、燃料与维护
+libertas.mbtt.mini_mining.info.3=产物进入输出总线
+libertas.mbtt.mini_mining.controller=主体石带正面正中
+libertas.mbtt.mini_mining.casing=圆石与圆石墙
+libertas.mbtt.mini_mining.structure.1=任意圆石/圆石墙位均可替换为输出总线

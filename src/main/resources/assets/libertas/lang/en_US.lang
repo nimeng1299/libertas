@@ -164,3 +164,13 @@ libertas.gui.sanguineRite.idle=§7Idle §8- put an altar ingredient in the input
 libertas.gui.sanguineRite.working=§aInfusing… §a%1$s%%
 libertas.gui.sanguineRite.blocked=§eResult waiting for the output slot
 libertas.gui.sanguineRite.recipes=§7Click to view blood altar recipes (NEI)
+
+gt.blockmachines.multimachine.minimining.name=Mini Mining Machine
+
+libertas.mbtt.mini_mining.type=Miner
+libertas.mbtt.mini_mining.info.1=Mines 1 random ore every 3 seconds: Iron, Copper, Tin or Coal
+libertas.mbtt.mini_mining.info.2=No power, fuel or maintenance required
+libertas.mbtt.mini_mining.info.3=Output goes to the Output Bus
+libertas.mbtt.mini_mining.controller=Front center of the stone band
+libertas.mbtt.mini_mining.casing=Cobblestone & Cobblestone Wall
+libertas.mbtt.mini_mining.structure.1=Any cobblestone/cobblestone wall position may be replaced by an Output Bus

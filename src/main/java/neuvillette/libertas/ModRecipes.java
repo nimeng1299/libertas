@@ -287,5 +287,12 @@ public final class ModRecipes {
         } else {
             Libertas.LOG.warn("BloodMagic altar block not found, sanguine rite recipe skipped");
         }
+
+        // 迷你矿机: 基岩 + 拼图，无序合成
+        GameRegistry.addRecipe(
+            new ShapelessOreRecipe(
+                ModMachines.miniMining.copy(),
+                new ItemStack(Blocks.bedrock),
+                new ItemStack(ModItems.jigsaw)));
     }
 }

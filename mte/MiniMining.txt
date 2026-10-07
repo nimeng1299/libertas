@@ -1,0 +1,43 @@
+
+
+Structure:
+
+Blocks:
+A-> addElement('A', ofBlock(Blocks.cobblestone_wall, 0)
+B-> addElement('B', ofBlock(Blocks.cobblestone, 0)
+
+Offsets:
+1, 4, 0
+
+Dimensions (Width, Height, Length)
+3, 7, 3
+
+Normal Scan:
+
+//spotless:off
+new String[][]{
+    {"   ",
+    "AAA",
+    "A A",
+    "A A",
+    "B~B",
+    "A A",
+    "A A"
+},{
+    " A ",
+    "AAA",
+    " A ",
+    "   ",
+    "BBB",
+    " A ",
+    "   "
+},{
+    "   ",
+    "AAA",
+    "A A",
+    "A A",
+    "BBB",
+    "A A",
+    "A A"
+}}
+//spotless:on

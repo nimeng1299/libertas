@@ -16,6 +16,7 @@ public final class ModMachines {
     public static ItemStack greatWizardOven;
     public static ItemStack wizardDistillationTower;
     public static ItemStack greatWizardCauldron;
+    public static ItemStack miniMining;
 
     private ModMachines() {}
 
@@ -30,6 +31,7 @@ public final class ModMachines {
             .getStackForm(1L);
         greatWizardCauldron = new MTEGreatWizardCauldron(19005, "multimachine.greatwizardcauldron", "大巫师炼药锅")
             .getStackForm(1L);
+        miniMining = new MTEMiniMining(19006, "multimachine.minimining", "迷你矿机").getStackForm(1L);
         ModGuiThemes.init();
         // 自定义配方检查失败原因（GUI 状态区显示），必须先注册才能被同步显示
         CheckRecipeResultRegistry.register(new ResultInsufficientEssentia());
