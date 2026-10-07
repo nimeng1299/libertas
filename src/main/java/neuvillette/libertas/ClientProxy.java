@@ -36,6 +36,8 @@ public class ClientProxy extends CommonProxy {
     public static int CRIMSON_SPRING_RENDER_ID = -1;
     /// 猩红祭仪 (sanguineRite) 的 ISBRH render id, 同上 (模型按朝向 meta 旋转)
     public static int SANGUINE_RITE_RENDER_ID = -1;
+    /// 神奇的刷怪笼 (magicSpawner) 的 ISBRH render id, 同上
+    public static int MAGIC_SPAWNER_RENDER_ID = -1;
 
     @Override
     public void init(FMLInitializationEvent event) {
@@ -172,5 +174,13 @@ public class ClientProxy extends CommonProxy {
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemSanguineRite,
             new JsonItemRenderer(Libertas.MODID, "block/sanguineRite", 1.0f, 0.0f, true));
+
+        // 神奇的刷怪笼: 同猩红祭仪的渲染管线 (无朝向 meta, 模型不旋转)
+        final JsonBlockRenderer magicSpawnerRenderer = new JsonBlockRenderer(Libertas.MODID, "block/magicSpawner");
+        RenderingRegistry.registerBlockHandler(magicSpawnerRenderer.getRenderId(), magicSpawnerRenderer);
+        MAGIC_SPAWNER_RENDER_ID = magicSpawnerRenderer.getRenderId();
+        MinecraftForgeClient.registerItemRenderer(
+            ModBlocks.itemMagicSpawner,
+            new JsonItemRenderer(Libertas.MODID, "block/magicSpawner", 1.0f, 0.0f, true));
     }
 }

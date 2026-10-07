@@ -32,6 +32,8 @@ public final class ModBlocks {
     public static Item itemCrimsonSpring;
     public static Block sanguineRite;
     public static Item itemSanguineRite;
+    public static Block magicSpawner;
+    public static Item itemMagicSpawner;
 
     private ModBlocks() {}
 
@@ -122,5 +124,12 @@ public final class ModBlocks {
         GameRegistry.registerTileEntity(TileSanguineRite.class, "libertas.sanguine_rite");
 
         itemSanguineRite.setCreativeTab(ModCreativeTabs.tabLibertas);
+
+        magicSpawner = new BlockMagicSpawner();
+        GameRegistry.registerBlock(magicSpawner, ItemBlockMagicSpawner.class, "magicSpawner");
+        itemMagicSpawner = Item.getItemFromBlock(magicSpawner);
+        GameRegistry.registerTileEntity(TileMagicSpawner.class, "libertas.magic_spawner");
+
+        itemMagicSpawner.setCreativeTab(ModCreativeTabs.tabLibertas);
     }
 }

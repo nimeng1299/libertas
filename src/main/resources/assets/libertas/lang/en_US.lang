@@ -173,6 +173,13 @@ libertas.gui.sanguineRite.idle=§7Idle §8- put an altar ingredient in the input
 libertas.gui.sanguineRite.working=§aInfusing… §a%1$s%%
 libertas.gui.sanguineRite.blocked=§eResult waiting for the output slot
 libertas.gui.sanguineRite.recipes=§7Click to view blood altar recipes (NEI)
+tile.magicSpawner.name=Magic Spawner
+container.libertas.magicSpawner=Magic Spawner
+tooltip.libertas.magicSpawner.effect=§7Insert a cotton swab: simulates a kill of the recorded entity every 10s, drops go to the output slots
+tooltip.libertas.magicSpawner.redstone=§7Pauses while powered by redstone
+tooltip.libertas.magicSpawner.lore=§oEach fading of the caged shadow turns into bounty.
+libertas.gui.magicSpawner.paused=§cRedstone signal: paused
+libertas.gui.magicSpawner.hint=Simulates a kill of the recorded entity every 10s
 
 gt.blockmachines.multimachine.minimining.name=Mini Mining Machine
 

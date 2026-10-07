@@ -105,6 +105,20 @@ public final class ModRecipes {
         GameRegistry.addRecipe(
             new ShapedOreRecipe(new ItemStack(ModItems.cottonSwab), " S", "T ", 'S', Items.string, 'T', "stickWood"));
 
+        // 神奇的刷怪笼: 上下两行圆石, 中间一行拼图居中、两侧红石粉
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
+                new ItemStack(ModBlocks.magicSpawner),
+                "CCC",
+                "RJR",
+                "CCC",
+                'C',
+                "cobblestone",
+                'R',
+                Items.redstone,
+                'J',
+                new ItemStack(ModItems.jigsaw)));
+
         // 高级坩埚 / 秘纹织契 / 要素熔炼舱: 各自的核心方块 + 拼图，无序合成
         // 坩埚 = TC blockMetalDevice:0，符文矩阵 = TC blockStoneDevice:2（与 MTERunewovenPact 的结构引用一致）
         GameRegistry.addRecipe(
