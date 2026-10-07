@@ -83,21 +83,13 @@ public class GuiIndustrialAgglomerationPlate extends GuiContainer {
 
         // 每次配方固定消耗 500000 魔力的提示
         fontRendererObj.drawString(
-            StatCollector.translateToLocal("libertas.gui.industrialAgglomerationPlate.mana"),
+            StatCollector.translateToLocalFormatted("libertas.gui.shared.manaPerCraft", "500,000"),
             8,
             29,
             0x404040);
 
-        fontRendererObj.drawString(
-            StatCollector.translateToLocal("libertas.gui.industrialAgglomerationPlate.input"),
-            8,
-            41,
-            0x404040);
-        fontRendererObj.drawString(
-            StatCollector.translateToLocal("libertas.gui.industrialAgglomerationPlate.output"),
-            96,
-            41,
-            0x404040);
+        fontRendererObj.drawString(StatCollector.translateToLocal("libertas.gui.shared.input"), 8, 41, 0x404040);
+        fontRendererObj.drawString(StatCollector.translateToLocal("libertas.gui.shared.output"), 96, 41, 0x404040);
 
         fontRendererObj.drawString(I18n.format("container.inventory"), 8, ySize - 94, 0x404040);
     }

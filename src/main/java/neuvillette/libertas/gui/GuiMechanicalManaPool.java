@@ -96,10 +96,8 @@ public class GuiMechanicalManaPool extends GuiContainer {
         final String upgrade = StatCollector.translateToLocal("libertas.gui.mechanicalManaPool.upgrade");
         fontRendererObj.drawString(upgrade, xSize - 8 - fontRendererObj.getStringWidth(upgrade), 29, 0x404040);
 
-        fontRendererObj
-            .drawString(StatCollector.translateToLocal("libertas.gui.mechanicalManaPool.input"), 8, 41, 0x404040);
-        fontRendererObj
-            .drawString(StatCollector.translateToLocal("libertas.gui.mechanicalManaPool.output"), 96, 41, 0x404040);
+        fontRendererObj.drawString(StatCollector.translateToLocal("libertas.gui.shared.input"), 8, 41, 0x404040);
+        fontRendererObj.drawString(StatCollector.translateToLocal("libertas.gui.shared.output"), 96, 41, 0x404040);
 
         fontRendererObj.drawString(I18n.format("container.inventory"), 8, ySize - 94, 0x404040);
     }

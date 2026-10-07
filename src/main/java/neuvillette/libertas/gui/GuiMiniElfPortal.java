@@ -85,11 +85,14 @@ public class GuiMiniElfPortal extends GuiContainer {
         GL11.glPopMatrix();
 
         // 升级槽行位置: 每次配方固定消耗 500 魔力的提示
-        fontRendererObj.drawString(StatCollector.translateToLocal("libertas.gui.miniElfPortal.mana"), 8, 29, 0x404040);
+        fontRendererObj.drawString(
+            StatCollector.translateToLocalFormatted("libertas.gui.shared.manaPerCraft", "500"),
+            8,
+            29,
+            0x404040);
 
-        fontRendererObj.drawString(StatCollector.translateToLocal("libertas.gui.miniElfPortal.input"), 8, 41, 0x404040);
-        fontRendererObj
-            .drawString(StatCollector.translateToLocal("libertas.gui.miniElfPortal.output"), 96, 41, 0x404040);
+        fontRendererObj.drawString(StatCollector.translateToLocal("libertas.gui.shared.input"), 8, 41, 0x404040);
+        fontRendererObj.drawString(StatCollector.translateToLocal("libertas.gui.shared.output"), 96, 41, 0x404040);
 
         fontRendererObj.drawString(I18n.format("container.inventory"), 8, ySize - 94, 0x404040);
     }

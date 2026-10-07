@@ -110,8 +110,6 @@ libertas.mbtt.great_wizard_cauldron.structure.3=任意奥术石块位均可替�
 
 tile.mechanicalManaPool.name=机械魔力池
 container.libertas.mechanicalManaPool=机械魔力池
-libertas.gui.mechanicalManaPool.input=输入
-libertas.gui.mechanicalManaPool.output=输出
 libertas.gui.mechanicalManaPool.upgrade=升级槽
 libertas.gui.mechanicalManaPool.mode.normal=配方：普通魔力池
 libertas.gui.mechanicalManaPool.mode.alchemy=配方：炼金 + 普通
@@ -123,42 +121,30 @@ tile.mechanicalRunicAltar.name=机械符文祭坛
 container.libertas.mechanicalRunicAltar=机械符文祭坛
 libertas.gui.mechanicalRunicAltar.livingrock=活石
 libertas.gui.mechanicalRunicAltar.livingrock.usage=§7每次运行配方消耗 §a1 §7个活石
-libertas.gui.mechanicalRunicAltar.input=配料
-libertas.gui.mechanicalRunicAltar.output=输出
 libertas.gui.mechanicalRunicAltar.recipes=§7点击查看符文祭坛配方 (NEI)
 
 tile.miniElfPortal.name=微型精灵门
 container.libertas.miniElfPortal=微型精灵门
-libertas.gui.miniElfPortal.input=输入
-libertas.gui.miniElfPortal.output=输出
-libertas.gui.miniElfPortal.mana=§7每次配方消耗 §a500 §7魔力
 libertas.gui.miniElfPortal.recipes=§7点击查看精灵门交易配方 (NEI)
 
 tile.industrialAgglomerationPlate.name=工业凝聚板
 container.libertas.industrialAgglomerationPlate=工业凝聚板
-libertas.gui.industrialAgglomerationPlate.mana=§7每次配方消耗 §a500,000 §7魔力
-libertas.gui.industrialAgglomerationPlate.input=输入
-libertas.gui.industrialAgglomerationPlate.output=输出
 
 tile.mechanicalApothecary.name=机械花药台
 container.libertas.mechanicalApothecary=机械花药台
 libertas.gui.mechanicalApothecary.seed=种子
-libertas.gui.mechanicalApothecary.seed.usage=§7每次配方消耗 §a1 小麦种子 + 500 魔力 §7
-libertas.gui.mechanicalApothecary.input=配料
-libertas.gui.mechanicalApothecary.output=输出
+libertas.gui.mechanicalApothecary.seed.usage=§7每次配方消耗 §a500 魔力 §7
 libertas.gui.mechanicalApothecary.recipes=§7点击查看花药台配方 (NEI)
 
 tile.mechanicalDaisy.name=机械白雏菊
 container.libertas.mechanicalDaisy=机械白雏菊
-libertas.gui.mechanicalDaisy.mana=§7每次配方消耗 §a100 §7魔力
-libertas.gui.mechanicalDaisy.input=输入
-libertas.gui.mechanicalDaisy.output=输出
 libertas.gui.mechanicalDaisy.recipes=§7点击查看白雏菊配方 (NEI)
 
 tile.mechanicalBrewery.name=机械植物酿造台
 container.libertas.mechanicalBrewery=机械植物酿造台
 libertas.gui.mechanicalBrewery.bottle=瓶子
-libertas.gui.mechanicalBrewery.bottle.usage=§7每次配方消耗 §a1 §7个酿造容器；魔力消耗随瓶子而定 (玻璃瓶/保存瓶)
-libertas.gui.mechanicalBrewery.input=配料
-libertas.gui.mechanicalBrewery.output=输出
+libertas.gui.mechanicalBrewery.bottle.usage=§7每次配方消耗 §a1 §7个酿造容器
 libertas.gui.mechanicalBrewery.recipes=§7点击查看酿造配方 (NEI)
+libertas.gui.shared.input=输入
+libertas.gui.shared.output=输出
+libertas.gui.shared.manaPerCraft=§7每次配方消耗 §a%1$s §7魔力

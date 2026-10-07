@@ -110,8 +110,6 @@ libertas.mbtt.great_wizard_cauldron.structure.3=any Arcane Stone Block position 
 
 tile.mechanicalManaPool.name=Mechanical Mana Pool
 container.libertas.mechanicalManaPool=Mechanical Mana Pool
-libertas.gui.mechanicalManaPool.input=Input
-libertas.gui.mechanicalManaPool.output=Output
 libertas.gui.mechanicalManaPool.upgrade=Upgrade
 libertas.gui.mechanicalManaPool.mode.normal=Recipes: Normal Pool
 libertas.gui.mechanicalManaPool.mode.alchemy=Recipes: Alchemy + Normal
@@ -123,42 +121,30 @@ tile.mechanicalRunicAltar.name=Mechanical Runic Altar
 container.libertas.mechanicalRunicAltar=Mechanical Runic Altar
 libertas.gui.mechanicalRunicAltar.livingrock=Livingrock
 libertas.gui.mechanicalRunicAltar.livingrock.usage=§7Consumes §a1 §7Livingrock per recipe run
-libertas.gui.mechanicalRunicAltar.input=Ingredients
-libertas.gui.mechanicalRunicAltar.output=Output
 libertas.gui.mechanicalRunicAltar.recipes=§7Click to view runic altar recipes (NEI)
 
 tile.miniElfPortal.name=Miniature Elven Portal
 container.libertas.miniElfPortal=Miniature Elven Portal
-libertas.gui.miniElfPortal.input=Input
-libertas.gui.miniElfPortal.output=Output
-libertas.gui.miniElfPortal.mana=§7Consumes §a500 §7mana per recipe
 libertas.gui.miniElfPortal.recipes=§7Click to view elven trade recipes (NEI)
 
 tile.industrialAgglomerationPlate.name=Industrial Agglomeration Plate
 container.libertas.industrialAgglomerationPlate=Industrial Agglomeration Plate
-libertas.gui.industrialAgglomerationPlate.mana=§7Consumes §a500,000 §7mana per recipe
-libertas.gui.industrialAgglomerationPlate.input=Input
-libertas.gui.industrialAgglomerationPlate.output=Output
 
 tile.mechanicalApothecary.name=Mechanical Apothecary
 container.libertas.mechanicalApothecary=Mechanical Apothecary
 libertas.gui.mechanicalApothecary.seed=Seeds
-libertas.gui.mechanicalApothecary.seed.usage=§7Consumes §a1 wheat seed + 500 mana §7per recipe
-libertas.gui.mechanicalApothecary.input=Ingredients
-libertas.gui.mechanicalApothecary.output=Output
+libertas.gui.mechanicalApothecary.seed.usage=§7Consumes §a500 mana §7per recipe
 libertas.gui.mechanicalApothecary.recipes=§7Click to view petal apothecary recipes (NEI)
 
 tile.mechanicalDaisy.name=Mechanical Pure Daisy
 container.libertas.mechanicalDaisy=Mechanical Pure Daisy
-libertas.gui.mechanicalDaisy.mana=§7Consumes §a100 §7mana per recipe
-libertas.gui.mechanicalDaisy.input=Input
-libertas.gui.mechanicalDaisy.output=Output
 libertas.gui.mechanicalDaisy.recipes=§7Click to view pure daisy recipes (NEI)
 
 tile.mechanicalBrewery.name=Mechanical Botanical Brewery
 container.libertas.mechanicalBrewery=Mechanical Botanical Brewery
 libertas.gui.mechanicalBrewery.bottle=Bottle
-libertas.gui.mechanicalBrewery.bottle.usage=§7Consumes §a1 §7brew container per recipe; mana cost depends on the container (vial/flask)
-libertas.gui.mechanicalBrewery.input=Ingredients
-libertas.gui.mechanicalBrewery.output=Output
+libertas.gui.mechanicalBrewery.bottle.usage=§7Consumes §a1 §7brew container per recipe
 libertas.gui.mechanicalBrewery.recipes=§7Click to view brewery recipes (NEI)
+libertas.gui.shared.input=Input
+libertas.gui.shared.output=Output
+libertas.gui.shared.manaPerCraft=§7Consumes §a%1$s §7mana per recipe

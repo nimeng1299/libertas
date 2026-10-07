@@ -92,10 +92,8 @@ public class GuiMechanicalBrewery extends GuiContainer {
         final String usage = StatCollector.translateToLocal("libertas.gui.mechanicalBrewery.bottle.usage");
         fontRendererObj.drawString(usage, xSize - 8 - fontRendererObj.getStringWidth(usage), 29, 0x404040);
 
-        fontRendererObj
-            .drawString(StatCollector.translateToLocal("libertas.gui.mechanicalBrewery.input"), 8, 41, 0x404040);
-        fontRendererObj
-            .drawString(StatCollector.translateToLocal("libertas.gui.mechanicalBrewery.output"), 96, 41, 0x404040);
+        fontRendererObj.drawString(StatCollector.translateToLocal("libertas.gui.shared.input"), 8, 41, 0x404040);
+        fontRendererObj.drawString(StatCollector.translateToLocal("libertas.gui.shared.output"), 96, 41, 0x404040);
 
         fontRendererObj.drawString(I18n.format("container.inventory"), 8, ySize - 94, 0x404040);
     }
