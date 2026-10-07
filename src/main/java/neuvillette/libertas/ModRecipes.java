@@ -238,5 +238,17 @@ public final class ModRecipes {
         } else {
             Libertas.LOG.warn("Botania altar block not found, mechanical apothecary recipe skipped");
         }
+
+        // 机械白雏菊: Botania 白雏菊(pure daisy 特花) + 拼图，无序合成。
+        // 特花种类由 NBT 的 type 区分，Forge 原版无序配方不比对 NBT，须用带标签匹配的配方锁定白雏菊
+        if (ModBotania.hasSpecialFlowerBlock()) {
+            GameRegistry.addRecipe(
+                new ShapelessNBTRecipe(
+                    new ItemStack(ModBlocks.mechanicalDaisy),
+                    ModBotania.subtileStack("puredaisy"),
+                    new ItemStack(ModItems.jigsaw)));
+        } else {
+            Libertas.LOG.warn("Botania not found, mechanical daisy recipe skipped");
+        }
     }
 }

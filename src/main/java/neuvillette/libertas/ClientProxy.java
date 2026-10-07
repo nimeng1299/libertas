@@ -28,6 +28,8 @@ public class ClientProxy extends CommonProxy {
     public static int INDUSTRIAL_AGGLOMERATION_PLATE_RENDER_ID = -1;
     /// 机械花药台 (mechanicalApothecary) 的 ISBRH render id, 同上
     public static int MECHANICAL_APOTHECARY_RENDER_ID = -1;
+    /// 机械白雏菊 (mechanicalDaisy) 的 ISBRH render id, 同上
+    public static int MECHANICAL_DAISY_RENDER_ID = -1;
 
     @Override
     public void init(FMLInitializationEvent event) {
@@ -121,5 +123,15 @@ public class ClientProxy extends CommonProxy {
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemMechanicalApothecary,
             new JsonItemRenderer(Libertas.MODID, "block/mechanicalApothecary", 1.0f, 0.0f));
+
+        // 机械白雏菊: 同机械魔力池的渲染管线
+        final JsonBlockRenderer mechanicalDaisyRenderer = new JsonBlockRenderer(
+            Libertas.MODID,
+            "block/mechanicalDaisy");
+        RenderingRegistry.registerBlockHandler(mechanicalDaisyRenderer.getRenderId(), mechanicalDaisyRenderer);
+        MECHANICAL_DAISY_RENDER_ID = mechanicalDaisyRenderer.getRenderId();
+        MinecraftForgeClient.registerItemRenderer(
+            ModBlocks.itemMechanicalDaisy,
+            new JsonItemRenderer(Libertas.MODID, "block/mechanicalDaisy", 1.0f, 0.0f));
     }
 }

@@ -24,6 +24,8 @@ public final class ModBlocks {
     public static Item itemIndustrialAgglomerationPlate;
     public static Block mechanicalApothecary;
     public static Item itemMechanicalApothecary;
+    public static Block mechanicalDaisy;
+    public static Item itemMechanicalDaisy;
 
     private ModBlocks() {}
 
@@ -86,5 +88,12 @@ public final class ModBlocks {
         GameRegistry.registerTileEntity(TileMechanicalApothecary.class, "libertas.mechanical_apothecary");
 
         itemMechanicalApothecary.setCreativeTab(ModCreativeTabs.tabLibertas);
+
+        mechanicalDaisy = new BlockMechanicalDaisy();
+        GameRegistry.registerBlock(mechanicalDaisy, ItemBlockMechanicalDaisy.class, "mechanicalDaisy");
+        itemMechanicalDaisy = Item.getItemFromBlock(mechanicalDaisy);
+        GameRegistry.registerTileEntity(TileMechanicalDaisy.class, "libertas.mechanical_daisy");
+
+        itemMechanicalDaisy.setCreativeTab(ModCreativeTabs.tabLibertas);
     }
 }

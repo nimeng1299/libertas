@@ -143,7 +143,14 @@ libertas.gui.industrialAgglomerationPlate.output=Output
 tile.mechanicalApothecary.name=Mechanical Apothecary
 container.libertas.mechanicalApothecary=Mechanical Apothecary
 libertas.gui.mechanicalApothecary.seed=Seeds
-libertas.gui.mechanicalApothecary.seed.usage=§7Consumes §a1 wheat seed + 500 mana §7per recipe (no water needed)
+libertas.gui.mechanicalApothecary.seed.usage=§7Consumes §a1 wheat seed + 500 mana §7per recipe
 libertas.gui.mechanicalApothecary.input=Ingredients
 libertas.gui.mechanicalApothecary.output=Output
 libertas.gui.mechanicalApothecary.recipes=§7Click to view petal apothecary recipes (NEI)
+
+tile.mechanicalDaisy.name=Mechanical Pure Daisy
+container.libertas.mechanicalDaisy=Mechanical Pure Daisy
+libertas.gui.mechanicalDaisy.mana=§7Consumes §a100 §7mana per recipe
+libertas.gui.mechanicalDaisy.input=Input
+libertas.gui.mechanicalDaisy.output=Output
+libertas.gui.mechanicalDaisy.recipes=§7Click to view pure daisy recipes (NEI)

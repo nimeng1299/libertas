@@ -143,7 +143,14 @@ libertas.gui.industrialAgglomerationPlate.output=输出
 tile.mechanicalApothecary.name=机械花药台
 container.libertas.mechanicalApothecary=机械花药台
 libertas.gui.mechanicalApothecary.seed=种子
-libertas.gui.mechanicalApothecary.seed.usage=§7每次配方消耗 §a1 小麦种子 + 500 魔力 §7(无需水)
+libertas.gui.mechanicalApothecary.seed.usage=§7每次配方消耗 §a1 小麦种子 + 500 魔力 §7
 libertas.gui.mechanicalApothecary.input=配料
 libertas.gui.mechanicalApothecary.output=输出
 libertas.gui.mechanicalApothecary.recipes=§7点击查看花药台配方 (NEI)
+
+tile.mechanicalDaisy.name=机械白雏菊
+container.libertas.mechanicalDaisy=机械白雏菊
+libertas.gui.mechanicalDaisy.mana=§7每次配方消耗 §a100 §7魔力
+libertas.gui.mechanicalDaisy.input=输入
+libertas.gui.mechanicalDaisy.output=输出
+libertas.gui.mechanicalDaisy.recipes=§7点击查看白雏菊配方 (NEI)
