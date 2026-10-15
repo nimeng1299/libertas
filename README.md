@@ -1,5 +1,11 @@
 # Libertas
 
+## 每日自动构建
+
+GitHub Actions 每天北京时间 **00:17** 检查默认分支前一天（00:00–24:00）的提交。有更新时，使用当天最后一个提交运行 `setupCIWorkspace build`，检查通过后将 `build/libs/` 下的 JAR 发布为 `daily-YYYY-MM-DD` 预发布版本；没有更新或当天已发布时跳过。
+
+将工作流推送到仓库默认分支后生效，也可在 **Actions → Daily release → Run workflow** 手动检查前一天。发布使用 GitHub 自动提供的 `GITHUB_TOKEN`，无需额外配置密钥。失败后可重新运行；未完成的发布草稿会继续上传附件后再公开。
+
 ## 通用工具与合成材料
 
 | 名称 | 用途 | 使用方式与限制 |

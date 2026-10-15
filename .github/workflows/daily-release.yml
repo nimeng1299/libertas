@@ -1,0 +1,139 @@
+name: Daily release
+
+on:
+  schedule:
+    # 00:17 Asia/Shanghai, checking the previous calendar day.
+    - cron: '17 16 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-release
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      should_release: ${{ steps.check.outputs.should_release }}
+      date: ${{ steps.check.outputs.date }}
+      commit: ${{ steps.check.outputs.commit }}
+      tag: ${{ steps.check.outputs.tag }}
+    steps:
+      - name: Checkout default branch
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Check yesterday's commits and release
+        id: check
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const { execFileSync } = require('node:child_process');
+            const today = new Date(Date.now() + 8 * 60 * 60 * 1000);
+            today.setUTCHours(0, 0, 0, 0);
+            const until = today.getTime() / 1000 - 8 * 60 * 60;
+            const since = until - 24 * 60 * 60;
+            const date = new Date(today.getTime() - 24 * 60 * 60 * 1000)
+              .toISOString().slice(0, 10);
+            const tag = `daily-${date}`;
+
+            core.setOutput('should_release', 'false');
+            core.setOutput('date', date);
+            core.setOutput('tag', tag);
+
+            // First-parent history tracks changes that reached the default branch.
+            // Exclude today's commits so the tag and JAR describe the same snapshot.
+            const history = execFileSync('git', [
+              'log', '--first-parent', '--format=%H %ct'
+            ], { encoding: 'utf8' });
+            const commit = history.trim().split('\n')
+              .map(line => line.split(' '))
+              .find(([, timestamp]) => Number(timestamp) >= since && Number(timestamp) < until)?.[0];
+
+            if (!commit) {
+              await core.summary.addRaw(`No default-branch updates on ${date} (Asia/Shanghai); skipped.`).write();
+              return;
+            }
+            core.setOutput('commit', commit);
+
+            try {
+              const { data: release } = await github.rest.repos.getReleaseByTag({
+                ...context.repo, tag
+              });
+              if (!release.draft) {
+                await core.summary.addRaw(`Release ${tag} already exists; skipped.`).write();
+                return;
+              }
+            } catch (error) {
+              if (error.status !== 404) throw error;
+            }
+
+            core.setOutput('should_release', 'true');
+            await core.summary.addRaw(`Build ${tag} from commit ${commit} (Asia/Shanghai).`).write();
+
+  release:
+    needs: check
+    if: needs.check.outputs.should_release == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      contents: write
+    env:
+      VERSION: ${{ needs.check.outputs.tag }}
+      BUILD_DATE: ${{ needs.check.outputs.date }}
+      BUILD_COMMIT: ${{ needs.check.outputs.commit }}
+    steps:
+      - name: Checkout the day's last commit
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ env.BUILD_COMMIT }}
+          fetch-depth: 0
+          submodules: recursive
+          persist-credentials: false
+
+      - name: Set up JDKs
+        uses: actions/setup-java@v5
+        with:
+          distribution: zulu
+          java-version: |
+            8
+            17
+            21
+            25
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v5
+
+      - name: Build and check
+        run: bash ./gradlew --build-cache --stacktrace setupCIWorkspace build
+
+      - name: Publish daily prerelease
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          shopt -s nullglob
+          jars=(build/libs/*.jar)
+          if (( ${#jars[@]} == 0 )); then
+            echo '::error::No JAR files were produced.'
+            exit 1
+          fi
+
+          # gh release view also finds unfinished drafts, which may have no tag yet.
+          if ! gh release view "$VERSION" > /dev/null 2>&1; then
+            gh release create "$VERSION" \
+              --target "$BUILD_COMMIT" \
+              --title "Daily build $BUILD_DATE" \
+              --notes "Daily build for $BUILD_DATE (Asia/Shanghai). Source commit: $BUILD_COMMIT." \
+              --draft --prerelease --latest=false
+          fi
+          gh release upload "$VERSION" "${jars[@]}" --clobber
+          gh release edit "$VERSION" --draft=false --prerelease --latest=false
