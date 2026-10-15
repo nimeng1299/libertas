@@ -117,6 +117,10 @@ public final class ModRecipes {
                 'J',
                 ModItems.jigsaw));
 
+        // 木胶带: 五个拼图摆成十字
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(new ItemStack(ModItems.woodenTape), " J ", "JJJ", " J ", 'J', ModItems.jigsaw));
+
         // 神奇的刷怪笼: 上下两行圆石, 中间一行拼图居中、两侧红石粉
         GameRegistry.addRecipe(
             new ShapedOreRecipe(

@@ -1,6 +1,8 @@
 package neuvillette.libertas.items;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -12,6 +14,7 @@ public final class ModItems {
     public static Item jigsaw;
     public static Item cottonSwab;
     public static Item stoneProspector;
+    public static Item woodenTape;
 
     private ModItems() {}
 
@@ -34,6 +37,11 @@ public final class ModItems {
         stoneProspector = new ItemStoneProspector();
         GameRegistry.registerItem(stoneProspector, "stoneProspector");
 
+        woodenTape = new ItemWoodenTape();
+        GameRegistry.registerItem(woodenTape, "woodenTape");
+        // GT 维护仓的世界交互与 GUI 工具槽均通过此条目识别胶带。
+        OreDictionary.registerOre("craftingDuctTape", new ItemStack(woodenTape));
+
         // 物品构造完再建标签页 (图标引用 purpleMood), 并把法杖从 TC 的标签页挪过来
         ModCreativeTabs.init();
         purpleMood.setCreativeTab(ModCreativeTabs.tabLibertas);
@@ -41,5 +49,6 @@ public final class ModItems {
         jigsaw.setCreativeTab(ModCreativeTabs.tabLibertas);
         cottonSwab.setCreativeTab(ModCreativeTabs.tabLibertas);
         stoneProspector.setCreativeTab(ModCreativeTabs.tabLibertas);
+        woodenTape.setCreativeTab(ModCreativeTabs.tabLibertas);
     }
 }

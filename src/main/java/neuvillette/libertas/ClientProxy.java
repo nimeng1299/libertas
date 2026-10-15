@@ -59,6 +59,11 @@ public class ClientProxy extends CommonProxy {
         MinecraftForgeClient
             .registerItemRenderer(ModItems.cottonSwab, new JsonItemRenderer(Libertas.MODID, "item/cottonSwab"));
 
+        // 木胶带: Blockbench 制作的立体胶带卷，按标准方块比例展示。
+        MinecraftForgeClient.registerItemRenderer(
+            ModItems.woodenTape,
+            new JsonItemRenderer(Libertas.MODID, "item/woodenTape", 1.0f, 0.0f, true));
+
         // 碧空之泪: 物品形态复用同一份 JSON 模型 (标准方块展示, 不做整体缩放/旋转),
         // 世界形态走 ISBRH 渲染同一份模型
         final JsonBlockRenderer azureTearRenderer = new JsonBlockRenderer(Libertas.MODID, "block/azureTear");
