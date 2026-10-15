@@ -105,6 +105,18 @@ public final class ModRecipes {
         GameRegistry.addRecipe(
             new ShapedOreRecipe(new ItemStack(ModItems.cottonSwab), " S", "T ", 'S', Items.string, 'T', "stickWood"));
 
+        // 石制探矿仪: 八个石头围住中间的拼图
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
+                new ItemStack(ModItems.stoneProspector),
+                "SSS",
+                "SJS",
+                "SSS",
+                'S',
+                Blocks.stone,
+                'J',
+                ModItems.jigsaw));
+
         // 神奇的刷怪笼: 上下两行圆石, 中间一行拼图居中、两侧红石粉
         GameRegistry.addRecipe(
             new ShapedOreRecipe(
