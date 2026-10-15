@@ -17,6 +17,10 @@ public final class ModMachines {
     public static ItemStack wizardDistillationTower;
     public static ItemStack greatWizardCauldron;
     public static ItemStack miniMining;
+    public static ItemStack woodenInputBus;
+    public static ItemStack woodenOutputBus;
+    public static ItemStack woodenInputHatch;
+    public static ItemStack woodenOutputHatch;
 
     private ModMachines() {}
 
@@ -32,6 +36,12 @@ public final class ModMachines {
         greatWizardCauldron = new MTEGreatWizardCauldron(19005, "multimachine.greatwizardcauldron", "大巫师炼药锅")
             .getStackForm(1L);
         miniMining = new MTEMiniMining(19006, "multimachine.minimining", "迷你矿机").getStackForm(1L);
+        woodenInputBus = new MTEHatchWoodenInputBus(19007, "hatch.woodeninputbus", "Wooden Input Bus").getStackForm(1L);
+        woodenOutputBus = new MTEHatchWoodenOutputBus(19008, "hatch.woodenoutputbus", "Wooden Output Bus")
+            .getStackForm(1L);
+        woodenInputHatch = new MTEHatchWoodenInput(19009, "hatch.woodeninput", "Wooden Input Hatch").getStackForm(1L);
+        woodenOutputHatch = new MTEHatchWoodenOutput(19010, "hatch.woodenoutput", "Wooden Output Hatch")
+            .getStackForm(1L);
         ModGuiThemes.init();
         // 自定义配方检查失败原因（GUI 状态区显示），必须先注册才能被同步显示
         CheckRecipeResultRegistry.register(new ResultInsufficientEssentia());

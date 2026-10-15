@@ -191,6 +191,11 @@ libertas.gui.magicSpawner.hint=Simulates a kill of the recorded entity every 10s
 
 gt.blockmachines.multimachine.minimining.name=Mini Mining Machine
 
+gt.blockmachines.hatch.woodeninputbus.name=Wooden Input Bus
+gt.blockmachines.hatch.woodenoutputbus.name=Wooden Output Bus
+gt.blockmachines.hatch.woodeninput.name=Wooden Input Hatch
+gt.blockmachines.hatch.woodenoutput.name=Wooden Output Hatch
+
 libertas.mbtt.mini_mining.type=Miner
 libertas.mbtt.mini_mining.info.1=Mines 1 random ore every 3 seconds: Iron, Copper, Tin or Coal
 libertas.mbtt.mini_mining.info.2=No power, fuel or maintenance required

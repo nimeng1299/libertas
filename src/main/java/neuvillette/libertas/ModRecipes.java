@@ -121,6 +121,58 @@ public final class ModRecipes {
         GameRegistry.addRecipe(
             new ShapedOreRecipe(new ItemStack(ModItems.woodenTape), " J ", "JJJ", " J ", 'J', ModItems.jigsaw));
 
+        // 木制总线: 七个原木围住拼图，输入的箱子在顶行，输出的箱子在底行
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
+                ModMachines.woodenInputBus.copy(),
+                "LCL",
+                "LJL",
+                "LLL",
+                'L',
+                "logWood",
+                'C',
+                Blocks.chest,
+                'J',
+                ModItems.jigsaw));
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
+                ModMachines.woodenOutputBus.copy(),
+                "LLL",
+                "LJL",
+                "LCL",
+                'L',
+                "logWood",
+                'C',
+                Blocks.chest,
+                'J',
+                ModItems.jigsaw));
+
+        // 木制流体仓: 与总线相同布局，用原版空铁桶替换箱子
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
+                ModMachines.woodenInputHatch.copy(),
+                "LBL",
+                "LJL",
+                "LLL",
+                'L',
+                "logWood",
+                'B',
+                Items.bucket,
+                'J',
+                ModItems.jigsaw));
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
+                ModMachines.woodenOutputHatch.copy(),
+                "LLL",
+                "LJL",
+                "LBL",
+                'L',
+                "logWood",
+                'B',
+                Items.bucket,
+                'J',
+                ModItems.jigsaw));
+
         // 神奇的刷怪笼: 上下两行圆石, 中间一行拼图居中、两侧红石粉
         GameRegistry.addRecipe(
             new ShapedOreRecipe(
