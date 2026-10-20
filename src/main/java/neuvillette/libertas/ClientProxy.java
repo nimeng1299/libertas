@@ -38,6 +38,7 @@ public class ClientProxy extends CommonProxy {
     public static int SANGUINE_RITE_RENDER_ID = -1;
     /// 神奇的刷怪笼 (magicSpawner) 的 ISBRH render id, 同上
     public static int MAGIC_SPAWNER_RENDER_ID = -1;
+    public static int WIRELESS_CONTROL_CENTER_RENDER_ID = -1;
 
     @Override
     public void init(FMLInitializationEvent event) {
@@ -63,6 +64,20 @@ public class ClientProxy extends CommonProxy {
         MinecraftForgeClient.registerItemRenderer(
             ModItems.woodenTape,
             new JsonItemRenderer(Libertas.MODID, "item/woodenTape", 1.0f, 0.0f, true));
+
+        MinecraftForgeClient.registerItemRenderer(
+            ModItems.wirelessConfigurationCard,
+            new JsonItemRenderer(Libertas.MODID, "item/wirelessConfigurationCard", 1.0f, 0.0f, true));
+
+        final JsonBlockRenderer wirelessCenterRenderer = new JsonBlockRenderer(
+            Libertas.MODID,
+            "block/wirelessControlCenter",
+            true);
+        RenderingRegistry.registerBlockHandler(wirelessCenterRenderer.getRenderId(), wirelessCenterRenderer);
+        WIRELESS_CONTROL_CENTER_RENDER_ID = wirelessCenterRenderer.getRenderId();
+        MinecraftForgeClient.registerItemRenderer(
+            ModBlocks.itemWirelessControlCenter,
+            new JsonItemRenderer(Libertas.MODID, "block/wirelessControlCenter", 1.0f, 0.0f, true));
 
         // 碧空之泪: 物品形态复用同一份 JSON 模型 (标准方块展示, 不做整体缩放/旋转),
         // 世界形态走 ISBRH 渲染同一份模型

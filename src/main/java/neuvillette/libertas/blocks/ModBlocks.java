@@ -34,6 +34,8 @@ public final class ModBlocks {
     public static Item itemSanguineRite;
     public static Block magicSpawner;
     public static Item itemMagicSpawner;
+    public static Block wirelessControlCenter;
+    public static Item itemWirelessControlCenter;
 
     private ModBlocks() {}
 
@@ -131,5 +133,11 @@ public final class ModBlocks {
         GameRegistry.registerTileEntity(TileMagicSpawner.class, "libertas.magic_spawner");
 
         itemMagicSpawner.setCreativeTab(ModCreativeTabs.tabLibertas);
+
+        wirelessControlCenter = new BlockWirelessControlCenter();
+        GameRegistry.registerBlock(wirelessControlCenter, "wirelessControlCenter");
+        itemWirelessControlCenter = Item.getItemFromBlock(wirelessControlCenter);
+        itemWirelessControlCenter.setCreativeTab(ModCreativeTabs.tabLibertas);
+        GameRegistry.registerTileEntity(TileWirelessControlCenter.class, "libertas.wireless_control_center");
     }
 }

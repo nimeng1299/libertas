@@ -15,6 +15,7 @@ public final class ModItems {
     public static Item cottonSwab;
     public static Item stoneProspector;
     public static Item woodenTape;
+    public static Item wirelessConfigurationCard;
 
     private ModItems() {}
 
@@ -42,6 +43,9 @@ public final class ModItems {
         // GT 维护仓的世界交互与 GUI 工具槽均通过此条目识别胶带。
         OreDictionary.registerOre("craftingDuctTape", new ItemStack(woodenTape));
 
+        wirelessConfigurationCard = new ItemWirelessConfigurationCard();
+        GameRegistry.registerItem(wirelessConfigurationCard, "wirelessConfigurationCard");
+
         // 物品构造完再建标签页 (图标引用 purpleMood), 并把法杖从 TC 的标签页挪过来
         ModCreativeTabs.init();
         purpleMood.setCreativeTab(ModCreativeTabs.tabLibertas);
@@ -50,5 +54,6 @@ public final class ModItems {
         cottonSwab.setCreativeTab(ModCreativeTabs.tabLibertas);
         stoneProspector.setCreativeTab(ModCreativeTabs.tabLibertas);
         woodenTape.setCreativeTab(ModCreativeTabs.tabLibertas);
+        wirelessConfigurationCard.setCreativeTab(ModCreativeTabs.tabLibertas);
     }
 }

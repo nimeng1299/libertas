@@ -26,6 +26,47 @@ public final class ModRecipes {
     private ModRecipes() {}
 
     public static void init() {
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
+                new ItemStack(ModItems.wirelessConfigurationCard),
+                "PRP",
+                "RGR",
+                "PRP",
+                'P',
+                ModItems.jigsaw,
+                'R',
+                Items.redstone,
+                'G',
+                Items.gold_ingot));
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
+                new ItemStack(ModBlocks.wirelessControlCenter),
+                "IRI",
+                "RCR",
+                "IGI",
+                'I',
+                Items.iron_ingot,
+                'R',
+                Items.redstone,
+                'C',
+                ModItems.jigsaw,
+                'G',
+                Items.gold_ingot));
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
+                ModMachines.linkedWirelessEnergyHatch.copy(),
+                "IRI",
+                "GCG",
+                "IRI",
+                'I',
+                Items.iron_ingot,
+                'R',
+                Items.redstone,
+                'C',
+                ModItems.jigsaw,
+                'G',
+                Items.gold_ingot));
+
         // 水银 = TC 的 itemResource:3，TC 自身注册为 OreDict "quicksilver"
         // 水银块 = ThaumicBases 的方块；它同时把水银砖块也注册进了 "blockQuicksilver"，
         // 所以这里按注册名精确引用，避免配方吃进砖块
@@ -89,7 +130,7 @@ public final class ModRecipes {
                 'C',
                 Items.clay_ball));
 
-        // 拼图: 中间木棍，上下左右任意木板
+        // 拼图: 中间铁锭，上下左右任意木板
         GameRegistry.addRecipe(
             new ShapedOreRecipe(
                 new ItemStack(ModItems.jigsaw),
@@ -99,7 +140,7 @@ public final class ModRecipes {
                 'P',
                 "plankWood",
                 'S',
-                "stickWood"));
+                Items.iron_ingot));
 
         // 棉签: 线的左下角放木棍 (2x2 有序, 2x2 合成格即可摆放)
         GameRegistry.addRecipe(

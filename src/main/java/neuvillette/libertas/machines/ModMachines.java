@@ -21,6 +21,7 @@ public final class ModMachines {
     public static ItemStack woodenOutputBus;
     public static ItemStack woodenInputHatch;
     public static ItemStack woodenOutputHatch;
+    public static ItemStack linkedWirelessEnergyHatch;
 
     private ModMachines() {}
 
@@ -42,6 +43,10 @@ public final class ModMachines {
         woodenInputHatch = new MTEHatchWoodenInput(19009, "hatch.woodeninput", "Wooden Input Hatch").getStackForm(1L);
         woodenOutputHatch = new MTEHatchWoodenOutput(19010, "hatch.woodenoutput", "Wooden Output Hatch")
             .getStackForm(1L);
+        linkedWirelessEnergyHatch = new MTEHatchLinkedWirelessEnergy(
+            19011,
+            "hatch.linkedwirelessenergy",
+            "Linked Wireless Energy Hatch").getStackForm(1L);
         ModGuiThemes.init();
         // 自定义配方检查失败原因（GUI 状态区显示），必须先注册才能被同步显示
         CheckRecipeResultRegistry.register(new ResultInsufficientEssentia());

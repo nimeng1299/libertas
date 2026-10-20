@@ -13,6 +13,7 @@ import neuvillette.libertas.blocks.TileMechanicalManaPool;
 import neuvillette.libertas.blocks.TileMechanicalRunicAltar;
 import neuvillette.libertas.blocks.TileMiniElfPortal;
 import neuvillette.libertas.blocks.TileSanguineRite;
+import neuvillette.libertas.blocks.TileWirelessControlCenter;
 
 /// FML GUI 处理器: 机械魔力池、机械符文祭坛、微型精灵门、工业凝聚板、机械花药台、机械白雏菊、
 /// 机械植物酿造台、猩红祭仪、神奇的刷怪笼。在 preInit 里注册 (CommonProxy)。
@@ -27,9 +28,14 @@ public class ModGuiHandler implements IGuiHandler {
     public static final int ID_MECHANICAL_BREWERY = 6;
     public static final int ID_SANGUINE_RITE = 7;
     public static final int ID_MAGIC_SPAWNER = 8;
+    public static final int ID_WIRELESS_CONTROL_CENTER = 9;
 
     @Override
     public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
+        if (id == ID_WIRELESS_CONTROL_CENTER && world.getTileEntity(x, y, z) instanceof TileWirelessControlCenter center
+            && center.isUseableByPlayer(player)) {
+            return new ContainerWirelessControlCenter(player.inventory, center);
+        }
         if (id == ID_MECHANICAL_MANA_POOL && world.getTileEntity(x, y, z) instanceof TileMechanicalManaPool) {
             return new ContainerMechanicalManaPool(
                 player.inventory,
@@ -73,6 +79,10 @@ public class ModGuiHandler implements IGuiHandler {
 
     @Override
     public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
+        if (id == ID_WIRELESS_CONTROL_CENTER
+            && world.getTileEntity(x, y, z) instanceof TileWirelessControlCenter center) {
+            return new GuiWirelessControlCenter(new ContainerWirelessControlCenter(player.inventory, center));
+        }
         if (id == ID_MECHANICAL_MANA_POOL && world.getTileEntity(x, y, z) instanceof TileMechanicalManaPool) {
             return new GuiMechanicalManaPool(
                 new ContainerMechanicalManaPool(
