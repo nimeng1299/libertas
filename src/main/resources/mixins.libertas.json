@@ -7,6 +7,9 @@
 	"mixins": [
 		"TileEntityAltarMixin"
 	],
+	"client": [
+		"client.SodiumOptionsGUIMixin"
+	],
 	"injectors": {
 		"defaultRequire": 1
 	}
