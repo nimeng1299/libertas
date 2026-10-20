@@ -1,26 +1,24 @@
 package neuvillette.libertas.machines;
 
+import java.util.List;
 import java.util.UUID;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.StatCollector;
-
-import com.cleanroommc.modularui.api.drawable.IKey;
-import com.cleanroommc.modularui.factory.PosGuiData;
-import com.cleanroommc.modularui.screen.ModularPanel;
-import com.cleanroommc.modularui.screen.UISettings;
-import com.cleanroommc.modularui.value.sync.PanelSyncManager;
-import com.cleanroommc.modularui.value.sync.StringSyncValue;
+import net.minecraft.world.World;
 
 import gregtech.api.enums.Textures;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.metatileentity.implementations.MTEHatchEnergy;
-import gregtech.api.modularui2.GTGuis;
 import gregtech.api.render.TextureFactory;
 import gregtech.api.util.GTUtility;
 import gregtech.common.misc.WirelessNetworkManager;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import neuvillette.libertas.wireless.WirelessControlWorldData;
 import neuvillette.libertas.wireless.WirelessEnergyBudget;
 import neuvillette.libertas.wireless.WirelessPowerProfile;
@@ -31,6 +29,7 @@ import neuvillette.libertas.wireless.WirelessPowerProfile;
  */
 public class MTEHatchLinkedWirelessEnergy extends MTEHatchEnergy {
 
+    private static final String WAILA_TAG = "libertas.LinkedWirelessEnergy";
     private static final ITexture FRONT = TextureFactory
         .of(Textures.BlockIcons.custom("libertas", "machines/linked_wireless_energy"));
 
@@ -176,17 +175,6 @@ public class MTEHatchLinkedWirelessEnergy extends MTEHatchEnergy {
     }
 
     @Override
-    public boolean onRightclick(IGregTechTileEntity base, EntityPlayer player) {
-        if (base.isServerSide()) openGui(player);
-        return true;
-    }
-
-    @Override
-    protected boolean useMui2() {
-        return true;
-    }
-
-    @Override
     public String[] getDescription() {
         return new String[] { StatCollector.translateToLocal("tooltip.libertas.wireless.hatch.bind"),
             StatCollector.translateToLocal("tooltip.libertas.wireless.hatch.power"),
@@ -220,7 +208,7 @@ public class MTEHatchLinkedWirelessEnergy extends MTEHatchEnergy {
             + "\n"
             + StatCollector.translateToLocalFormatted(
                 "libertas.wireless.location",
-                controller.dimension,
+                GTUtility.getDimensionName(controller.dimension),
                 controller.x,
                 controller.y,
                 controller.z);
@@ -232,19 +220,41 @@ public class MTEHatchLinkedWirelessEnergy extends MTEHatchEnergy {
     }
 
     @Override
-    public ModularPanel buildUI(PosGuiData guiData, PanelSyncManager syncManager, UISettings uiSettings) {
-        StringSyncValue status = new StringSyncValue(this::statusText);
-        syncManager.syncValue("wirelessStatus", status);
-        return GTGuis.mteTemplatePanelBuilder(this, guiData, syncManager, uiSettings)
-            .setWidth(244)
-            .setHeight(120)
-            .doesBindPlayerInventory(false)
-            .build()
-            .child(
-                IKey.dynamic(status::getValue)
-                    .asWidget()
-                    .left(10)
-                    .top(28)
-                    .width(224));
+    public void getWailaNBTData(EntityPlayerMP player, TileEntity tile, NBTTagCompound tag, World world, int x, int y,
+        int z) {
+        super.getWailaNBTData(player, tile, tag, world, x, y, z);
+        WirelessControlWorldData.Controller controller = controller();
+        WirelessPowerProfile power = controller == null ? WirelessPowerProfile.DISABLED : controller.profile;
+        NBTTagCompound info = new NBTTagCompound();
+        info.setLong("Voltage", power.voltage);
+        info.setLong("Amperage", power.amperage);
+        info.setBoolean("Bound", controller != null);
+        if (controller != null) {
+            info.setInteger("Dimension", controller.dimension);
+            info.setInteger("X", controller.x);
+            info.setInteger("Y", controller.y);
+            info.setInteger("Z", controller.z);
+        }
+        tag.setTag(WAILA_TAG, info);
+    }
+
+    @Override
+    public void getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,
+        IWailaConfigHandler config) {
+        super.getWailaBody(itemStack, currenttip, accessor, config);
+        NBTTagCompound tag = accessor.getNBTData();
+        if (!tag.hasKey(WAILA_TAG, 10)) return;
+        NBTTagCompound info = tag.getCompoundTag(WAILA_TAG);
+        currenttip.add(info.getLong("Voltage") + "EU / " + info.getLong("Amperage") + "A");
+        currenttip
+            .add(
+                info.getBoolean("Bound")
+                    ? StatCollector.translateToLocalFormatted(
+                        "libertas.wireless.location",
+                        GTUtility.getDimensionName(info.getInteger("Dimension")),
+                        info.getInteger("X"),
+                        info.getInteger("Y"),
+                        info.getInteger("Z"))
+                    : StatCollector.translateToLocal("libertas.wireless.disconnected"));
     }
 }
