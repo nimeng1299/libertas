@@ -1,0 +1,13 @@
+def lwjgl3ifyVersion = providers.gradleProperty("lwjgl3ifyVersion").get()
+
+// Keep the runtime and bootstrap patches aligned for all modern Java run tasks.
+configurations.matching {
+    it.name in ["java17Dependencies", "java17PatchDependencies"]
+}.configureEach {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "com.github.GTNewHorizons" && requested.name == "lwjgl3ify") {
+            useVersion(lwjgl3ifyVersion)
+            because("Angelica 2.2.28 requires RFB's BytePatternMatcher on modern Java")
+        }
+    }
+}
