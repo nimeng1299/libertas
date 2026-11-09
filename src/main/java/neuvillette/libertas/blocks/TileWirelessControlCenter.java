@@ -11,15 +11,28 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.StatCollector;
 
+import com.cleanroommc.modularui.api.IGuiHolder;
+import com.cleanroommc.modularui.factory.PosGuiData;
+import com.cleanroommc.modularui.screen.ModularPanel;
+import com.cleanroommc.modularui.screen.ModularScreen;
+import com.cleanroommc.modularui.screen.UISettings;
+import com.cleanroommc.modularui.value.sync.PanelSyncManager;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import gregtech.api.modularui2.GTGuiThemes;
+import gregtech.api.modularui2.GTModularScreen;
 import gregtech.common.misc.WirelessNetworkManager;
 import gregtech.common.misc.spaceprojects.SpaceProjectManager;
+import neuvillette.libertas.gui.GuiWirelessControlCenter;
 import neuvillette.libertas.wireless.EnergyHatchTemplate;
 import neuvillette.libertas.wireless.WirelessControlWorldData;
 import neuvillette.libertas.wireless.WirelessPowerProfile;
 
 /** One stack of 64 hatches acts as a removable specification template, never as a fuel or consumable. */
-public class TileWirelessControlCenter extends TileEntity implements IInventory {
+public class TileWirelessControlCenter extends TileEntity implements IInventory, IGuiHolder<PosGuiData> {
 
     private UUID controllerId;
     private UUID owner;
@@ -64,6 +77,8 @@ public class TileWirelessControlCenter extends TileEntity implements IInventory 
 
     /** Publish on inventory changes and periodically to cover in-place stack mutations by inventory automation. */
     public void publish() {
+        // 客户端槽位镜像（MUI2 的 putStack）也会走 setInventorySlotContents -> markDirty，这里必须屏蔽
+        if (worldObj == null || worldObj.isRemote) return;
         WirelessControlWorldData data = WirelessControlWorldData.get(worldObj);
         if (data != null) {
             data.publish(controllerId, owner, worldObj.provider.dimensionId, xCoord, yCoord, zCoord, getProfile());
@@ -195,5 +210,52 @@ public class TileWirelessControlCenter extends TileEntity implements IInventory 
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack stack) {
         return slot == 0 && EnergyHatchTemplate.read(stack) != null;
+    }
+
+    // -----------------------------------------------------------------------
+    // GUI：MUI2 面板（背景、文字配色、槽位外观都由 GT 标准主题提供）
+    // -----------------------------------------------------------------------
+
+    @Override
+    public ModularPanel buildUI(PosGuiData guiData, PanelSyncManager syncManager, UISettings uiSettings) {
+        return GuiWirelessControlCenter.build(this, syncManager);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public ModularScreen createScreen(PosGuiData guiData, ModularPanel mainPanel) {
+        return new GTModularScreen(mainPanel, GTGuiThemes.STANDARD);
+    }
+
+    // 以下文本由 GUI 的同步值读取，双端都会调用（客户端读到的是上次同步下来的副本）
+
+    public String statusText() {
+        return GuiWirelessControlCenter.statusText(getProfile());
+    }
+
+    public String ownerText() {
+        return StatCollector.translateToLocalFormatted("libertas.wireless.owner", ownerName);
+    }
+
+    public String balanceText() {
+        return GuiWirelessControlCenter.balanceText(getNetworkBalance());
+    }
+
+    public String balanceFullText() {
+        return getNetworkBalance().toString();
+    }
+
+    public String voltageText() {
+        return StatCollector.translateToLocalFormatted("libertas.wireless.voltage", getProfile().voltage);
+    }
+
+    public String amperageText() {
+        return StatCollector.translateToLocalFormatted("libertas.wireless.amperage", getProfile().amperage);
+    }
+
+    public String templateText() {
+        final ItemStack stack = getStackInSlot(0);
+        return StatCollector
+            .translateToLocalFormatted("libertas.wireless.template", stack == null ? 0 : stack.stackSize);
     }
 }

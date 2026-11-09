@@ -12,9 +12,9 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
+import com.cleanroommc.modularui.factory.TileEntityGuiFactory;
+
 import neuvillette.libertas.ClientProxy;
-import neuvillette.libertas.Libertas;
-import neuvillette.libertas.gui.ModGuiHandler;
 import neuvillette.libertas.items.ItemWirelessConfigurationCard;
 
 public class BlockWirelessControlCenter extends BlockContainer {
@@ -51,7 +51,8 @@ public class BlockWirelessControlCenter extends BlockContainer {
             .getItem() instanceof ItemWirelessConfigurationCard) return false;
         if (world.isRemote) return true;
         if (world.getTileEntity(x, y, z) instanceof TileWirelessControlCenter center && center.canConfigure(player)) {
-            player.openGui(Libertas.instance, ModGuiHandler.ID_WIRELESS_CONTROL_CENTER, world, x, y, z);
+            // MUI2 面板（不再走 FML GuiHandler / Container）
+            TileEntityGuiFactory.INSTANCE.open(player, center);
         } else {
             player.addChatMessage(new ChatComponentTranslation("msg.libertas.wireless.denied"));
         }

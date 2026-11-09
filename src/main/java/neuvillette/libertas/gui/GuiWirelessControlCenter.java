@@ -3,113 +3,162 @@ package neuvillette.libertas.gui;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.function.Supplier;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import com.cleanroommc.modularui.api.drawable.IKey;
+import com.cleanroommc.modularui.screen.ModularPanel;
+import com.cleanroommc.modularui.utils.item.InvWrapper;
+import com.cleanroommc.modularui.value.sync.PanelSyncManager;
+import com.cleanroommc.modularui.value.sync.StringSyncValue;
+import com.cleanroommc.modularui.widget.ParentWidget;
+import com.cleanroommc.modularui.widgets.slot.ItemSlot;
+import com.cleanroommc.modularui.widgets.slot.ModularSlot;
+
+import gregtech.api.modularui2.GTGuiTextures;
+import gregtech.api.modularui2.GTWidgetThemes;
 import neuvillette.libertas.blocks.TileWirelessControlCenter;
 import neuvillette.libertas.wireless.WirelessPowerProfile;
 
-@SideOnly(Side.CLIENT)
-public class GuiWirelessControlCenter extends GuiContainer {
+/**
+ * 无线电网控制中心的 MUI2 面板。
+ *
+ * <p>
+ * 面板背景、文字配色、槽位外观全部来自 MUI2 主题（{@link gregtech.api.modularui2.GTGuiThemes#STANDARD}，
+ * 见 {@link TileWirelessControlCenter#createScreen}），不再手绘色块；这里只负责布局，
+ * 版式按 244x240 排布，玩家背包由 {@code bindPlayerInventory()} 贴在底部。
+ *
+ * <p>
+ * 本类同时会在服务端执行（MUI2 的 buildUI 双端都会调用），因此不能引用任何仅客户端的类。
+ */
+public final class GuiWirelessControlCenter {
 
-    private final TileWirelessControlCenter center;
+    public static final int WIDTH = 244;
+    public static final int HEIGHT = 240;
+    public static final String PANEL_NAME = "libertas:wireless_control_center";
 
-    public GuiWirelessControlCenter(ContainerWirelessControlCenter container) {
-        super(container);
-        center = container.getCenter();
-        xSize = 244;
-        ySize = 240;
+    /** 内容区宽度（面板左右各留 9px）。 */
+    private static final int CONTENT_WIDTH = WIDTH - 18;
+    /** 电量屏内部留白。 */
+    private static final int SCREEN_PADDING = 6;
+    /** 电量文本竖直居中偏移（屏高 24、文字高 10）。 */
+    private static final int SCREEN_TEXT_Y = 7;
+    /** 电量文本超出这个长度就改用科学计数法，避免溢出屏幕。 */
+    private static final int MAX_BALANCE_CHARS = 30;
+    /** 悬停提示里每行最多这么多个字符。 */
+    private static final int TOOLTIP_LINE_CHARS = 40;
+
+    // 槽位组：单个规格模板槽，允许与玩家背包互相 shift 点击
+    public static final String SLOT_GROUP = "item_inv";
+
+    private GuiWirelessControlCenter() {}
+
+    public static ModularPanel build(TileWirelessControlCenter center, PanelSyncManager syncManager) {
+        final StringSyncValue status = sync(syncManager, "status", center::statusText);
+        final StringSyncValue owner = sync(syncManager, "owner", center::ownerText);
+        final StringSyncValue balance = sync(syncManager, "balance", center::balanceText);
+        final StringSyncValue balanceFull = sync(syncManager, "balanceFull", center::balanceFullText);
+        final StringSyncValue voltage = sync(syncManager, "voltage", center::voltageText);
+        final StringSyncValue amperage = sync(syncManager, "amperage", center::amperageText);
+        final StringSyncValue template = sync(syncManager, "template", center::templateText);
+
+        syncManager.registerSlotGroup(SLOT_GROUP, 0);
+
+        final ModularPanel panel = ModularPanel.defaultPanel(PANEL_NAME, WIDTH, HEIGHT)
+            .bindPlayerInventory();
+
+        panel.child(
+            IKey.lang("container.libertas.wirelessControlCenter")
+                .asWidget()
+                .widgetTheme(GTWidgetThemes.TEXT_TITLE)
+                .pos(9, 7)
+                .size(CONTENT_WIDTH, 10));
+        panel.child(
+            IKey.dynamic(status::getValue)
+                .asWidget()
+                .pos(9, 21)
+                .size(CONTENT_WIDTH, 10));
+        panel.child(
+            IKey.dynamic(owner::getValue)
+                .asWidget()
+                .pos(9, 34)
+                .size(CONTENT_WIDTH, 10));
+        panel.child(
+            IKey.lang("libertas.wireless.balance")
+                .asWidget()
+                .pos(9, 49)
+                .size(CONTENT_WIDTH, 10));
+        panel.child(createBalanceScreen(balance, balanceFull));
+        panel.child(
+            IKey.dynamic(voltage::getValue)
+                .asWidget()
+                .pos(9, 90)
+                .size(CONTENT_WIDTH, 10));
+        panel.child(
+            IKey.dynamic(amperage::getValue)
+                .asWidget()
+                .pos(9, 103)
+                .size(CONTENT_WIDTH, 10));
+        panel.child(createTemplateSlot(center));
+        panel.child(
+            IKey.dynamic(template::getValue)
+                .asWidget()
+                .pos(30, 124)
+                .size(CONTENT_WIDTH - 21, 10));
+
+        return panel;
     }
 
-    @Override
-    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-        drawRect(guiLeft, guiTop, guiLeft + xSize, guiTop + ySize, 0xFF101C2D);
-        drawRect(guiLeft + 1, guiTop + 1, guiLeft + xSize - 1, guiTop + 23, 0xFF173A48);
-        drawRect(guiLeft + 10, guiTop + 68, guiLeft + xSize - 10, guiTop + 88, 0xFF07121F);
-        drawRect(guiLeft + 10, guiTop + 92, guiLeft + xSize - 10, guiTop + 128, 0xFF17283B);
-        drawSlot(ContainerWirelessControlCenter.SLOT_X, ContainerWirelessControlCenter.SLOT_Y);
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 9; col++) {
-                drawSlot(
-                    ContainerWirelessControlCenter.INVENTORY_X + col * 18,
-                    ContainerWirelessControlCenter.INVENTORY_Y + row * 18);
-            }
-        }
-        for (int col = 0; col < 9; col++) {
-            drawSlot(ContainerWirelessControlCenter.INVENTORY_X + col * 18, ContainerWirelessControlCenter.HOTBAR_Y);
-        }
+    /** 黑底显示屏样式的电量区，悬停可看完整数值。 */
+    private static ParentWidget<?> createBalanceScreen(StringSyncValue balance, StringSyncValue balanceFull) {
+        return new ParentWidget<>().size(CONTENT_WIDTH, 24)
+            .pos(9, 60)
+            .background(GTGuiTextures.PICTURE_SCREEN_BLACK)
+            .child(
+                IKey.dynamic(balance::getValue)
+                    .asWidget()
+                    .widgetTheme(GTWidgetThemes.DISPLAY_TEXT_WHITE)
+                    .pos(SCREEN_PADDING, SCREEN_TEXT_Y)
+                    .size(CONTENT_WIDTH - SCREEN_PADDING * 2, 10))
+            .tooltipDynamic(tooltip -> {
+                tooltip.add(StatCollector.translateToLocal("libertas.wireless.balance"));
+                final String full = balanceFull.getValue();
+                for (int i = 0; i < full.length(); i += TOOLTIP_LINE_CHARS) {
+                    tooltip.add(full.substring(i, Math.min(i + TOOLTIP_LINE_CHARS, full.length())))
+                        .newLine();
+                }
+                tooltip.add("EU");
+            });
     }
 
-    private void drawSlot(int x, int y) {
-        drawRect(guiLeft + x - 1, guiTop + y - 1, guiLeft + x + 17, guiTop + y + 17, 0xFF477280);
-        drawRect(guiLeft + x, guiTop + y, guiLeft + x + 16, guiTop + y + 16, 0xFF07121F);
+    /** 规格模板槽：框体与输入箭头取自主题槽位贴图。 */
+    private static ItemSlot createTemplateSlot(TileWirelessControlCenter center) {
+        return new ItemSlot().slot(new ModularSlot(new InvWrapper(center), 0).slotGroup(SLOT_GROUP))
+            .backgroundOverlay(GTGuiTextures.OVERLAY_SLOT_IN_STANDARD)
+            .pos(9, 120);
     }
 
-    @Override
-    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        text("container.libertas.wirelessControlCenter", 12, 8, 0xB8FFF3);
-        WirelessPowerProfile profile = center.getProfile();
-        text(
-            profile.isEnabled() ? "libertas.wireless.online" : "libertas.wireless.paused",
-            12,
-            29,
-            profile.isEnabled() ? 0x79F0C1 : 0xFFCC80);
-        fontRendererObj.drawString(
-            fontRendererObj.trimStringToWidth(
-                StatCollector.translateToLocalFormatted("libertas.wireless.owner", center.getOwnerName()),
-                218),
-            12,
-            44,
-            0xCAD9E5);
-        text("libertas.wireless.balance", 12, 58, 0x8AAABD);
-        BigInteger balance = center.getNetworkBalance();
-        String exact = balance.toString() + " EU";
-        String amount = fontRendererObj.getStringWidth(exact) <= 214 ? exact
-            : new BigDecimal(balance).round(new MathContext(8))
-                .toEngineeringString() + " EU";
-        fontRendererObj.drawString(amount, 14, 74, 0x8FFFEA);
-        fontRendererObj.drawString(
-            StatCollector.translateToLocalFormatted("libertas.wireless.voltage", profile.voltage),
-            48,
-            99,
-            0xD7EAF5);
-        fontRendererObj.drawString(
-            StatCollector.translateToLocalFormatted("libertas.wireless.amperage", profile.amperage),
-            48,
-            113,
-            0xD7EAF5);
-        ItemStack template = center.getStackInSlot(0);
-        fontRendererObj.drawString(
-            StatCollector
-                .translateToLocalFormatted("libertas.wireless.template", template == null ? 0 : template.stackSize),
-            12,
-            132,
-            0x8AAABD);
-        text("container.inventory", ContainerWirelessControlCenter.INVENTORY_X, 143, 0x8AAABD);
+    private static StringSyncValue sync(PanelSyncManager syncManager, String name, Supplier<String> getter) {
+        final StringSyncValue value = new StringSyncValue(getter);
+        syncManager.syncValue(name, value);
+        return value;
     }
 
-    @Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        super.drawScreen(mouseX, mouseY, partialTicks);
-        if (mouseX >= guiLeft + 10 && mouseX < guiLeft + xSize - 10 && mouseY >= guiTop + 68 && mouseY < guiTop + 88) {
-            List<String> lines = new ArrayList<>();
-            lines.add(StatCollector.translateToLocal("libertas.wireless.balance"));
-            String value = center.getNetworkBalance()
-                .toString();
-            for (int i = 0; i < value.length(); i += 36)
-                lines.add(value.substring(i, Math.min(i + 36, value.length())));
-            lines.add("EU");
-            drawHoveringText(lines, mouseX, mouseY, fontRendererObj);
-        }
+    // -----------------------------------------------------------------------
+    // 文本组装：双端共用，只用字符数做截断，不依赖客户端字体
+    // -----------------------------------------------------------------------
+
+    public static String statusText(WirelessPowerProfile profile) {
+        return (profile.isEnabled() ? EnumChatFormatting.DARK_GREEN : EnumChatFormatting.GOLD) + StatCollector
+            .translateToLocal(profile.isEnabled() ? "libertas.wireless.online" : "libertas.wireless.paused");
     }
 
-    private void text(String key, int x, int y, int color) {
-        fontRendererObj.drawString(StatCollector.translateToLocal(key), x, y, color);
+    public static String balanceText(BigInteger balance) {
+        final String exact = balance.toString() + " EU";
+        if (exact.length() <= MAX_BALANCE_CHARS) return exact;
+        return new BigDecimal(balance).round(new MathContext(8))
+            .toEngineeringString() + " EU";
     }
 }
