@@ -5,6 +5,7 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import neuvillette.libertas.blocks.ModBlocks;
+import neuvillette.libertas.client.render.BeautyGlassRenderer;
 import neuvillette.libertas.client.render.JsonBlockRenderer;
 import neuvillette.libertas.client.render.JsonItemRenderer;
 import neuvillette.libertas.items.ModItems;
@@ -39,6 +40,8 @@ public class ClientProxy extends CommonProxy {
     /// 神奇的刷怪笼 (magicSpawner) 的 ISBRH render id, 同上
     public static int MAGIC_SPAWNER_RENDER_ID = -1;
     public static int WIRELESS_CONTROL_CENTER_RENDER_ID = -1;
+    /// 美容玻璃 (beautyGlass) 的 ISBRH render id, 同上 (每面只画 2px 边框, 相邻同种方块之间不画)
+    public static int BEAUTY_GLASS_RENDER_ID = -1;
 
     @Override
     public void init(FMLInitializationEvent event) {
@@ -202,5 +205,14 @@ public class ClientProxy extends CommonProxy {
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemMagicSpawner,
             new JsonItemRenderer(Libertas.MODID, "block/magicSpawner", 1.0f, 0.0f, true));
+
+        // 美容玻璃: 世界形态需要按邻居关系裁掉接缝处的边框, 走自定义 ISBRH;
+        // 物品形态仍复用 JSON 模型管线 (12 根边框梁拼成的空心方块)
+        final BeautyGlassRenderer beautyGlassRenderer = new BeautyGlassRenderer();
+        RenderingRegistry.registerBlockHandler(beautyGlassRenderer.getRenderId(), beautyGlassRenderer);
+        BEAUTY_GLASS_RENDER_ID = beautyGlassRenderer.getRenderId();
+        MinecraftForgeClient.registerItemRenderer(
+            ModBlocks.itemBeautyGlass,
+            new JsonItemRenderer(Libertas.MODID, "item/beautyGlass", 1.0f, 0.0f, true));
     }
 }

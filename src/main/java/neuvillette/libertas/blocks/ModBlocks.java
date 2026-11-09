@@ -36,6 +36,8 @@ public final class ModBlocks {
     public static Item itemMagicSpawner;
     public static Block wirelessControlCenter;
     public static Item itemWirelessControlCenter;
+    public static Block beautyGlass;
+    public static Item itemBeautyGlass;
 
     private ModBlocks() {}
 
@@ -139,5 +141,10 @@ public final class ModBlocks {
         itemWirelessControlCenter = Item.getItemFromBlock(wirelessControlCenter);
         itemWirelessControlCenter.setCreativeTab(ModCreativeTabs.tabLibertas);
         GameRegistry.registerTileEntity(TileWirelessControlCenter.class, "libertas.wireless_control_center");
+
+        beautyGlass = new BlockBeautyGlass();
+        GameRegistry.registerBlock(beautyGlass, ItemBlockBeautyGlass.class, "beautyGlass");
+        itemBeautyGlass = Item.getItemFromBlock(beautyGlass);
+        itemBeautyGlass.setCreativeTab(ModCreativeTabs.tabLibertas);
     }
 }

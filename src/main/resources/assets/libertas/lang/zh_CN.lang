@@ -269,3 +269,7 @@ libertas.config.error.invalidINTEGER=请输入有效的整数。
 libertas.config.error.invalidNUMBER=请输入有效的数值。
 libertas.config.error.invalidARRAY=请输入有效的列表，例如 ["a", "b"]。
 libertas.config.error.invalidJSON=请输入有效的结构化数据。
+
+tile.beautyGlass.name=美容玻璃
+tooltip.libertas.beautyGlass.effect=§7每个面只留 2px 边框、中央透空，相邻两块相连时接缝同样贯通 §8| §a自发光 4 级
+tooltip.libertas.beautyGlass.lore=§o一框通透，光从边沿缓缓渗出。

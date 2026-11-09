@@ -421,5 +421,13 @@ public final class ModRecipes {
                 ModMachines.miniMining.copy(),
                 new ItemStack(Blocks.bedrock),
                 new ItemStack(ModItems.jigsaw)));
+
+        // 美容玻璃: 玻璃 + 红石火把 + 拼图，无序合成 (一次 4 块, 当装饰建材用)
+        GameRegistry.addRecipe(
+            new ShapelessOreRecipe(
+                new ItemStack(ModBlocks.beautyGlass, 4),
+                new ItemStack(Blocks.glass),
+                new ItemStack(Blocks.redstone_torch),
+                new ItemStack(ModItems.jigsaw)));
     }
 }
