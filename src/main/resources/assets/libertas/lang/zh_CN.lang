@@ -273,3 +273,27 @@ libertas.config.error.invalidJSON=请输入有效的结构化数据。
 tile.beautyGlass.name=美容玻璃
 tooltip.libertas.beautyGlass.effect=§7每个面只留 2px 边框、中央透空，相邻两块相连时接缝同样贯通 §8| §a自发光 4 级
 tooltip.libertas.beautyGlass.lore=§o一框通透，光从边沿缓缓渗出。
+
+tile.chunkReshaper.name=区块重塑机
+container.libertas.chunkReshaper=区块重塑机
+tooltip.libertas.chunkReshaper.excavate=§7按钮 1：清空本区块内机器高度以下的全部方块（基岩除外）
+tooltip.libertas.chunkReshaper.pave=§7按钮 2：在本区块最高建筑高度铺设美容玻璃（已有方块则跳过）
+tooltip.libertas.chunkReshaper.speed=§7两种作业都是 §a1 tick 处理 1 个方块
+tooltip.libertas.chunkReshaper.lore=§o从地心到天顶，只留下你想要的那一层。
+libertas.chunkReshaper.mode.none=未选择
+libertas.chunkReshaper.mode.excavate=掘空模式
+libertas.chunkReshaper.mode.pave=铺顶模式
+libertas.chunkReshaper.state.running=运行中 · %s · 1 方块/tick
+libertas.chunkReshaper.state.done=已完成 · %s
+libertas.chunkReshaper.state.paused=已暂停 · 再点同一按钮继续
+libertas.chunkReshaper.state.idle=待机 · 点击下方按钮开始作业
+libertas.chunkReshaper.info.mode=模式：%1$s
+libertas.chunkReshaper.info.progress=进度：%1$s / %2$s（%3$s%%）
+libertas.chunkReshaper.info.progress.empty=进度：等待作业开始
+libertas.chunkReshaper.info.excavated=已清除：%1$s 方块 · 当前层 Y=%2$s
+libertas.chunkReshaper.info.paved=已铺设：%1$s 方块 · 铺设层 Y=%2$s
+libertas.chunkReshaper.info.idle=速度：1 方块 / tick
+libertas.chunkReshaper.button.excavate=挖空区块
+libertas.chunkReshaper.button.pave=铺设天顶
+libertas.chunkReshaper.button.excavate.tip=把本区块机器高度以下的方块全部变成空气（基岩保留）
+libertas.chunkReshaper.button.pave.tip=在本区块最高建筑高度铺一层美容玻璃，已有方块的格子跳过

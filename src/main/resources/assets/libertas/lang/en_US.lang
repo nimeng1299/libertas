@@ -273,3 +273,27 @@ libertas.config.error.invalidJSON=Enter valid structured data.
 tile.beautyGlass.name=Beauty Glass
 tooltip.libertas.beautyGlass.effect=§7Each face keeps only a 2px rim with a hollow centre; two panes open up where they meet §8| §aLight level 4
 tooltip.libertas.beautyGlass.lore=§oOne clear frame, light seeping from its edges.
+
+tile.chunkReshaper.name=Chunk Reshaper
+container.libertas.chunkReshaper=Chunk Reshaper
+tooltip.libertas.chunkReshaper.excavate=§7Button 1: clears every block below the machine in this chunk (bedrock kept)
+tooltip.libertas.chunkReshaper.pave=§7Button 2: lays Beauty Glass at the build limit of this chunk, skipping occupied cells
+tooltip.libertas.chunkReshaper.speed=§7Both modes process §a1 block per tick
+tooltip.libertas.chunkReshaper.lore=§oFrom the core to the sky, only the layer you asked for remains.
+libertas.chunkReshaper.mode.none=No mode
+libertas.chunkReshaper.mode.excavate=Excavate
+libertas.chunkReshaper.mode.pave=Cap
+libertas.chunkReshaper.state.running=Running · %s · 1 block/tick
+libertas.chunkReshaper.state.done=Finished · %s
+libertas.chunkReshaper.state.paused=Paused · press the same button to resume
+libertas.chunkReshaper.state.idle=Idle · press a button below to start
+libertas.chunkReshaper.info.mode=Mode: %1$s
+libertas.chunkReshaper.info.progress=Progress: %1$s / %2$s blocks (%3$s%%)
+libertas.chunkReshaper.info.progress.empty=Progress: waiting for a job
+libertas.chunkReshaper.info.excavated=Cleared: %1$s blocks · current layer Y=%2$s
+libertas.chunkReshaper.info.paved=Placed: %1$s blocks · target layer Y=%2$s
+libertas.chunkReshaper.info.idle=Speed: 1 block / tick
+libertas.chunkReshaper.button.excavate=Excavate Chunk
+libertas.chunkReshaper.button.pave=Cap Chunk
+libertas.chunkReshaper.button.excavate.tip=Turns every block below this machine in the chunk into air (bedrock kept)
+libertas.chunkReshaper.button.pave.tip=Lays Beauty Glass at the build limit of this chunk, skipping occupied cells

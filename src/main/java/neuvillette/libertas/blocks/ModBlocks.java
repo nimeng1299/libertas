@@ -38,6 +38,8 @@ public final class ModBlocks {
     public static Item itemWirelessControlCenter;
     public static Block beautyGlass;
     public static Item itemBeautyGlass;
+    public static Block chunkReshaper;
+    public static Item itemChunkReshaper;
 
     private ModBlocks() {}
 
@@ -146,5 +148,11 @@ public final class ModBlocks {
         GameRegistry.registerBlock(beautyGlass, ItemBlockBeautyGlass.class, "beautyGlass");
         itemBeautyGlass = Item.getItemFromBlock(beautyGlass);
         itemBeautyGlass.setCreativeTab(ModCreativeTabs.tabLibertas);
+
+        chunkReshaper = new BlockChunkReshaper();
+        GameRegistry.registerBlock(chunkReshaper, ItemBlockChunkReshaper.class, "chunkReshaper");
+        itemChunkReshaper = Item.getItemFromBlock(chunkReshaper);
+        itemChunkReshaper.setCreativeTab(ModCreativeTabs.tabLibertas);
+        GameRegistry.registerTileEntity(TileChunkReshaper.class, "libertas.chunk_reshaper");
     }
 }

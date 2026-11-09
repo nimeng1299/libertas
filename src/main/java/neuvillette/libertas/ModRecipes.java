@@ -429,5 +429,19 @@ public final class ModRecipes {
                 new ItemStack(Blocks.glass),
                 new ItemStack(Blocks.redstone_torch),
                 new ItemStack(ModItems.jigsaw)));
+
+        // 区块重塑机: 四角红石火把、四边钢板、中间拼图
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
+                new ItemStack(ModBlocks.chunkReshaper),
+                "TPT",
+                "PJP",
+                "TPT",
+                'T',
+                Blocks.redstone_torch,
+                'P',
+                "plateSteel",
+                'J',
+                ModItems.jigsaw));
     }
 }

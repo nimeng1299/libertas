@@ -1,0 +1,359 @@
+{
+  "credit": "Source: blockbench/generate_chunk_reshaper.py",
+  "ambientocclusion": false,
+  "textures": {
+    "0": "libertas:blocks/chunk_reshaper",
+    "1": "libertas:blocks/chunk_reshaper_screen",
+    "particle": "libertas:blocks/chunk_reshaper"
+  },
+  "elements": [
+    {
+      "name": "base",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        2,
+        16
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        }
+      }
+    },
+    {
+      "name": "body",
+      "from": [
+        1,
+        2,
+        1
+      ],
+      "to": [
+        15,
+        15,
+        15
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        }
+      }
+    },
+    {
+      "name": "cap",
+      "from": [
+        0,
+        15,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        }
+      }
+    },
+    {
+      "name": "screen_bezel",
+      "from": [
+        2,
+        4,
+        0.2
+      ],
+      "to": [
+        14,
+        13,
+        1.05
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        }
+      }
+    },
+    {
+      "name": "screen",
+      "from": [
+        2.5,
+        4.6,
+        0.08
+      ],
+      "to": [
+        13.5,
+        12.4,
+        0.25
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#1"
+        }
+      }
+    },
+    {
+      "name": "led_left",
+      "from": [
+        3,
+        2.4,
+        0.15
+      ],
+      "to": [
+        4,
+        3.6,
+        1.0
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            2,
+            2
+          ],
+          "texture": "#1"
+        }
+      }
+    },
+    {
+      "name": "led_right",
+      "from": [
+        12,
+        2.4,
+        0.15
+      ],
+      "to": [
+        13,
+        3.6,
+        1.0
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            2,
+            2
+          ],
+          "texture": "#1"
+        }
+      }
+    }
+  ]
+}

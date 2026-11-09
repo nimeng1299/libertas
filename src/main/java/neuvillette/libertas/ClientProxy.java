@@ -42,6 +42,8 @@ public class ClientProxy extends CommonProxy {
     public static int WIRELESS_CONTROL_CENTER_RENDER_ID = -1;
     /// 美容玻璃 (beautyGlass) 的 ISBRH render id, 同上 (每面只画 2px 边框, 相邻同种方块之间不画)
     public static int BEAUTY_GLASS_RENDER_ID = -1;
+    /// 区块重塑机 (chunkReshaper) 的 ISBRH render id, 同上
+    public static int CHUNK_RESHAPER_RENDER_ID = -1;
 
     @Override
     public void init(FMLInitializationEvent event) {
@@ -214,5 +216,13 @@ public class ClientProxy extends CommonProxy {
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemBeautyGlass,
             new JsonItemRenderer(Libertas.MODID, "item/beautyGlass", 1.0f, 0.0f, true));
+
+        // 区块重塑机: 同机械魔力池的渲染管线 (世界 ISBRH + 物品复用同一份 JSON 模型)
+        final JsonBlockRenderer chunkReshaperRenderer = new JsonBlockRenderer(Libertas.MODID, "block/chunkReshaper");
+        RenderingRegistry.registerBlockHandler(chunkReshaperRenderer.getRenderId(), chunkReshaperRenderer);
+        CHUNK_RESHAPER_RENDER_ID = chunkReshaperRenderer.getRenderId();
+        MinecraftForgeClient.registerItemRenderer(
+            ModBlocks.itemChunkReshaper,
+            new JsonItemRenderer(Libertas.MODID, "block/chunkReshaper", 1.0f, 0.0f, true));
     }
 }
