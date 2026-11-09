@@ -130,7 +130,7 @@ public final class ModRecipes {
                 'C',
                 Items.clay_ball));
 
-        // 拼图: 中间铁锭，上下左右任意木板
+        // 拼图: 中间铁锭，上下左右任意铜锭
         GameRegistry.addRecipe(
             new ShapedOreRecipe(
                 new ItemStack(ModItems.jigsaw),
@@ -138,7 +138,7 @@ public final class ModRecipes {
                 "PSP",
                 " P ",
                 'P',
-                "plankWood",
+                "ingotCopper",
                 'S',
                 Items.iron_ingot));
 
