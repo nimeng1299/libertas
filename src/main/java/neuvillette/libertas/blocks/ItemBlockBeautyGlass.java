@@ -17,6 +17,7 @@ public class ItemBlockBeautyGlass extends ItemBlock {
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advancedTooltips) {
         tooltip.add(StatCollector.translateToLocal("tooltip.libertas.beautyGlass.effect"));
+        tooltip.add(StatCollector.translateToLocal("tooltip.libertas.beautyGlass.drop"));
         tooltip.add(StatCollector.translateToLocal("tooltip.libertas.beautyGlass.lore"));
     }
 }

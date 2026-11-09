@@ -272,6 +272,7 @@ libertas.config.error.invalidJSON=请输入有效的结构化数据。
 
 tile.beautyGlass.name=美容玻璃
 tooltip.libertas.beautyGlass.effect=§7每个面只留 2px 边框、中央透空，相邻两块相连时接缝同样贯通 §8| §a自发光 4 级
+tooltip.libertas.beautyGlass.drop=§7与玻璃一样：徒手挖什么也不掉，§d精准采集§7才能取下本体
 tooltip.libertas.beautyGlass.lore=§o一框通透，光从边沿缓缓渗出。
 
 tile.chunkReshaper.name=区块重塑机

@@ -272,6 +272,7 @@ libertas.config.error.invalidJSON=Enter valid structured data.
 
 tile.beautyGlass.name=Beauty Glass
 tooltip.libertas.beautyGlass.effect=§7Each face keeps only a 2px rim with a hollow centre; two panes open up where they meet §8| §aLight level 4
+tooltip.libertas.beautyGlass.drop=§7Like glass: bare hands get nothing, §dSilk Touch§7 is required to take it
 tooltip.libertas.beautyGlass.lore=§oOne clear frame, light seeping from its edges.
 
 tile.chunkReshaper.name=Chunk Reshaper

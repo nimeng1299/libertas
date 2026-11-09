@@ -1,5 +1,7 @@
 package neuvillette.libertas.blocks;
 
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
@@ -11,7 +13,7 @@ import neuvillette.libertas.ClientProxy;
 /// 美容玻璃 (beautyGlass) - 与玻璃同样通透的装饰方块, 只是每个面的中央都是空的:
 /// 面上只留贴边的 2px 玻璃边框 (几何由 {@link neuvillette.libertas.client.render.BeautyGlassRenderer} 绘制)。
 /// 相邻两块相接时, 接缝处那一圈边框也一并消失, 两块于是连成一根贯通的中空玻璃管。
-/// 自身带 4 级亮度, 暗处会透出一点微光。
+/// 自身带 4 级亮度, 暗处会透出一点微光; 与玻璃一样, 只有精准采集才能把它挖下来。
 public class BlockBeautyGlass extends Block {
 
     /// 自身发光等级 (0..15)。渲染器同样用它给边框补光, 免得边框比周围暗
@@ -51,5 +53,19 @@ public class BlockBeautyGlass extends Block {
     @Override
     public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side) {
         return world.getBlock(x, y, z) != this && super.shouldSideBeRendered(world, x, y, z, side);
+    }
+
+    // ---- 掉落: 与玻璃完全一致, 徒手/普通工具挖掉什么都不掉, 只有精准采集能拿到本体 ----
+
+    @Override
+    public int quantityDropped(Random random) {
+        return 0;
+    }
+
+    /// 父类默认按 `renderAsNormalBlock() && !hasTileEntity` 判断, 本方块是空心的、恒为 false,
+    /// 这里显式放开, 否则精准采集也拿不到掉落物
+    @Override
+    protected boolean canSilkHarvest() {
+        return true;
     }
 }
