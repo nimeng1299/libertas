@@ -17,15 +17,23 @@ from PIL import Image, ImageDraw
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "src/main/resources/assets/libertas"
 SIDES = ("north", "east", "south", "west", "up", "down")
+# 米黄色机身 + 青铜描边 + 琥珀色读数; 顺序即调色板贴图的 UV 槽位, 不要调整
 COLORS = {
-    "shell": "#26394e",
+    "shell": "#cdbd9a",   # 米黄色外壳
+    "edge": "#ac8a5c",    # 青铜包边
+    "dark": "#382d20",    # 深棕阴影 / 通风口
+    "glow": "#ffcf86",    # 琥珀色指示灯与波形
+    "screen": "#2a2218",  # 屏幕底色
+    "gold": "#c07b4a",    # 紫铜触点
+    "silver": "#e6dfcd",  # 浅金属天线
+    "sand": "#a89474",    # 屏幕下方的暗沙色数据条
+}
+# 联动无线能源仓的贴片仍沿用旧的深蓝配色, 避免影响另一台机器
+HATCH_COLORS = {
     "edge": "#42657b",
     "dark": "#101c2e",
     "cyan": "#5cffe2",
-    "screen": "#173d4a",
     "gold": "#ffd382",
-    "silver": "#a4c9d0",
-    "blue": "#3185ae",
 }
 
 
@@ -39,15 +47,19 @@ def palette_texture() -> Image.Image:
     draw = ImageDraw.Draw(image)
     for index, color in enumerate(COLORS.values()):
         draw.rectangle((index * 8, 0, index * 8 + 7, 7), fill=color)
-    # Front display: a waveform and radio link indicator, authored as pixel art.
+    # 正面显示区: 琥珀色波形 + 信号柱, 衬在深棕屏幕上
     draw.rectangle((0, 16, 63, 47), fill=COLORS["screen"])
+    # 扫描线, 让屏幕有一点老式示波器的颗粒感
+    for y in range(20, 46, 4):
+        draw.line([(3, y), (60, y)], fill="#221b13")
     draw.rectangle((2, 18, 61, 45), outline=COLORS["edge"])
+    draw.rectangle((3, 19, 60, 44), outline="#433425")
     draw.line([(5, 35), (16, 35), (20, 28), (25, 39), (30, 24), (35, 35), (57, 35)],
-              fill=COLORS["cyan"], width=2)
+              fill=COLORS["glow"], width=2)
     for x, height in ((44, 3), (49, 6), (54, 9)):
-        draw.rectangle((x, 21 + 9 - height, x + 2, 30), fill=COLORS["cyan"])
+        draw.rectangle((x, 21 + 9 - height, x + 2, 30), fill=COLORS["glow"])
     draw.rectangle((5, 22, 16, 24), fill=COLORS["gold"])
-    draw.rectangle((5, 41, 39, 42), fill=COLORS["blue"])
+    draw.rectangle((5, 41, 39, 42), fill=COLORS["sand"])
     return image
 
 
@@ -116,7 +128,7 @@ def main() -> None:
         cube("telemetry_display", [2.5, 6.5, 0.3], [13.5, 11.5, 0.5], "screen", True),
         cube("template_slot", [4, 3.8, 0.5], [11, 5.3, 1], "dark"),
         cube("slot_contact", [4.5, 4, 0.35], [10.5, 4.4, 0.5], "gold"),
-        cube("status_led", [12, 4, 0.35], [13, 5, 0.5], "cyan"),
+        cube("status_led", [12, 4, 0.35], [13, 5, 0.5], "glow"),
         cube("antenna_left", [2, 15, 11], [3, 16, 12], "silver"),
         cube("antenna_right", [13, 15, 11], [14, 16, 12], "silver"),
     ]
@@ -129,8 +141,8 @@ def main() -> None:
         cube("card_body", [3, 0, 4], [13, 1, 12], "dark"),
         cube("circuit_board", [3.5, 1, 4.5], [12.5, 1.25, 11.5], "screen"),
         cube("control_chip", [6, 1.25, 6], [10, 1.6, 10], "edge"),
-        cube("chip_light", [7, 1.6, 7], [9, 1.7, 9], "cyan"),
-        cube("signal_track", [4, 1.25, 5], [11.5, 1.35, 5.5], "cyan"),
+        cube("chip_light", [7, 1.6, 7], [9, 1.7, 9], "glow"),
+        cube("signal_track", [4, 1.25, 5], [11.5, 1.35, 5.5], "glow"),
     ]
     for index in range(5):
         card.append(cube(f"contact_{index}", [4 + index * 1.5, 1, 10.5],
@@ -141,18 +153,18 @@ def main() -> None:
     draw = ImageDraw.Draw(icon)
     draw.rectangle((2, 3, 13, 12), fill=COLORS["edge"])
     draw.rectangle((3, 4, 12, 11), fill=COLORS["screen"])
-    draw.rectangle((6, 5, 9, 8), fill=COLORS["cyan"])
+    draw.rectangle((6, 5, 9, 8), fill=COLORS["glow"])
     for x in (4, 6, 8, 10):
         draw.rectangle((x, 10, x, 12), fill=COLORS["gold"])
     # Keep the palette texture used by the 3D card; this separate icon is editable in Blockbench as well.
     icon.save(ASSETS / "textures/items/wireless_configuration_card_icon.png")
     hatch = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
     draw = ImageDraw.Draw(hatch)
-    draw.rectangle((2, 2, 13, 13), fill=COLORS["dark"], outline=COLORS["edge"])
-    draw.arc((3, 3, 12, 12), 205, 335, fill=COLORS["cyan"], width=1)
-    draw.arc((5, 6, 10, 11), 205, 335, fill=COLORS["cyan"], width=1)
-    draw.rectangle((7, 10, 8, 11), fill=COLORS["gold"])
-    draw.rectangle((5, 13, 10, 13), fill=COLORS["cyan"])
+    draw.rectangle((2, 2, 13, 13), fill=HATCH_COLORS["dark"], outline=HATCH_COLORS["edge"])
+    draw.arc((3, 3, 12, 12), 205, 335, fill=HATCH_COLORS["cyan"], width=1)
+    draw.arc((5, 6, 10, 11), 205, 335, fill=HATCH_COLORS["cyan"], width=1)
+    draw.rectangle((7, 10, 8, 11), fill=HATCH_COLORS["gold"])
+    draw.rectangle((5, 13, 10, 13), fill=HATCH_COLORS["cyan"])
     hatch_path = ASSETS / "textures/blocks/machines/linked_wireless_energy.png"
     hatch_path.parent.mkdir(parents=True, exist_ok=True)
     hatch.save(hatch_path)
