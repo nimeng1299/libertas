@@ -40,6 +40,8 @@ public final class ModBlocks {
     public static Item itemBeautyGlass;
     public static Block chunkReshaper;
     public static Item itemChunkReshaper;
+    public static Block kitchenSink;
+    public static Item itemKitchenSink;
 
     private ModBlocks() {}
 
@@ -154,5 +156,11 @@ public final class ModBlocks {
         itemChunkReshaper = Item.getItemFromBlock(chunkReshaper);
         itemChunkReshaper.setCreativeTab(ModCreativeTabs.tabLibertas);
         GameRegistry.registerTileEntity(TileChunkReshaper.class, "libertas.chunk_reshaper");
+
+        kitchenSink = new BlockKitchenSink();
+        GameRegistry.registerBlock(kitchenSink, ItemBlockKitchenSink.class, "kitchenSink");
+        itemKitchenSink = Item.getItemFromBlock(kitchenSink);
+        itemKitchenSink.setCreativeTab(ModCreativeTabs.tabLibertas);
+        GameRegistry.registerTileEntity(TileKitchenSink.class, "libertas.kitchen_sink");
     }
 }

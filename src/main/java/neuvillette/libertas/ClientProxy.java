@@ -44,6 +44,8 @@ public class ClientProxy extends CommonProxy {
     public static int BEAUTY_GLASS_RENDER_ID = -1;
     /// 区块重塑机 (chunkReshaper) 的 ISBRH render id, 同上
     public static int CHUNK_RESHAPER_RENDER_ID = -1;
+    /// 水槽 (kitchenSink) 的 ISBRH render id, 同上
+    public static int KITCHEN_SINK_RENDER_ID = -1;
 
     @Override
     public void init(FMLInitializationEvent event) {
@@ -224,5 +226,13 @@ public class ClientProxy extends CommonProxy {
         MinecraftForgeClient.registerItemRenderer(
             ModBlocks.itemChunkReshaper,
             new JsonItemRenderer(Libertas.MODID, "block/chunkReshaper", 1.0f, 0.0f, true));
+
+        // 水槽: 与区块重塑机同一条渲染管线, 按 meta 绕 Y 轴旋转 (放置时正面朝向玩家)
+        final JsonBlockRenderer kitchenSinkRenderer = new JsonBlockRenderer(Libertas.MODID, "block/kitchenSink", true);
+        RenderingRegistry.registerBlockHandler(kitchenSinkRenderer.getRenderId(), kitchenSinkRenderer);
+        KITCHEN_SINK_RENDER_ID = kitchenSinkRenderer.getRenderId();
+        MinecraftForgeClient.registerItemRenderer(
+            ModBlocks.itemKitchenSink,
+            new JsonItemRenderer(Libertas.MODID, "block/kitchenSink", 1.0f, 0.0f, true));
     }
 }

@@ -443,5 +443,20 @@ public final class ModRecipes {
                 "plateSteel",
                 'J',
                 ModItems.jigsaw));
+
+        // 水槽: 顶行三个铁锭, 中间水桶, 其余五格任意原木。
+        // 水桶是原版容器物品, 合成台会按 ItemBucket#getContainerItem 自动返还空桶
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
+                new ItemStack(ModBlocks.kitchenSink),
+                "III",
+                "LWL",
+                "LLL",
+                'I',
+                "ingotIron",
+                'W',
+                Items.water_bucket,
+                'L',
+                "logWood"));
     }
 }

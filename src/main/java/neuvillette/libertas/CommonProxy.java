@@ -1,6 +1,8 @@
 package neuvillette.libertas;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
@@ -29,6 +31,13 @@ public class CommonProxy {
 
         // Botania 特花的 subtile 注册须在 init 之前的资源拼接期完成
         ModBotania.init();
+
+        // Waila 提示: 水槽显示流体与容量。没装 Waila 时这条 IMC 会被直接丢弃,
+        // 回调类 KitchenSinkWailaProvider 也就永远不会被反射加载
+        if (Loader.isModLoaded("Waila")) {
+            FMLInterModComms
+                .sendMessage("Waila", "register", "neuvillette.libertas.waila.KitchenSinkWailaProvider.register");
+        }
 
         Libertas.LOG.info(Config.greeting);
         Libertas.LOG.info("I am Libertas at version " + Tags.VERSION);
