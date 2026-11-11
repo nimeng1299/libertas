@@ -6,7 +6,7 @@ import gregtech.api.recipe.check.CheckRecipeResultRegistry;
 
 /**
  * 在 GT 的 load 阶段窗口内（GT preInit 开始之后、postInit 之前）构造 MetaTileEntity 完成注册。
- * ID 必须全局唯一，当前运行环境里 18000-19999 段空闲。
+ * ID 必须全局唯一：多方块控制器占用 24760-24765，仓室（hatch）占用 24766 起的连续段。
  */
 public final class ModMachines {
 
@@ -26,25 +26,25 @@ public final class ModMachines {
     private ModMachines() {}
 
     public static void init() {
-        advancedCrucible = new MTEAdvancedCrucible(19000, "multimachine.advancedcrucible", "Advanced Crucible")
+        advancedCrucible = new MTEAdvancedCrucible(24760, "multimachine.advancedcrucible", "Advanced Crucible")
             .getStackForm(1L);
-        essentiaMelter = new MTEHatchEssentiaMelter(19001, "hatch.essentiamelter", "Essentia Melter Hatch")
+        essentiaMelter = new MTEHatchEssentiaMelter(24766, "hatch.essentiamelter", "Essentia Melter Hatch")
             .getStackForm(1L);
-        runewovenPact = new MTERunewovenPact(19002, "multimachine.runewovenpact", "秘纹织契").getStackForm(1L);
-        greatWizardOven = new MTEGreatWizardOven(19003, "multimachine.greatwizardoven", "大巫师烤炉").getStackForm(1L);
-        wizardDistillationTower = new MTEWizardDistillationTower(19004, "multimachine.wizarddistillationtower", "巫师蒸馏塔")
+        runewovenPact = new MTERunewovenPact(24761, "multimachine.runewovenpact", "秘纹织契").getStackForm(1L);
+        greatWizardOven = new MTEGreatWizardOven(24762, "multimachine.greatwizardoven", "大巫师烤炉").getStackForm(1L);
+        wizardDistillationTower = new MTEWizardDistillationTower(24763, "multimachine.wizarddistillationtower", "巫师蒸馏塔")
             .getStackForm(1L);
-        greatWizardCauldron = new MTEGreatWizardCauldron(19005, "multimachine.greatwizardcauldron", "大巫师炼药锅")
+        greatWizardCauldron = new MTEGreatWizardCauldron(24764, "multimachine.greatwizardcauldron", "大巫师炼药锅")
             .getStackForm(1L);
-        miniMining = new MTEMiniMining(19006, "multimachine.minimining", "迷你矿机").getStackForm(1L);
-        woodenInputBus = new MTEHatchWoodenInputBus(19007, "hatch.woodeninputbus", "Wooden Input Bus").getStackForm(1L);
-        woodenOutputBus = new MTEHatchWoodenOutputBus(19008, "hatch.woodenoutputbus", "Wooden Output Bus")
+        miniMining = new MTEMiniMining(24765, "multimachine.minimining", "迷你矿机").getStackForm(1L);
+        woodenInputBus = new MTEHatchWoodenInputBus(24767, "hatch.woodeninputbus", "Wooden Input Bus").getStackForm(1L);
+        woodenOutputBus = new MTEHatchWoodenOutputBus(24768, "hatch.woodenoutputbus", "Wooden Output Bus")
             .getStackForm(1L);
-        woodenInputHatch = new MTEHatchWoodenInput(19009, "hatch.woodeninput", "Wooden Input Hatch").getStackForm(1L);
-        woodenOutputHatch = new MTEHatchWoodenOutput(19010, "hatch.woodenoutput", "Wooden Output Hatch")
+        woodenInputHatch = new MTEHatchWoodenInput(24769, "hatch.woodeninput", "Wooden Input Hatch").getStackForm(1L);
+        woodenOutputHatch = new MTEHatchWoodenOutput(24770, "hatch.woodenoutput", "Wooden Output Hatch")
             .getStackForm(1L);
         linkedWirelessEnergyHatch = new MTEHatchLinkedWirelessEnergy(
-            19011,
+            24771,
             "hatch.linkedwirelessenergy",
             "Linked Wireless Energy Hatch").getStackForm(1L);
         ModGuiThemes.init();
