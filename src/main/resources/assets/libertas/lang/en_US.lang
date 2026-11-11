@@ -300,11 +300,7 @@ libertas.chunkReshaper.button.excavate.tip=Turns every block below this machine 
 libertas.chunkReshaper.button.pave.tip=Lays Beauty Glass at the build limit of this chunk, skipping occupied cells
 
 tile.kitchenSink.name=Kitchen Sink
-tooltip.libertas.kitchenSink.capacity=§7Holds §b2,147,483,647 mB §7of water (int limit) and never runs dry
-tooltip.libertas.kitchenSink.faces=§7Drainable and fillable from all six faces, in any order
-tooltip.libertas.kitchenSink.rate=§7Up to §b2,147,483,647 mB§7 per extraction — effectively unlimited throughput and intake
-tooltip.libertas.kitchenSink.container=§7Right-click with an empty bucket/cell to fill it; with a water bucket to pour it back
-tooltip.libertas.kitchenSink.lore=§oTurn the tap, and the sea never stops.
+tooltip.libertas.kitchenSink.lore=§oplease input text§r
 
 libertas.waila.kitchenSink.fluid=§7Fluid: §b%1$s
 libertas.waila.kitchenSink.amount=§7Capacity: §b%1$s §7mB §8(infinite)

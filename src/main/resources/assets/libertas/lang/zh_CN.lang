@@ -300,11 +300,7 @@ libertas.chunkReshaper.button.excavate.tip=把本区块机器高度以下的方�
 libertas.chunkReshaper.button.pave.tip=在本区块最高建筑高度铺一层美容玻璃，已有方块的格子跳过
 
 tile.kitchenSink.name=水槽
-tooltip.libertas.kitchenSink.capacity=§7内含 §b2,147,483,647 mB §7水（int 上限），怎么消耗都不会减少
-tooltip.libertas.kitchenSink.faces=§7六个面都能被抽出，也能从任意一面灌水，不挑方向
-tooltip.libertas.kitchenSink.rate=§7单次抽取上限 §b2,147,483,647 mB§7，等效无限速率；灌多少水也照单全收
-tooltip.libertas.kitchenSink.container=§7手持空桶/空单元右键：无限接水；手持水桶右键：把水倒回水槽
-tooltip.libertas.kitchenSink.lore=§o拧开龙头，海就不会停。
+tooltip.libertas.kitchenSink.lore=§o请输入文本§r
 
 libertas.waila.kitchenSink.fluid=§7流体: §b%1$s
 libertas.waila.kitchenSink.amount=§7容量: §b%1$s §7mB §8(无限)
