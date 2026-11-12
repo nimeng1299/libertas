@@ -169,6 +169,9 @@ public class MTEGreatWizardOven extends MTELibertasMultiBlockBase<MTEGreatWizard
     @Override
     public int survivalConstruct(ItemStack stackSize, int elementBudget, ISurvivalBuildEnvironment env) {
         if (mMachine) return -1;
+        // NEI 预览（BlockRenderer6343）里火焰没有物品形态，生存遍历会断在那一层（预览只显示一半），
+        // 这里直接退回创造式搭建（placeBlock 会 world.setBlock 放火），游戏内建造与结构检查不受影响
+        if (isInStructurePreview()) return previewConstruct(stackSize);
         return survivalBuildPiece(
             STRUCTURE_PIECE_MAIN,
             stackSize,

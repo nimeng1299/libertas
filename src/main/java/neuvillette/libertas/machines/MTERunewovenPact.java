@@ -1,25 +1,34 @@
 package neuvillette.libertas.machines;
 
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.ofBlock;
-import static com.gtnewhorizon.structurelib.structure.StructureUtility.ofSpecificTileAdder;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 import static net.minecraft.util.StatCollector.translateToLocal;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
 
 import javax.annotation.Nonnull;
 
+import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IChatComponent;
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.oredict.OreDictionary;
 
+import com.gtnewhorizon.structurelib.StructureLibAPI;
 import com.gtnewhorizon.structurelib.alignment.IAlignmentLimits;
 import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructable;
+import com.gtnewhorizon.structurelib.structure.IItemSource;
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
+import com.gtnewhorizon.structurelib.structure.IStructureElement;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
+import com.gtnewhorizon.structurelib.structure.StructureUtility;
 
 import gregtech.api.GregTechAPI;
 import gregtech.api.casing.Casings;
@@ -55,8 +64,8 @@ import thaumcraft.common.tiles.TilePedestal;
  * 要素从要素熔炼仓抽取，产物进输出总线；并行 1（每轮只做一次注魔），固定 5 秒（100 tick）耗时。
  *
  * <p>
- * 特殊方块（矩阵/台座/支柱/碧空之泪）不能由多方块代放，需要按结构提示手工摆放，
- * 结构检查只校验它们的存在（{@link com.gtnewhorizon.structurelib.structure.StructureUtility#ofSpecificTileAdder}）。
+ * 特殊方块（矩阵/台座/支柱/碧空之泪）的校验要求对应 TileEntity 存在，但元素本身是可以代放的：
+ * 创造建造与 NEI 预览会直接把方块放出来，生存建造则照常从材料来源扣除物品。
  */
 public class MTERunewovenPact extends MTELibertasMultiBlockBase<MTERunewovenPact> implements ISurvivalConstructable {
 
@@ -96,14 +105,10 @@ public class MTERunewovenPact extends MTELibertasMultiBlockBase<MTERunewovenPact
                 .hint(1)
                 .buildAndChain(ofBlock(GregTechAPI.sBlockCasings2, 1)))
         .addElement('B', ofBlock(ConfigBlocks.blockStoneDevice, 6))
-        .addElement('C', ofSpecificTileAdder((t, te) -> true, TileAzureTear.class, ModBlocks.azureTear, 0))
-        .addElement(
-            'D',
-            ofSpecificTileAdder((t, te) -> true, TileInfusionMatrix.class, ConfigBlocks.blockStoneDevice, 2))
-        .addElement('E', ofSpecificTileAdder((t, te) -> true, TilePedestal.class, ConfigBlocks.blockStoneDevice, 1))
-        .addElement(
-            'F',
-            ofSpecificTileAdder((t, te) -> true, TileInfusionPillar.class, ConfigBlocks.blockStoneDevice, 3))
+        .addElement('C', placeableTile(TileAzureTear.class, ModBlocks.azureTear, 0))
+        .addElement('D', placeableTile(TileInfusionMatrix.class, ConfigBlocks.blockStoneDevice, 2))
+        .addElement('E', placeableTile(TilePedestal.class, ConfigBlocks.blockStoneDevice, 1))
+        .addElement('F', placeableTile(TileInfusionPillar.class, ConfigBlocks.blockStoneDevice, 3))
         .build();
 
     // blockbench/runewovenPactController.bbmodel 设计，对应 assets/libertas/textures/blocks/machines/ 下贴图
@@ -168,6 +173,9 @@ public class MTERunewovenPact extends MTELibertasMultiBlockBase<MTERunewovenPact
     @Override
     public int survivalConstruct(ItemStack stackSize, int elementBudget, ISurvivalBuildEnvironment env) {
         if (mMachine) return -1;
+        // NEI 预览（BlockRenderer6343）没有物品来源，台座/矩阵/支柱/碧空之泪这些"只能手放"的元素还会让生存遍历中断，
+        // 这里直接退回创造式搭建，保证预览能把整个结构画出来（游戏内建造与结构检查不受影响）
+        if (isInStructurePreview()) return previewConstruct(stackSize);
         return survivalBuildPiece(
             STRUCTURE_PIECE_MAIN,
             stackSize,
@@ -218,6 +226,44 @@ public class MTERunewovenPact extends MTELibertasMultiBlockBase<MTERunewovenPact
     // -----------------------------------------------------------------------
     // 结构部件：输入/输出总线走标准元素，要素熔炼仓走自定义元素
     // -----------------------------------------------------------------------
+
+    /**
+     * 可以真的被放下的"特殊方块"元素：校验时要求该位置是指定 TileEntity（与原 {@code ofSpecificTileAdder} 一致），
+     * 但建造时会把方块放出来。
+     *
+     * <p>
+     * 原来的 {@code ofSpecificTileAdder} 属于 {@code IStructureElementNoPlacement}：{@code placeBlock} 恒为
+     * {@code false}、生存建造的 {@code survivalPlaceBlock} 恒返回 {@code REJECT}。结果就是创造建造和 NEI 预览都
+     * 放不出符文矩阵/台座/注魔支柱/碧空之泪（预览里还会因为这个 {@code REJECT} 中断整轮遍历）。
+     */
+    private static <E extends TileEntity> IStructureElement<MTERunewovenPact> placeableTile(Class<E> tileClass,
+        Block block, int meta) {
+        return new IStructureElement<MTERunewovenPact>() {
+
+            @Override
+            public boolean check(MTERunewovenPact t, World world, int x, int y, int z) {
+                return tileClass.isInstance(world.getTileEntity(x, y, z));
+            }
+
+            @Override
+            public boolean placeBlock(MTERunewovenPact t, World world, int x, int y, int z, ItemStack trigger) {
+                world.setBlock(x, y, z, block, meta, 2);
+                return true;
+            }
+
+            @Override
+            public boolean spawnHint(MTERunewovenPact t, World world, int x, int y, int z, ItemStack trigger) {
+                StructureLibAPI.hintParticle(world, x, y, z, block, meta);
+                return true;
+            }
+
+            @Override
+            public PlaceResult survivalPlaceBlock(MTERunewovenPact t, World world, int x, int y, int z,
+                ItemStack trigger, IItemSource s, EntityPlayerMP actor, Consumer<IChatComponent> chatter) {
+                return StructureUtility.survivalPlaceBlock(block, meta, world, x, y, z, s, actor, chatter);
+            }
+        };
+    }
 
     private boolean addEssentiaMelterToMachineList(IGregTechTileEntity tileEntity, Short baseCasingIndex) {
         if (tileEntity == null) return false;

@@ -84,7 +84,7 @@ libertas.mbtt.runewoven_pact.casing=防冻机械外壳
 libertas.mbtt.runewoven_pact.input_bus.desc=核心物品与基座组件
 libertas.mbtt.runewoven_pact.structure.1=符文矩阵、奥术基座与注魔立柱
 libertas.mbtt.runewoven_pact.structure.2=均需手动摆放，
-libertas.mbtt.runewoven_pact.structure.3=并在符文矩阵正上方放置一枚碧空之泪
+libertas.mbtt.runewoven_pact.structure.3=并在中心的奥术基座正下方放置一枚碧空之泪
 
 gt.blockmachines.multimachine.greatwizardoven.name=大巫师烤炉
 
