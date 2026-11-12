@@ -304,3 +304,5 @@ tooltip.libertas.kitchenSink.lore=§o请输入文本§r
 
 libertas.waila.kitchenSink.fluid=§7流体: §b%1$s
 libertas.waila.kitchenSink.amount=§7容量: §b%1$s §7mB §8(无限)
+
+tooltip.libertas.credit=§7由 %s §7添加

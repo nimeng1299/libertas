@@ -304,3 +304,5 @@ tooltip.libertas.kitchenSink.lore=§oplease input text§r
 
 libertas.waila.kitchenSink.fluid=§7Fluid: §b%1$s
 libertas.waila.kitchenSink.amount=§7Capacity: §b%1$s §7mB §8(infinite)
+
+tooltip.libertas.credit=§7Added by %s
