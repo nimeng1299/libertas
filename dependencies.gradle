@@ -41,6 +41,7 @@ dependencies {
     implementation("com.github.GTNewHorizons:Angelica:2.2.43:dev") { transitive = false }
 
     implementation("com.github.GTNewHorizons:NotEnoughItems:2.8.171-GTNH:dev")
+    runtimeOnlyNonPublishable("com.github.GTNewHorizons:BlockRenderer6343:1.4.25:dev")
     //devOnlyNonPublishable("com.github.GTNewHorizons:NewHorizonsCoreMod:2.9.99:dev")
 
     devOnlyNonPublishable("com.github.GTNewHorizons:ThaumicBases:1.9.22:dev")
